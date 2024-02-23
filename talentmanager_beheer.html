@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Onze talentmanagers</h1>
+    <table id="talentmanager-table">
+      <tr>
+        id
+      </tr>
+      <tr>
+        leeftijd
+      </tr>
+      <tr>
+        naam
+      </tr>
+      <tr>
+        trainees
+      </tr>
+    </table>
+
+    <input type="text" id="invoer-leeftijd" placeholder="vul leeftijd in" />
+    <input type="text" id="invoer-naam" placeholder="vul naam in" />
+    <input
+      type="text"
+      id="invoer-trainees"
+      placeholder="vul in true of false"
+    />
+    <button type="button" onclick="createTalentmanager()">Opslaan</button>
+
+    <script>
+      function createTalentmanager() {
+        // Stap 1: Verzamelen van data uit invoervelden.
+        let newTalentmanager = {
+          leeftijd: document.getElementById("invoer-leeftijd").value,
+          naam: document.getElementById("invoer-naam").value,
+          trainees: document.getElementById("invoer-trainees").value,
+        };
+        // Stap 2: Sturen van nieuwe data naar endpoint.
+        fetch("http://localhost:8080/talentmanager/create", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+
+          body: JSON.stringify(newTalentmanager),
+        })
+          .then((res) => res.json())
+          .then((newTalentmanager) => {
+            alert("Talentmanager aangemaakt met id: " + newTalentmanager.id);
+            // Stap 3: Herladen van table.
+            loadData();
+          });
+      }
+
+      function loadData() {
+        fetch("http://localhost:8080/talentmanager/all")
+          .then((res) => res.json())
+          .then((talentmanagers) => {
+            console.log("talentmangers", talentmanagers);
+            let talentmanagersHtml = "";
+
+            talentmanagers.forEach((talentmanager) => {
+              talentmanagersHtml += `
+                <tr>
+                    <td>${talentmanager.id}</td>
+                    <td>${talentmanager.leeftijd}</td>
+                    <td>${talentmanager.naam}</td>
+                    <td>${talentmanager.trainees}</td>
+                </tr>`;
+            });
+          });
+
+        console.log("After fetch");
+      }
+      loadData();
+    </script>
+  </body>
+</html>
