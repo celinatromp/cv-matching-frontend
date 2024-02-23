@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Onze trainees</h1>
+    <table id="trainee-table"></table>
+
+    <input type="text" id="invoer-voornaam" placeholder="Vul naam in" />
+    <input type="number" id="invoer-leeftijd" placeholder="Vul leeftijd in" />
+    <button type="button" onclick="createTrainee()">Opslaan</button>
+
+    <script>
+      function createTrainee() {
+        //stap 1 - Verzamelen van data uit de invoer velden
+
+        let newTrainee = {
+          voornaam: document.getElementById("invoer-voornaam").value,
+          leeftijd: document.getElementById("invoer-leeftijd").value,
+          lovesJava: false,
+        };
+
+        //stap 2 - Sturen van de nieuwe trainee
+
+        fetch("http://localhost:8080/trainee/create", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newTrainee),
+        })
+          .then((res) => res.json())
+          .then((newTrainee) => {
+            alert("Trainee aangemaakt met id: " + newTrainee.id);
+
+            //stap 3 - Herladen van de table
+            loadData();
+          });
+      }
+
+      function loadData() {
+        fetch("http://localhost:8080/trainee/all")
+          .then((res) => res.json())
+          .then((trainees) => {
+            console.log("trainees", trainees);
+
+            //tijdelijke html voor in de tabel
+            let traineesHtml = "";
+
+            trainees.forEach((trainee) => {
+              traineesHtml += `
+                    <tr>
+                        <td>
+                            ${trainee.id}
+                        </td>
+                        <td>
+                            ${trainee.voornaam}
+                        </td>
+                    </tr>
+                `;
+            });
+
+            document.getElementById("trainee-table").innerHTML = traineesHtml;
+          });
+
+        console.log("After fetch");
+      }
+
+      loadData();
+    </script>
+  </body>
+</html>
