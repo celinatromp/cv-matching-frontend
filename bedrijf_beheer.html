@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Bedrijven toevoegen</h1>
+
+        <input type="text" id="invoer-naambedrijf" placeholder="vul naam bedrijf in" />
+        <input type="text" id="invoer-locatie" placeholder="vul locatie in" />
+        <input type="text" id="invoer-branche" placeholder="vul branche in" />
+        <button type="button" onclick="createBedrijf()">Opslaan</button>
+        </div>
+    <div>
+        <h1>Tabel bedrijven in database:</h1>
+        <table id="bedrijf-table">
+            <tr>
+                <th>id</th>
+                <th>Naam Bedrijf</th>
+                <th>Locatie</th>
+                <th>Branche</th>
+            </tr>
+        </table>
+    </div>
+    
+
+    <script>
+        function createBedrijf() {
+            // Stap 1: Verzamelen van data uit invoervelden.
+            let newBedrijf = {
+                naamBedrijf: document.getElementById("invoer-naambedrijf").value,
+                locatie: document.getElementById("invoer-locatie").value,
+                branche: document.getElementById("invoer-branche").value,
+            };
+            // Stap 2: Sturen van nieuwe data naar endpoint.
+            fetch("http://localhost:8080/bedrijf/create", {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                },
+
+                body: JSON.stringify(newBedrijf),
+            })
+                .then((res) => res.json())
+                .then((newBedrijf) => {
+                    alert("Bedrijf aangemaakt met id: " + newBedrijf.id);
+                    // Stap 3: Herladen van table.
+                    loadData();
+                });
+        }
+
+        function loadData() {
+            fetch("http://localhost:8080/bedrijf/all")
+                .then((res) => res.json())
+                .then((bedrijf) => {
+                    console.log("Bedrijven", bedrijf);
+                    let bedrijfHtml = "";
+                    
+                    
+                    bedrijf.forEach((bedrijf) => {
+                        bedrijfHtml += `
+                            <tr>
+                                <td>${bedrijf.id}</td>
+                                <td>${bedrijf.naamBedrijf}</td>
+                                <td>${bedrijf.locatie}</td>
+                                <td>${bedrijf.branche}</td>
+                            </tr>`;
+                    });
+
+                    // Update de table met de nieuwe data
+                    document.getElementById("bedrijf-table").innerHTML = `
+                        <tr>
+                            <th>id</th>
+                            <th>Naam Bedrijf</th>
+                            <th>Locatie</th>
+                            <th>Branche</th>
+                        </tr>
+                        ${bedrijfHtml}
+                    `;
+                });
+
+            console.log("After fetch");
+        }
+        loadData();
+    </script>
+</body>
+</html>
