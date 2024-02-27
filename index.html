@@ -7,20 +7,64 @@
   </head>
   <body>
     <h1>Onze trainees</h1>
-    <table id="trainee-table"></table>
+    <table id="trainee-table">
+    
+        <tr>id </tr>
 
-    <input type="text" id="invoer-voornaam" placeholder="Vul naam in" />
-    <input type="number" id="invoer-leeftijd" placeholder="Vul leeftijd in" />
-    <button type="button" onclick="createTrainee()">Opslaan</button>
+        <tr>voornaam </tr>
+
+        <tr>leeftijd </tr>
+    </table>
+   
+
+    <input type="text" id="invoer-voornaam" placeholder="vul naam in">
+    <input type="number" id="invoer-leeftijd" placeholder="vul leeftijd in">
+    <input type="text" id="traineeId" placeholder="vul een id nummer in">
+    <button type="button" onclick="createTrainee()">opslaan</button>
+    <button type="button" onclick="updateTrainee()">update</button>
 
     <script>
+    function updateTrainee() {
+    // Step 1: Get the trainee ID from input field
+    let traineeId = document.getElementById("traineeId").value;
+
+    // Step 2: Collect updated data from input fields
+    let updatedTraineeData = {
+        "voornaam": document.getElementById("invoer-voornaam").value,
+        "leeftijd": document.getElementById("invoer-leeftijd").value
+    };
+
+    // Step 3: Send the updated data to the server
+    fetch(`http://localhost:8080/trainee/${traineeId}/update`, {
+        method: "PUT",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify(updatedTraineeData)
+    })
+    .then(res => { return res.json(); })
+    .then(updatedTraineeData => {
+        // Step 4: Handle response from the server
+        // Show an alert with the entire server response
+        alert("Trainee with ID " + traineeId + " was updated!");
+        // Call loadData() after the fetch request is completed and the alert is shown
+        loadData();
+    })
+    .catch(e => {
+        console.log('There was a problem with the fetch operation: ' + e.message);
+    });
+};
+
+
+
+
       function createTrainee() {
         //stap 1 - Verzamelen van data uit de invoer velden
 
         let newTrainee = {
-          voornaam: document.getElementById("invoer-voornaam").value,
-          leeftijd: document.getElementById("invoer-leeftijd").value,
-          lovesJava: false,
+          "voornaam": document.getElementById("invoer-voornaam").value,
+          "leeftijd": document.getElementById("invoer-leeftijd").value,
+          "lovesJava": false,
         };
 
         //stap 2 - Sturen van de nieuwe trainee
@@ -58,6 +102,9 @@
                         </td>
                         <td>
                             ${trainee.voornaam}
+                        </td>
+                        <td>
+                            ${trainee.leeftijd}
                         </td>
                     </tr>
                 `;
