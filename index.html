@@ -42,7 +42,17 @@
         },
         body: JSON.stringify(updatedTraineeData)
     })
-    .then(res => { return res.json(); })
+    .then(res => {
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        // Check if the response is empty
+        if (res.headers.get("content-length") === "0" || res.status === 204) {
+            return {}; }
+        else {
+          return res.json();
+        } 
+    })
     .then(updatedTraineeData => {
         // Step 4: Handle response from the server
         // Show an alert with the entire server response
