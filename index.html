@@ -26,37 +26,63 @@
     <input type="text" id="update-traineeId" placeholder="vul een id nummer in">
     <button type="button" onclick="updateTrainee()">Update</button>
     
-    <h2>Trainee verwijderen</h2>
-    <input type="text" id="delete-traineeId" placeholder="vul een id nummer in">
-    <button type="button" onclick="deleteTrainee()">Delete</button>
+    
+    <h2>Selecteer trainees om te verwijderen</h2>
+    <button type="button" onclick="deleteSelectedTrainees()">Delete Selected</button>
+  
     <br>
     <h2>Tabel van Trainees</h2>
-    <table id="trainee-table">
+      <table id="trainee-table">
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>ID</th>
+                <th>Voornaam</th>
+                <th>Achternaam</th>
+                <th>Leeftijd</th>
+                <th>Woonplaats</th>
+                <th>Specialisatie</th>
+                <th>Bio</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
     </table>
    
     <script>
-    function deleteTrainee(){
-      let deletetraineeId = document.getElementById("delete-traineeId").value;
-      if(!confirm(`Weet je zeker dat de trainee met ID ${deletetraineeId} wilt verwijderen?`)){
-        return;
-      }
-      fetch(`http://localhost:8080/trainee/${deletetraineeId}/delete`,{
-        method: "DELETE",
-    
-      })
-      .then((res) => {
-          if (!res.ok) {
-              throw new Error(`Trainee met ID ${deletetraineeId} kon niet worden verwijderd.`);
-              }
-          alert(`Trainee met ID ${deletetraineeId} is succesvol verwijderd!`);
-          loadData();
-      })
-      .catch((error) => {
-          console.error(`Fout bij het verwijderen van trainee met ID ${deletetraineeId}:`, error);
-            alert(`Er is een fout opgetreden bij het verwijderen van trainee ${deletetraineeId}. Probeer het opnieuw.`);
-      });
-};
 
+function deleteSelectedTrainees() {
+    let selectedTraineeIds = [];
+    document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+        selectedTraineeIds.push(checkbox.dataset.traineeId);
+    });
+
+    if (selectedTraineeIds.length === 0) {
+        alert("Selecteer ten minste één trainee om te verwijderen.");
+        return;
+    }
+
+    if (!confirm("Weet je zeker dat je de geselecteerde trainees wilt verwijderen?")) {
+        return;
+    }
+    selectedTraineeIds.forEach(traineeId => {
+        fetch(`http://localhost:8080/trainee/${traineeId}/delete`, {
+            method: "DELETE",
+        })
+        .then((res) => {
+            res.json();
+        })
+        .then(() => {
+            alert(`Trainee met ID ${traineeId} is succesvol verwijderd!`);
+            // Reload data after successful deletion
+            loadData();
+        })
+        .catch((error) => {
+            console.error(error.message);
+            alert(`Er is een fout opgetreden bij het verwijderen van trainee ${traineeId}. Probeer het opnieuw.`);
+        });
+    });
+}
     function updateTrainee() {
     // Step 1: Get the trainee ID from input field
     let traineeId = document.getElementById("update-traineeId").value;
@@ -129,55 +155,66 @@
       }
 
       function loadData() {
-        fetch("http://localhost:8080/trainee/all")
-          .then((res) => res.json())
-          .then((trainees) => {
-            console.log("trainees", trainees);
-            //tijdelijke html voor in de tabel
+    fetch("http://localhost:8080/trainee/all")
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error(`Error fetching trainees: ${res.statusText}`);
+            }
+            return res.json();
+        })
+        .then((trainees) => {
             let traineesHtml = "";
             trainees.forEach((trainee) => {
-              traineesHtml += `
+                traineesHtml += `
                     <tr>
-                        <td>
-                            ${trainee.id}
-                        </td>
-                        <td>
-                            ${trainee.voornaam}
-                        </td>
-                        <td>
-                            ${trainee.achternaam}
-                        </td>
-                        <td>
-                            ${trainee.leeftijd}
-                        </td>
-                        <td>
-                            ${trainee.woonplaats}
-                        </td>
-                        <td>
-                            ${trainee.specialisatie}
-                        </td>
-                        <td>
-                            ${trainee.bio}
-                        </td>
-                       
+                        <td><input type="checkbox" data-trainee-id="${trainee.id}"></td>
+                        <td>${trainee.id}</td>
+                        <td>${trainee.voornaam}</td>
+                        <td>${trainee.achternaam}</td>
+                        <td>${trainee.leeftijd}</td>
+                        <td>${trainee.woonplaats}</td>
+                        <td>${trainee.specialisatie}</td>
+                        <td>${trainee.bio}</td>
                     </tr>
                 `;
             });
-            document.getElementById("trainee-table").innerHTML = `
-                        <tr>
-                            <th>id </th>
-                            <th>Voornaam </th>
-                            <th>Achternaam </th>
-                            <th>Leeftijd </th>
-                            <th>Woonplaats </th>
-                            <th>Specalisatie </th>
-                            <th>Bio </th>
-                        </tr>
-          
-            ${traineesHtml}`;
-          });
-        console.log("After fetch");
-      }
+
+            // Check if there are no trainees
+            if (trainees.length === 0) {
+                // If no trainees, display a single row with colspan to span across all columns
+                traineesHtml = `
+                    <tr>
+                        <td colspan="8">Geen trainees gevonden</td>
+                    </tr>
+                `;
+            }
+
+            // Prepend the table headers to the traineesHtml
+            const tableHtml = `
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>ID</th>
+                        <th>Voornaam</th>
+                        <th>Achternaam</th>
+                        <th>Leeftijd</th>
+                        <th>Woonplaats</th>
+                        <th>Specialisatie</th>
+                        <th>Bio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${traineesHtml}
+                </tbody>
+            `;
+
+            document.getElementById("trainee-table").innerHTML = tableHtml;
+        })
+        .catch((error) => {
+            console.error(error.message);
+            alert("Er is een fout opgetreden bij het laden van de trainees. Probeer het opnieuw.");
+        });
+};
       loadData();
     </script>
   </body>
