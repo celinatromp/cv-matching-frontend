@@ -1,0 +1,83 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #343;
+}
+
+li {
+  float: inline-start;
+}
+
+.navibar {
+  display: block;
+  padding: 8px;
+  background-color: #dddddd;
+}
+
+.resize {
+  width: 400px;
+  height: auto;
+  margin-left: 30px;
+  margin-right: auto;
+}
+
+.resize {
+  width: 300px;
+  height: auto;
+  margin-left: 30px;
+  margin-right: auto;
+}
+
+.nieuwe_vacature {
+  border: none;
+  margin-left: auto;
+  margin-right: 40px;
+  outline: 0;
+  display: flex;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 10%;
+  font-size: 18px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: 30px;
+  text-align: right;
+  padding: 30px;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover,
+a:hover {
+  opacity: 0.7;
+}
