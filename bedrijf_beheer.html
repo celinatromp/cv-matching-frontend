@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function createBedrijf() {
+            // Stap 1: Verzamelen van data uit invoervelden.
+            let newBedrijf = {
+                naamBedrijf: document.getElementById("invoer-naambedrijf").value,
+                locatie: document.getElementById("invoer-locatie").value,
+                branche: document.getElementById("invoer-branche").value,
+            };
+            // Stap 2: Sturen van nieuwe data naar endpoint.
+            fetch("http://localhost:8080/bedrijf/create", {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                },
+
+                body: JSON.stringify(newBedrijf),
+            })
+                .then((res) => res.json())
+                .then((newBedrijf) => {
+                    alert("Bedrijf aangemaakt met id: " + newBedrijf.id);
+                    // Stap 3: Herladen van table.
+                    loadBedrijfData();
+                });
+        }
+
+        function loadBedrijfData() {
+            fetch("http://localhost:8080/bedrijf/all")
+                .then((res) => res.json())
+                .then((bedrijf) => {
+                    console.log("Bedrijven", bedrijf);
+                    let bedrijfHtml = "";
+                    
+                    
+                    bedrijf.forEach((bedrijf) => {
+                        bedrijfHtml += `
+                            <tr>
+                                <td>${bedrijf.id}</td>
+                                <td>${bedrijf.naamBedrijf}</td>
+                                <td>${bedrijf.locatie}</td>
+                                <td>${bedrijf.branche}</td>
+                            </tr>`;
+                    });
+
+                    // Update de table met de nieuwe data
+                    document.getElementById("bedrijf-table").innerHTML = `
+                        <tr>
+                            <th>id</th>
+                            <th>Naam Bedrijf</th>
+                            <th>Locatie</th>
+                            <th>Branche</th>
+                        </tr>
+                        ${bedrijfHtml}
+                    `;
+                });
+
+            console.log("After fetch");
+        }
+        function deleteBedrijf(id) {
+  fetch("http://localhost:8080/bedrijf/delete/" + id, {
+    method: "DELETE",
+  }).then((res) => {
+    if (res.ok) {
+      alert("Bedrijf met ID " + id + " is verwijderd!");
+      // Verwijder de rij uit de tabel
+      // ...
+    } else {
+      alert("Er is een fout opgetreden bij het verwijderen van het Bedrijf!");
+    }
+  });
+}
+        function updateBedrijf() {
+                // Stap 1: Verzamelen van data uit invoervelden.
+                let id = document.getElementById("update-id").value;
+                let updatedBedrijf = {
+                    naamBedrijf: document.getElementById("update-naambedrijf").value,
+                    locatie: document.getElementById("update-locatie").value,
+                    branche: document.getElementById("update-branche").value,
+                };
+                // Stap 2: Sturen van bijgewerkte data naar endpoint.
+                fetch(`http://localhost:8080/bedrijf/${id}/update`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-type": "application/json",
+                    },
+                    body: JSON.stringify(updatedBedrijf),
+                })
+                    .then((res) => {
+                        if (!res.ok) {
+                            throw new Error('Failed to update bedrijf');
+                        }
+                        alert("Bedrijf bijgewerkt met id: " + id);
+                        loadBedrijfData();
+                    })
+                    .catch((error) => {
+                        console.error('Error updating bedrijf:', error);
+                        alert('Failed to update bedrijf. Please try again.');
+                    });
+            }
+
+            function deleteBedrijf() {
+                const id = document.getElementById("delete-id").value;
+                if (!confirm(`Weet je zeker dat je Bedrijf met ID ${id} wilt verwijderen?`)) {
+                    return;
+                }
+                fetch(`http://localhost:8080/bedrijf/${id}/delete`, {
+                    method: "DELETE",
+                })
+                .then((res) => {
+                    if (!res.ok) {
+                        throw new Error(`Bedrijf met ID ${id} kon niet worden verwijderd.`);
+                    }
+
+                    alert(`Bedrijf met ID ${id} is succesvol verwijderd!`);
+                    loadBedrijfData();
+                })
+                .catch((error) => {
+                    console.error(`Fout bij het verwijderen van Bedrijf met ID ${id}:`, error);
+                    alert(`Er is een fout opgetreden bij het verwijderen van Bedrijf ${id}. Probeer het opnieuw.`);
+                });
+}
+
+        loadBedrijfData();
+    </script>
+</head>
+<body>
+    <h1>Bedrijven beheerpaneel</h1>
+    <div>
+        <h2>Bedrijven toevoegen</h1>
+
+        <input type="text" id="invoer-naambedrijf" placeholder="vul naam bedrijf in" />
+        <input type="text" id="invoer-locatie" placeholder="vul locatie in" />
+        <input type="text" id="invoer-branche" placeholder="vul branche in" />
+        <button type="button" onclick="createBedrijf()">Opslaan</button>
+    </div>
+    <div>
+        <h2>Bedrijf bijwerken</h1>
+    
+        <input type="text" id="update-id" placeholder="ID van bedrijf" />
+        <input type="text" id="update-naambedrijf" placeholder="Nieuwe naam bedrijf" />
+        <input type="text" id="update-locatie" placeholder="Nieuwe locatie" />
+        <input type="text" id="update-branche" placeholder="Nieuwe branche" />
+        <button type="button" onclick="updateBedrijf()">Bijwerken</button>
+    </div>
+    <div>
+        <h2>Bedrijf verwijderen</h1>
+        <input type="text" id="delete-id" placeholder="ID to delete">
+        <button type="button" onclick="deleteBedrijf()">DELETE</button>
+    </div>
+    <div>
+        <h2>Tabel bedrijven in database:</h2>
+        <table id="bedrijf-table">
+            <tr>
+                <th>id</th>
+                <th>Naam Bedrijf</th>
+                <th>Locatie</th>
+                <th>Branche</th>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
