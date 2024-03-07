@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onclick="naardata()">Klik hier!</button>
+    </div>
+    <div id="verwerkt">
+
+    </div>
+    <script>
+        function naardata() {
+            console.log("Hij doet het")
+            fetch("http://localhost:5000/testdennis/2020")
+            .then(r=> r.json())
+            .then(d=> verwerkdata(d))
+        }
+        function verwerkdata(data) {
+            for (let x=0; x<data.length; x++){
+                document.getElementById('verwerkt').innerHTML+=data[x].abc + "abc<br>"
+
+            }
+        }
+    </script>
+</body>
+</html>
