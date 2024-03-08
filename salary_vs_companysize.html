@@ -15,13 +15,13 @@
     <script>
         function naardata() {
             console.log("Hij doet het")
-            fetch("http://localhost:5000/testdennis/2020")
+            fetch("http://localhost:5000/testdennis/devops/2020")
             .then(r=> r.json())
             .then(d=> verwerkdata(d))
         }
         function verwerkdata(data) {
-            for (let x=0; x<data.length; x++){
-                document.getElementById('verwerkt').innerHTML+=data[x].abc + "abc<br>"
+            for (let x=0; x < data.length; x++){
+                document.getElementById('verwerkt').innerHTML+=data[x] + " abc<br>"
 
             }
         }
