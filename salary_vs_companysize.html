@@ -3,28 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Salary vs Company size</title>
 </head>
 <body>
     <div>
-        <button onclick="naardata()">Klik hier!</button>
+        <button onclick="loadData()">Update</button>
     </div>
     <div id="verwerkt">
-
+       
     </div>
     <script>
+        function loadData() {
+            fetch('http://localhost:5000/testdennis/2020')
+                .then((res) => res.json())
+                .then((mydata) => {
+                    // sorting alphabetical
+                    mydata.sort((a, b) => {
+                        if (a.position < b.position)
+                            return -1;
+                        if (a.position > b.position)
+                            return 1;
+                        return 0
+                    });
+
+                    console.log("mydata", mydata);
+                    let mydataHtml = "";
+
+                    mydata.forEach(x => {
+                        mydataHtml += `
+                            <tr>
+                                <td> ${x.position} </td>
+                                <td> ${x.small} </td>
+                                <td> ${x.medium} </td>
+                                <td> ${x.large} </td>
+                                <td> ${x.xlarge} </td>
+                            </tr>`;
+                    });
+
+                    // update table with data
+                    document.getElementById("verwerkt").innerHTML = `
+                        <table>
+                            <tr>
+                                <th> Position </th>
+                                <th> Small companies </th>
+                                <th> Medium companies </th>
+                                <th> Large companies </th>
+                                <th> XL companies </th>
+                            </tr>
+                            ${mydataHtml}
+                        </table>
+                    `;
+                });
+        }
+        loadData();
+        /*
         function naardata() {
             console.log("Hij doet het")
-            fetch("http://localhost:5000/testdennis/devops/2020")
+            fetch("http://localhost:5000/testdennis/2020")
             .then(r=> r.json())
             .then(d=> verwerkdata(d))
         }
-        function verwerkdata(data) {
-            for (let x=0; x < data.length; x++){
-                document.getElementById('verwerkt').innerHTML+=data[x] + " abc<br>"
 
-            }
+        function verwerkdata(bigdata) {
+            console.log(bigdata);
+            let dataHtml = "";
+
+            bigdata.forEach((data) => {
+                dataHtml +=
+                <tr>
+                    <td> ${data.position} </td>
+                    <td> ${data.small} </td>
+                    <td> ${data.medium} </td>
+                    <td> ${data.large} </td>
+                    <td> ${data.xlarge} </td>
+                </tr>
+            });
         }
+        */
     </script>
 </body>
 </html>
