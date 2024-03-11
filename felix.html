@@ -10,10 +10,20 @@
       .then(r => r.text())
       .then(d => console.log(d))
     }
+    function haalfotoop(){
+      fetch("http://localhost:8080/foto/1")
+      .then(r => r.blob())
+      .then(d => {
+        a = URL.createObjectURL(d);
+        document.getElementById("q").src = a;
+      })
+    }
   </script>
 </head>
 <body>
   
-  <button onclick="haalbigdataop()">Klik hier</button>
+  <button onclick="haalfotoop()">Klik hier Foto</button>
+  <img id="q">
+  <button onclick="haalbigdataop()">Klik hier bigdata</button>
 </body>
 </html>
