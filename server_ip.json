@@ -1,0 +1,9 @@
+{
+    "serverips":[
+        {
+            "java": "java ip",
+            "frontend": "front end ip",
+            "python": "52.143.9.145"
+        }
+    ]
+}
