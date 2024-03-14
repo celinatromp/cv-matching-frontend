@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trainee Beheer</title>
+    <script src="algemeen.js"></script>
   </head>
   <body>
     <h1>Onze trainees</h1>
@@ -77,7 +78,7 @@ function deleteSelectedTrainees() {
         return;
     }
     selectedTraineeIds.forEach(traineeId => {
-        fetch(`http://localhost:8080/trainee/${traineeId}/delete`, {
+        fetch(ipbackend + `/trainee/${traineeId}/delete`, {
             method: "DELETE",
         })
         .then((res) => {
@@ -115,7 +116,7 @@ function updateTrainee() {
         return;
     }
 
-    fetch(`http://localhost:8080/trainee/${traineeId}/update`, {
+    fetch(ipbackend + `/trainee/${traineeId}/update`, {
         method: "PUT",
         headers: {
             "Content-type": "application/json"
@@ -144,7 +145,7 @@ function updateTrainee() {
           "status": document.getElementById("status").value
         };
         //stap 2 - Sturen van de nieuwe trainee
-        fetch("http://localhost:8080/trainee/create", {
+        fetch(ipbackend + "/trainee/create", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -161,7 +162,7 @@ function updateTrainee() {
       }
 
       function loadData() {
-    fetch("http://localhost:8080/trainee/all")
+    fetch(ipbackend+ "/trainee/all")
         .then((res) => {
             if (!res.ok) {
                 throw new Error(`Error fetching trainees: ${res.statusText}`);
