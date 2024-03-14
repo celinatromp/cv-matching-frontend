@@ -43,7 +43,7 @@
 
         // For demonstration, using a static "/foto/1" endpoint.
         // You might need to adjust it to fetch specific images for each trainee.
-        fetch("http://localhost:8080/foto/{id}")
+        fetch("http://localhost:8080/foto/1")
           .then(r => r.blob())
           .then(blob => {
             const imageUrl = URL.createObjectURL(blob);
