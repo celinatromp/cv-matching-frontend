@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Pagina Trainee</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #f1f1f1;
+      background-color: #062e0c;
+    }
+    div h4{
+      color: #062e0c;
+    }    
+    .navbar-light .navbar-nav .nav-link {
+      color: #ff5100; /* Blauwe accentkleur */
+    }
+    
+    .navbar-light .navbar-nav .nav-link:hover {
+      color: #000000; /* Donkerdere blauw */
+    }
+    
+    .btn-primary {
+      background-color: #ff5100;
+      border-color:#ff5100;
+    }
+    
+    .btn-primary:hover {
+      background-color: #000000;
+      border-color: #000000;
+      
+    }
+    
+    .card {
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: box-shadow 0.3s ease-in-out;
+    }
+    
+    .card:hover {
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
+
+  
+    .profile-pic-left {
+      width: 150px;
+      height: 150px; /* Pas de hoogte aan om een rechthoekige vorm te krijgen */
+      object-fit: cover;
+      float: left;
+      margin-left: 15px;
+    }
+
+    .profile-pic-right {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%; /* Maakt de foto cirkelvormig */
+      object-fit: cover;
+      float: right;
+      margin-right: 15px;
+    }
+    
+  </style>
+</head>
+<body>
+  <!-- Navigatiebalk -->
+  <div class="container mt-3">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <!-- Profielfoto links (cirkelvormig) -->
+        <img src="images/testimage.jpg" alt="Left Profile Picture" class="profile-pic-left">
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Vacatures</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Bedrijven</a>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Profielfoto rechts (rechthoekig) -->
+        <img src="images/testimage.jpg" alt="Right Profile Picture" class="profile-pic-right">
+      </div>
+    </nav>
+  </div>
+
+  <div class="container mt-3"><h1>Welcome Trainee!!</h1></div>
+ 
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col d-flex justify-content-between align-items-center bg-light p-2">
+        <h4>Vul je profiel aan</h4>
+        <button class="btn btn-primary">Vul je profiel in</button>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-3"><h4>Meest Recente Vacatures</h4></div>
+  <div id="vacature-table" class="container mt-5"> <!-- Aangepaste ID -->
+    <div class="row">
+      <!-- Vacatures will be loaded here -->
+    </div>
+  </div>
+  <div class="container mt-3"><h4>Bedrijven</h4></div>
+  
+
+  <div id="bedrijven-table" class="container mt-5"> <!-- Aangepaste ID -->
+    <div class="row">
+      <!-- Bedrijven will be loaded here -->
+    </div>
+  </div>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+ <script>
+    function loadData() {
+      fetch("http://localhost:8080/vacature/all")
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Error fetching vacatures: ${response.statusText}`);
+          }
+          return response.json();
+        })
+        .then(vacatures => {
+          let vacatureContainer = document.getElementById("vacature-table").getElementsByClassName("row")[0];
+          vacatureContainer.innerHTML = ""; // Clear existing content
+          
+          // Sorteren op ID in aflopende volgorde en de eerste drie pakken
+          const laatsteDrieVacatures = vacatures.sort((a, b) => b.id - a.id).slice(0, 3);
+          
+          laatsteDrieVacatures.forEach(vacature => {
+            let vacatureDiv = document.createElement("div");
+            vacatureDiv.className = "col-sm-12 col-md-6 col-lg-4 mb-3"; // Aangepast voor 3 kolommen
+            vacatureDiv.innerHTML = `
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">${vacature.titel}</h5>
+                  <p class="card-text">Omschrijving: ${vacature.omschrijving}</p>
+                  <p class="card-text">Uitstroomrichting: ${vacature.uitStroomrichting}</p>
+                  <p class="card-text">Locatie: ${vacature.locatie}</p>
+                  <p class="card-text">Status: ${vacature.deStatusVacature}</p>
+                </div>
+              </div>
+            `;
+            vacatureContainer.appendChild(vacatureDiv);
+          });
+  
+          if (vacatures.length === 0) {
+            vacatureContainer.innerText = "Geen vacatures gevonden";
+          }
+        })
+        .catch(error => {
+          console.error("Error fetching or processing vacatures:", error);
+          alert("Er is een fout opgetreden bij het laden van de vacatures. Probeer het opnieuw.");
+        });
+  
+      fetch("http://localhost:8080/bedrijf/all")
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Error fetching bedrijven: ${response.statusText}`);
+          }
+          return response.json();
+        })
+        .then(bedrijven => {
+          let bedrijfContainer = document.getElementById("bedrijven-table").getElementsByClassName("row")[0];
+          bedrijfContainer.innerHTML = ""; // Clear existing content
+          
+          // Sorteren op ID in aflopende volgorde en de eerste drie pakken
+          const laatsteDrieBedrijven = bedrijven.sort((a, b) => b.id - a.id).slice(0, 3);
+          
+          laatsteDrieBedrijven.forEach(bedrijf => {
+            let bedrijfDiv = document.createElement("div");
+            bedrijfDiv.className = "col-sm-12 col-md-6 col-lg-4 mb-3"; // Aangepast voor 3 kolommen
+            bedrijfDiv.innerHTML = `
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">${bedrijf.naamBedrijf}</h5>
+                  <p class="card-text">Bio: ${bedrijf.bio}</p>
+                  <p class="card-text">Branche: ${bedrijf.branche}</p>
+                  <p class="card-text">Locatie: ${bedrijf.locatie}</p>
+                </div>
+              </div>
+            `;
+            bedrijfContainer.appendChild(bedrijfDiv);
+          });
+  
+          if (bedrijven.length === 0) {
+            bedrijfContainer.innerText = "Geen bedrijven gevonden";
+          }
+        })
+        .catch(error => {
+          console.error("Error fetching or processing bedrijven:", error);
+          alert("Er is een fout opgetreden bij het laden van de bedrijven. Probeer het opnieuw.");
+        });
+    }
+  
+    loadData();
+  </script>
+  
+  
+</body>
+</html>

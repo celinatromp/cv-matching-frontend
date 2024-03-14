@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trainee Beheer</title>
+    <script src="algemeen.js"></script>
+  </head>
+  <body>
+    <h1>Onze trainees</h1>
+    <h2>Nieuw trainees toevoegen</h2>
+    <input type="text" id="invoer-voornaam" placeholder="vul voornaam in">
+    <input type="text" id="invoer-achternaam" placeholder="vul achternaam in">
+    <input type="number" id="invoer-leeftijd" placeholder="vul leeftijd in">
+    <input type="text" id="invoer-woonplaats" placeholder="vul woonplaats in">
+    <input type="text" id="invoer-specialisatie" placeholder="vul uw specialisatie in">
+    <input type="text" id="invoer-bio" placeholder="vul uw bio in">
+    <select id="status" name="status">
+        <option value="Beschikbaar">Beschikbaar</option>
+        <option value="Gesprek">In Gesprek</option>
+        <option value="Geplaatst">Geplaatst</option>
+      </select>
+    <input type="text" id="traineeId" placeholder="vul een id nummer in">
+    <button type="button" onclick="createTrainee()">Opslaan</button>
+    <h2>Trainees Updaten</h2>
+    <input type="text" id="update-voornaam" placeholder="vul voornaam in">
+    <input type="text" id="update-achternaam" placeholder="vul achternaam in">
+    <input type="number" id="update-leeftijd" placeholder="vul leeftijd in">
+    <input type="text" id="update-woonplaats" placeholder="vul woonplaats in">
+    <input type="text" id="update-specialisatie" placeholder="vul uw specialisatie in">
+    <input type="text" id="update-bio" placeholder="vul uw bio in">
+    <select id="update-status" name="status">
+        <option value="Beschikbaar">Beschikbaar</option>
+        <option value="Gesprek">In Gesprek</option>
+        <option value="Geplaatst">Geplaatst</option>
+      </select>
+    <input type="text" id="update-traineeId" placeholder="vul een id nummer in">
+    <button type="button" onclick="updateTrainee()">Update</button>
+    
+    
+    <h2>Selecteer trainees om te verwijderen</h2>
+    <button type="button" onclick="deleteSelectedTrainees()">Delete Selected</button>
+  
+    <br>
+    <h2>Tabel van Trainees</h2>
+      <table id="trainee-table">
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>ID</th>
+                <th>Voornaam</th>
+                <th>Achternaam</th>
+                <th>Leeftijd</th>
+                <th>Woonplaats</th>
+                <th>Specialisatie</th>
+                <th>Bio</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+   
+    <script>
+
+function deleteSelectedTrainees() {
+    let selectedTraineeIds = [];
+    document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+        selectedTraineeIds.push(checkbox.dataset.traineeId);
+    });
+
+    if (selectedTraineeIds.length === 0) {
+        alert("Selecteer ten minste één trainee om te verwijderen.");
+        return;
+    }
+
+    if (!confirm("Weet je zeker dat je de geselecteerde trainees wilt verwijderen?")) {
+        return;
+    }
+    selectedTraineeIds.forEach(traineeId => {
+        fetch(ipbackend + `/trainee/${traineeId}/delete`, {
+            method: "DELETE",
+        })
+        .then((res) => {
+            res.json();
+        })
+        .then(() => {
+            alert(`Trainee met ID ${traineeId} is succesvol verwijderd!`);
+            // Reload data after successful deletion
+            loadData();
+        })
+        .catch((error) => {
+            console.error(error.message);
+            alert(`Er is een fout opgetreden bij het verwijderen van trainee ${traineeId}. Probeer het opnieuw.`);
+        });
+    });
+}
+function updateTrainee() {
+    let traineeId = document.getElementById("update-traineeId").value;
+    let fieldsToUpdate = {};
+
+    // Check each field for a value and if it's changed, add it to the fieldsToUpdate object
+    document.querySelectorAll('#update-voornaam, #update-achternaam, #update-leeftijd, #update-woonplaats, #update-specialisatie, #update-bio, #update-status')
+        .forEach(input => {
+            // Assuming you've attached an onChange handler to mark fields as changed
+            // For simplicity, we'll just check if the field is not empty
+            if (input.value) {
+                // Use the input id to map to the correct field name in your database or backend
+                let fieldName = input.id.replace('update-', '');
+                fieldsToUpdate[fieldName] = input.value;
+            }
+        });
+
+    if (Object.keys(fieldsToUpdate).length === 0) {
+        alert("Geen wijzigingen aangebracht.");
+        return;
+    }
+
+    fetch(ipbackend + `/trainee/${traineeId}/update`, {
+        method: "PUT",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify(fieldsToUpdate)
+    })
+    .then(res => {
+        
+      res.json();
+    })
+    .then(() => {
+        alert("Trainee with ID " + traineeId + " was updated!");
+        loadData();
+    })
+};
+      function createTrainee() {
+        //stap 1 - Verzamelen van data uit de invoer velden
+        let newTrainee = {
+          "voornaam": document.getElementById("invoer-voornaam").value,
+          "voornaam": document.getElementById("invoer-voornaam").value,
+          "achternaam": document.getElementById("invoer-achternaam").value,
+          "leeftijd": document.getElementById("invoer-leeftijd").value,
+          "woonplaats": document.getElementById("invoer-woonplaats").value,
+          "specialisatie": document.getElementById("invoer-specialisatie").value,
+          "bio": document.getElementById("invoer-bio").value,
+          "status": document.getElementById("status").value
+        };
+        //stap 2 - Sturen van de nieuwe trainee
+        fetch(ipbackend + "/trainee/create", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newTrainee),
+        })
+          .then((res) => res.json())
+          .then((newTrainee) => {
+            alert("Trainee aangemaakt met id: " + newTrainee.id);
+
+            //stap 3 - Herladen van de table
+            loadData();
+          });
+      }
+
+      function loadData() {
+    fetch(ipbackend+ "/trainee/all")
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error(`Error fetching trainees: ${res.statusText}`);
+            }
+            return res.json();
+        })
+        .then((trainees) => {
+            let traineesHtml = "";
+            trainees.forEach((trainee) => {
+                traineesHtml += `
+                    <tr>
+                        <td><input type="checkbox" data-trainee-id="${trainee.id}"></td>
+                        <td>${trainee.id}</td>
+                        <td>${trainee.voornaam}</td>
+                        <td>${trainee.achternaam}</td>
+                        <td>${trainee.leeftijd}</td>
+                        <td>${trainee.woonplaats}</td>
+                        <td>${trainee.specialisatie}</td>
+                        <td>${trainee.bio}</td>
+                        <td>${trainee.status}</td>
+                    </tr>
+                `;
+            });
+
+            // Check if there are no trainees
+            if (trainees.length === 0) {
+                // If no trainees, display a single row with colspan to span across all columns
+                traineesHtml = `
+                    <tr>
+                        <td colspan="8">Geen trainees gevonden</td>
+                    </tr>
+                `;
+            }
+
+            // Prepend the table headers to the traineesHtml
+            const tableHtml = `
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>ID</th>
+                        <th>Voornaam</th>
+                        <th>Achternaam</th>
+                        <th>Leeftijd</th>
+                        <th>Woonplaats</th>
+                        <th>Specialisatie</th>
+                        <th>Bio</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${traineesHtml}
+                </tbody>
+            `;
+
+            document.getElementById("trainee-table").innerHTML = tableHtml;
+        })
+        .catch((error) => {
+            console.error(error.message);
+            alert("Er is een fout opgetreden bij het laden van de trainees. Probeer het opnieuw.");
+        });
+};
+      loadData();
+    </script>
+  </body>
+</html>
