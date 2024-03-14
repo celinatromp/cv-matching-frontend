@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salary vs Company size</title>
 </head>
+
 <body>
     <div>
         <button onclick="loadData()">Update</button>
@@ -12,9 +13,22 @@
     <div id="verwerkt">
        
     </div>
+    
     <script>
-        function loadData() {
-            fetch('http://localhost:5000/testdennis/2020')
+        let getIP;
+        function loadIps(chosen) {
+            return fetch('./server_ip.json')
+                .then(res => res.json())
+                .then(data => {
+                    getIP = data.serverips[0][chosen];
+                    console.log(getIP);
+                    loadData(getIP);
+                });
+        }       
+        loadIps('python');
+        
+        function loadData(thisIp) {
+            fetch('http://' + thisIp + ':5000/testdennis/2020')
                 .then((res) => res.json())
                 .then((mydata) => {
                     // sorting alphabetical
@@ -55,7 +69,7 @@
                     `;
                 });
         }
-        loadData();
+        
         /*
         function naardata() {
             console.log("Hij doet het")
