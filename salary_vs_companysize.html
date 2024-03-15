@@ -8,13 +8,14 @@
 
 <body>
     <div>
-        <button onclick="loadData()">Update</button>
+        <button onclick="loadIps('python')">Update</button>
     </div>
     <div id="verwerkt">
        
     </div>
     
     <script>
+        // Get IP from .json file and use it in next function.
         let getIP;
         function loadIps(chosen) {
             return fetch('./server_ip.json')
@@ -28,7 +29,7 @@
         loadIps('python');
         
         function loadData(thisIp) {
-            fetch('http://' + thisIp + ':5000/testdennis/2020')
+            fetch(thisIp + '/salaryCompanySize/2020')
                 .then((res) => res.json())
                 .then((mydata) => {
                     // sorting alphabetical
