@@ -182,6 +182,7 @@ function updateTrainee() {
             return res.json();
         })
         .then((trainees) => {
+            console.log(trainees);
             let traineesHtml = "";
             trainees.forEach((trainee) => {
                 traineesHtml += `
