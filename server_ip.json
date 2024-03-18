@@ -3,7 +3,7 @@
         {
             "java": "java ip",
             "frontend": "front end ip",
-            "python": "52.143.9.145"
+            "python": "http://52.143.9.145:5000"
         }
     ]
 }
