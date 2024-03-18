@@ -72,6 +72,78 @@ function TekenNavBalk(modifier){
         `;
         break;
 
+        case ("beheer"):
+            navbarHTML = `<div class="container text-center">
+
+            <div class="col-sm-2">
+                <a href="index.html"><img src="images/NextMatch_TextLogo.png" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+            </div>
+        
+            <div class="col-sm-3">
+            </div>
+            
+            <div class="col-sm-2">
+                <a href="bedrijf_beheer.html" class="btn">bedrijf</a>
+            </div>
+            
+        
+            <div class="col-sm-2">
+                <a href="trainee_beheer.html" class="btn">Trainee</a>
+            </div>
+        
+            <div class="col-sm-2">
+                <a href="talentmanager_beheer.html" class="btn">Talentmanager</a>
+            </div>
+        
+            <div class="col-sm-1">
+                <img src="images/NextMatch_TextLogo_round.png" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
+            </div>
+        
+        </div>
+        </div>
+        `;
+        break;
+
+        case ("talentmanager"):
+            navbarHTML = `<div class="container text-center">
+
+            <div class="col-sm-2">
+                <a href="Talentmanager_landingspagina.html"><img src="images/NextMatch_TextLogo.png" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+            </div>
+        
+            <div class="col-sm-1">
+            </div>
+            
+            <div class="col-sm-1">
+                <a href="Talentmanager_landingspagina.html" class="btn">Mijn Trainees</a>
+            </div>
+            
+        
+            <div class="col-sm-1">
+                <a href="Talentmanager_landingspagina.html" class="btn">Mijn Bedrijven</a>
+            </div>
+        
+            <div class="col-sm-1">
+                <a href="Talentmanager_landingspagina.html" class="btn">Chats</a>
+            </div>
+
+            <div class="col-sm-1">
+            <a href="Talentmanager_landingspagina.html" class="btn">Python</a>
+            </div>
+
+            <div class="col-sm-1">
+            <a href="login.html" class="btn">log uit</a>
+            </div>
+        
+            <div class="col-sm-1">
+                <img src="images/NextMatch_TextLogo_round.png" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
+            </div>
+        
+        </div>
+        </div>
+        `;
+        break;
+
 
         default:
             navbarHTML = `<div class="container text-center">
