@@ -170,7 +170,6 @@ function TekenNavBalk(modifier){
             </div>
         
             <div class="col-sm-1">
-                <img src="images/NextMatch_TextLogo_round.png" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
             </div>
         
         </div>
