@@ -21,9 +21,32 @@
   </script>
 </head>
 <body>
-  
+  <form id="myform">
+    <input type="file">
+    <input type="submit" value="submit">
+  </form>
+  <hr><hr>
   <button onclick="haalfotoop()">Klik hier Foto</button>
   <img id="q">
   <button onclick="haalbigdataop()">Klik hier bigdata</button>
+  <script>
+    document.getElementById('myform').addEventListener('submit', function(e) {
+  e.preventDefault(); //to prevent form submission
+  doen();
+});
+function doen(){
+  console.log("hij doet het")
+  var input = document.querySelector('input[type="file"]')
+
+var data = new FormData()
+data.append('data', input.files[0])
+data.append('user', 'hubot')
+
+fetch('http://localhost:8080/foto/create', {
+  method: 'POST',
+  body: data
+})
+}
+  </script>
 </body>
 </html>
