@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img id="q" />
+    <button onclick="uploadFoto()">abc</button>
+    <script>
+      function uploadFoto() {
+        fetch("http://localhost:8080/trainee/3/foto")
+          .then((r) => r.blob())
+          .then((d) => {
+            a = URL.createObjectURL(d);
+            document.getElementById("q").src = a;
+          });
+      }
+    </script>
+  </body>
+</html>
