@@ -14,22 +14,22 @@ function TekenNavBalk(modifier){
             navbarHTML = `<div class="container text-center">
 
             <div class="col-sm-2">
-                <a href="index.html"><img src="images/NextMatch_TextLogo.png" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+                <a href="landingspagina_trainee.html"><img src="images/NextMatch_TextLogo.png" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
             </div>
         
             <div class="col-sm-3">
             </div>
         
             <div class="col-sm-2">
-                <a href="url" class="btn">Vacatures</a>
+                <a href="" class="btn">Vacatures</a>
             </div>
         
             <div class="col-sm-2">
-                <a href="login.html" class="btn">Bedrijven</a>
+                <a href="" class="btn">Bedrijven</a>
             </div>
 
             <div class="col-sm-2">
-            <a href="index.html" class="btn">Log Uit</a>
+            <a href="login.html" class="btn">Log Uit</a>
             </div>
         
             <div class="col-sm-1">
@@ -42,6 +42,35 @@ function TekenNavBalk(modifier){
         break;
 
         case ("bedrijf"):
+            navbarHTML = `<div class="container text-center">
+
+            <div class="col-sm-2">
+                <a href="index.html"><img src="images/NextMatch_TextLogo.png" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+            </div>
+        
+            <div class="col-sm-3">
+            </div>
+            
+            <div class="col-sm-2">
+                <a href="Actueel.html" class="btn">Mijn Vacatures</a>
+            </div>
+        
+            <div class="col-sm-2">
+                <a href="YoungNext.html" class="btn">Chats</a>
+            </div>
+        
+            <div class="col-sm-2">
+                <a href="login.html" class="btn">Log uit</a>
+            </div>
+        
+            <div class="col-sm-1">
+                <img src="images/NextMatch_TextLogo_round.png" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
+            </div>
+        
+        </div>
+        </div>
+        `;
+        break;
 
 
         default:
