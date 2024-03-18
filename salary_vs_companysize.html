@@ -4,17 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salary vs Company size</title>
+    
+    <script src="algemeen.js"></script>
+    
 </head>
 
 <body>
     <div>
-        <button onclick="loadIps('python')">Update</button>
+        <button onclick="loadData('2020')">Update</button>
     </div>
     <div id="verwerkt">
        
     </div>
     
     <script>
+        /*
+        Old function
         // Get IP from .json file and use it in next function.
         let getIP;
         function loadIps(chosen) {
@@ -27,9 +32,10 @@
                 });
         }       
         loadIps('python');
+        */
         
-        function loadData(thisIp) {
-            fetch(thisIp + '/salaryCompanySize/2020')
+        function loadData(jaar) {
+            fetch(pythonBackend + '/salaryCompanySize/' + jaar)
                 .then((res) => res.json())
                 .then((mydata) => {
                     // sorting alphabetical
