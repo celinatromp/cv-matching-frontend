@@ -81,3 +81,39 @@ button:hover,
 a:hover {
   opacity: 0.7;
 }
+
+.about1 {
+  background-color: rgb(0, 50, 7);
+  color: whitesmoke;
+  height: 500px;
+  max-width: 1024px;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.about2 {
+  background-color: rgb(253, 243, 234);
+  color: black;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.about3 {
+  background-color: rgb(253, 243, 234);
+  color: rgb(255, 84, 39);
+  overflow: hidden;
+  padding: 10px;
+}
+
+.about4 {
+  background-color: rgb(255, 84, 39);
+  color: whitesmoke;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.about5 {
+  background-color: whitesmoke;
+  color: rgb(0, 50, 7);
+  padding: 10px;
+}
