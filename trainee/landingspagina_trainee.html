@@ -1,171 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Landing Pagina Trainee</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styletrainee.css">
   <script src="../algemeen.js"></script>
   <script>
-      window.onload=function(){
-        TekenNavBalk("trainee");
-      };
+    window.onload = function () {
+      TekenNavBalk("trainee");
+    };
   </script>
-  <style>
-    body {
-    background-color: #ffffff;
-  }
-  div h4{
-    color: #151515;
-    font-family: 'bebas neue' ;
-    font-size: 40px
-  }
-   .card-title{
-    color: #151515;
-    font-family: 'bebas neue' ;
-    font-size: 20px ;
-  }
-  /* Style for the container to ensure everything is aligned nicely */
-.container .row .col {
-  position: relative; /* Allows absolute positioning relative to this container */
-}
 
-/* Container holding the elements */
-.custom-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100px; /* Adjust based on your needs */
-  background-color: #ffffff; /* Light grey background for visibility */
-  padding: 10px;
  
-}
-.btn-primary {
-  
-  border-color: #EC613A;
-  color: white; /* Text color */
-  position: relative; /* Position relative to allow absolute positioned pseudo elements */
-  overflow: hidden; /* Ensures pseudo elements don't overflow the button boundaries */
-  transition: color 0.4s ease; /* Transition for text color */
-  border-radius: 0%;
-
-  /* Creating a gradient background from orange to black, initially showing only orange */
-  background-image: linear-gradient(to bottom, #EC613A 50%, black 50%);
-  background-size: 100% 200%;
-  background-position: top;
-  transition: background-position 0.4s, color 0.4s; /* Transition for the background and text color */
-}
-
-.btn-primary:hover {
-  color: white; /* Change text color on hover */
-  background-position: bottom; /* Shift the background to show the black part */
-  
-}
-
-
-/* Flex container for the title and button */
-.title-and-button-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Style for the progress bar background */
-#progress-bar-background {
-  width: 100%;
-  height: 20px;
-  background-color: #bdbdbd; /* Light grey for the unfilled part */
-  border-radius: 10px; /* Rounded corners for the progress bar */
-  position: relative;
-}
-
-/* Style for the progress bar itself */
-#progress-bar {
-  width: 0%; /* Initial width, can be adjusted dynamically */
-  height: 20px;
-  background-color: #63c1f3; /* Color for the filled part */
-  border-radius: 10px; /* Keep consistent with the background */
-  position: absolute;
-}
-
-/* Style for the progress text */
-#progress-text {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  color: rgb(0, 0, 0); /* Black color for text */
-}
-
-  .btn{
-    font-family: 'bebas neue' ;
-    font-size: 30px ;
-    color: #000000;
-    
-
-  }
- 
-   .btn:hover {
-    color: #EC613A; 
-  }
- 
-  
-  
-  
-  .card {
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: box-shadow 0.3s ease-in-out;
-    background-color: #FBF3EB;
-    border-radius: 0%;
-  }
-  
-  .card:hover {
-    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-  }
-
-  
-
-
-
-  .profile-pic-left {
-    width: 150px;
-    height: 150px; /* Pas de hoogte aan om een rechthoekige vorm te krijgen */
-    object-fit: cover;
-    float: left;
-    margin-left: 15px;
-  }
-
-  .profile-pic-right {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%; /* Maakt de foto cirkelvormig */
-    object-fit: cover;
-    float: right;
-    margin-right: 15px;
-  }
-  .footer {
-            background-color: #f8f9fa;
-            padding: 20px 0;
-        }
-        .footer-logo {
-            max-width: 200px; /* Adjust based on your logo size */
-        }
-        .footer-bottom-links {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-  </style>
-    
 </head>
+
 <body>
   <!-- Navigatiebalk -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbalk">     
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbalk">
   </nav>
-  <div class="container mt-3"><h1>Welcome Trainee!!</h1></div>
+  <div class="container mt-3">
+    <h1>Welcome Trainee!!</h1>
+  </div>
   <div class="container mt-3">
     <div class="row">
       <div class="col bg-light p-2 custom-container">
@@ -186,15 +50,13 @@
     <h4>Meest Recente Vacatures</h4>
   </div>
   <div id="vacature-table" class="container mt-5"> <!-- Aangepaste ID -->
-    <div class="row">
+    <div class="row" id="row">
       <!-- Vacatures will be loaded here -->
     </div>
   </div>
   <div class="container mt-3">
     <h4>Bedrijven</h4>
   </div>
-  
-
   <div id="bedrijven-table" class="container mt-5"> <!-- Aangepaste ID -->
     <div class="row">
       <!-- Bedrijven will be loaded here -->
@@ -202,53 +64,64 @@
   </div>
   <footer class="footer mt-5">
     <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <ul class="list-unstyled d-flex justify-content-between">
-                    <li><a href="#link1">Link 1</a></li>
-                    <li><a href="#link2">Link 2</a></li>
-                    <li><a href="#link3">Link 3</a></li>
-                    <li><a href="#link4">Link 4</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4 d-flex justify-content-md-end">
-                <img src="path/to/your/logo.png" alt="Logo" class="footer-logo">
-            </div>
+      <div class="row">
+        <div class="col-md-4 d-flex align-items-end flex-column">
+          <img src="../images/NEXTMATCHLOGO.svg" alt="Logo" class="footer-logo">
+          <div class="mt-auto">
+            <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms & Conditions</a>
+          </div>
         </div>
-        <div class="row footer-bottom-links">
-            <div class="col-12">
-                <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms & Conditions</a>
-            </div>
+        <div class="col-md-8">
+          <ul class="list-unstyled footer-links">
+            <li><a href="#link1">Actueel</a></li>
+            <li><a href="#link2">Young Next</a></li>
+            <li><a href="#link3">FAQ</a></li>
+            <li><a href="#link4">Contact</a></li>
+          </ul>
         </div>
+      </div>
     </div>
-</footer>
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
- <script>
- function displayProgressBar() {
-    // Retrieve the filled percentage from localStorage
-    const filledPercentage = localStorage.getItem('progressFilledPercentage') || 0;
-    const progressBar = document.getElementById('progress-bar');
-    const progressText = document.getElementById('progress-text');
+  </footer>
 
-    if (progressBar && progressText) {
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+
+    function displayProgressBar() {
+      // Retrieve the filled percentage from localStorage
+      const filledPercentage = localStorage.getItem('progressFilledPercentage') || 0;
+      const progressBar = document.getElementById('progress-bar');
+      const progressText = document.getElementById('progress-text');
+
+      if (progressBar && progressText) {
         progressBar.style.width = filledPercentage + '%';
         progressBar.style.backgroundColor = filledPercentage < 100 ? ' #63c1f3' : '#05a00a'; // Green if complete
         progressText.innerText = `${filledPercentage}%`;
-    } else {
+      } else {
         console.error("Progress bar or progress text element not found.");
+      }
     }
-}
 
-// Call displayProgressBar to update UI on page load
-document.addEventListener('DOMContentLoaded', displayProgressBar);
+    // Call displayProgressBar to update UI on page load
+    document.addEventListener('DOMContentLoaded', displayProgressBar);
 
+    function getStatusColor(deStatusVacature) {
+      switch (deStatusVacature) {
+        case 'OPEN': return 'green';
+        case 'GEMATHED': return 'orange';
+        case 'INGEVULD': return 'red';
+        case 'GEARCHIVEERD': return 'blue';
+        default: return 'grey'
+      }
+    }
 
 
     function loadData() {
-      fetch(ipbackend +"/vacature/all")
+      fetch(ipbackend + "/vacature/all")
         .then(response => {
           if (!response.ok) {
             throw new Error(`Error fetching vacatures: ${response.statusText}`);
@@ -258,31 +131,34 @@ document.addEventListener('DOMContentLoaded', displayProgressBar);
         .then(vacatures => {
           let vacatureContainer = document.getElementById("vacature-table").getElementsByClassName("row")[0];
           vacatureContainer.innerHTML = ""; // Clear existing content
-          
+
           // Sorteren op ID in aflopende volgorde en de eerste drie pakken
           const laatsteDrieVacatures = vacatures.sort((a, b) => b.id - a.id).slice(0, 3);
-          
+
           laatsteDrieVacatures.forEach(vacature => {
+            console.log(vacature);
             let vacatureDiv = document.createElement("div");
             vacatureDiv.className = "col-sm-12 col-md-6 col-lg-4 mb-3"; // Aangepast voor 3 kolommen
             vacatureDiv.innerHTML = `
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title">${vacature.titel}</h5>
-                  <p class="card-text">Omschrijving: ${vacature.omschrijving}</p>
-                  <p class="card-text">Uitstroomrichting: ${vacature.uitStroomrichting}</p>
-                  <p class="card-text">Locatie: ${vacature.locatie}</p>
-                  <p class="card-text">Status: ${vacature.deStatusVacature}</p>
+                  <p class="card-text"><i class="fas fa-building"></i> Bedrijf: ${vacature.bedrijf.naamBedrijf}</p>
+                  <p class="card-text"><i class="fas fa-clock"></i> Aantal uur: ${vacature.aantalUren}</p>
+                  <p class="card-text"><i class="fas fa-map-marker-alt"></i> Locatie: ${vacature.locatie}</p>
+                  <p class="card-text"><i class="fas fa-stream"></i> Uitstroomrichting: ${vacature.uitStroomrichting}</p>
+                  <p class="card-text">Status: <span style="height: 10px; width: 10px; background-color: ${getStatusColor(vacature.deStatusVacature)}; border-radius: 50%; display: inline-block; margin-right: 5px;"></span>
+                  <span style="color: ${getStatusColor(vacature.deStatusVacature)}">${vacature.deStatusVacature}</span></p>
                   <br>
                   <div class="card-button">
-                    <a href="">  Meer Info
-                    </div>
+                    <a href="" class="info-button"><i class="fas fa-info"></i> Meer Info</a>
+                  </div>
                 </div>
               </div>
             `;
             vacatureContainer.appendChild(vacatureDiv);
           });
-  
+
           if (vacatures.length === 0) {
             vacatureContainer.innerText = "Geen vacatures gevonden";
           }
@@ -291,8 +167,8 @@ document.addEventListener('DOMContentLoaded', displayProgressBar);
           console.error("Error fetching or processing vacatures:", error);
           alert("Er is een fout opgetreden bij het laden van de vacatures. Probeer het opnieuw.");
         });
-  
-      fetch(ipbackend +"/bedrijf/all")
+
+      fetch(ipbackend + "/bedrijf/all")
         .then(response => {
           if (!response.ok) {
             throw new Error(`Error fetching bedrijven: ${response.statusText}`);
@@ -302,26 +178,30 @@ document.addEventListener('DOMContentLoaded', displayProgressBar);
         .then(bedrijven => {
           let bedrijfContainer = document.getElementById("bedrijven-table").getElementsByClassName("row")[0];
           bedrijfContainer.innerHTML = ""; // Clear existing content
-          
+
           // Sorteren op ID in aflopende volgorde en de eerste drie pakken
           const laatsteDrieBedrijven = bedrijven.sort((a, b) => b.id - a.id).slice(0, 3);
-          
+
           laatsteDrieBedrijven.forEach(bedrijf => {
             let bedrijfDiv = document.createElement("div");
             bedrijfDiv.className = "col-sm-12 col-md-6 col-lg-4 mb-3"; // Aangepast voor 3 kolommen
             bedrijfDiv.innerHTML = `
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">${bedrijf.naamBedrijf}</h5>
-                  <p class="card-text">Bio: ${bedrijf.bio}</p>
-                  <p class="card-text">Branche: ${bedrijf.branche}</p>
-                  <p class="card-text">Locatie: ${bedrijf.locatie}</p>
-                </div>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"> ${bedrijf.naamBedrijf}</h5>
+                <p class="card-text"><i class="fas fa-info-circle"></i> Beschrijving: ${bedrijf.bio}</p>
+                <p class="card-text"><i class="fas fa-industry"></i> Sector: ${bedrijf.branche}</p>
+                <p class="card-text"><i class="fas fa-map-marker-alt"></i> Locatie: ${bedrijf.locatie}</p>
               </div>
+              <div class="card-button">
+                <a href="" class="info-button"><i class="fas fa-info"></i> Meer Info</a>
+              </div>
+            </div>
+
             `;
             bedrijfContainer.appendChild(bedrijfDiv);
           });
-  
+
           if (bedrijven.length === 0) {
             bedrijfContainer.innerText = "Geen bedrijven gevonden";
           }
@@ -331,10 +211,11 @@ document.addEventListener('DOMContentLoaded', displayProgressBar);
           alert("Er is een fout opgetreden bij het laden van de bedrijven. Probeer het opnieuw.");
         });
     }
-  
+
     loadData();
   </script>
-  
-  
+
+
 </body>
+
 </html>

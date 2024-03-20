@@ -1,0 +1,220 @@
+body {
+    background-color: #ffffff;
+  }
+ 
+
+  .navbar {
+    background-color: #FBF3EB !important;
+  }
+
+  div h4 {
+    color: #151515;
+    font-family: 'bebas neue';
+    font-size: 40px
+  }
+
+
+
+
+  .card-title {
+    color: #151515;
+    font-family: 'bebas neue';
+    font-size: 20px;
+  }
+
+  /* Style for the container to ensure everything is aligned nicely */
+  .container .row .col {
+    position: relative;
+    /* Allows absolute positioning relative to this container */
+  }
+
+  /* Container holding the elements */
+  .custom-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100px;
+    /* Adjust based on your needs */
+    background-color: #FBF3EB;
+    /* Light grey background for visibility */
+    padding: 10px;
+
+  }
+
+  .btn-primary {
+
+    border-color: #EC613A;
+    color: white !important;
+    /* Text color */
+    position: relative;
+    /* Position relative to allow absolute positioned pseudo elements */
+    overflow: hidden;
+    /* Ensures pseudo elements don't overflow the button boundaries */
+    transition: color 0.4s ease;
+    /* Transition for text color */
+    border-radius: 0%;
+
+    /* Creating a gradient background from orange to black, initially showing only orange */
+    background-image: linear-gradient(to bottom, #EC613A 50%, black 50%);
+    background-size: 100% 200%;
+    background-position: top;
+    transition: background-position 0.4s, color 0.4s;
+    /* Transition for the background and text color */
+  }
+
+  .btn-primary:hover {
+    color: white !important;
+    /* Change text color on hover */
+    background-position: bottom;
+    /* Shift the background to show the black part */
+
+  }
+
+
+  /* Flex container for the title and button */
+  .title-and-button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Style for the progress bar background */
+  #progress-bar-background {
+    width: 100%;
+    height: 20px;
+    background-color: #bdbdbd;
+    /* Light grey for the unfilled part */
+    border-radius: 10px;
+    /* Rounded corners for the progress bar */
+    position: relative;
+  }
+
+  /* Style for the progress bar itself */
+  #progress-bar {
+    width: 0%;
+    /* Initial width, can be adjusted dynamically */
+    height: 20px;
+    background-color: #63c1f3;
+    /* Color for the filled part */
+    border-radius: 10px;
+    /* Keep consistent with the background */
+    position: absolute;
+  }
+
+  /* Style for the progress text */
+  #progress-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    /* Black color for text */
+  }
+  .card-button .info-button {
+    display: inline-block; /* Makes sure the anchor behaves like a button */
+    padding: 10px 20px; /* Adds some padding around the text */
+    text-decoration: none; /* Removes the underline from links */
+    border-color: #EC613A;
+    color: white;
+    /* Text color */
+    position: relative;
+    /* Position relative to allow absolute positioned pseudo elements */
+    overflow: hidden;
+    /* Ensures pseudo elements don't overflow the button boundaries */
+    transition: color 0.4s ease;
+    /* Transition for text color */
+    border-radius: 0%;
+
+    /* Creating a gradient background from orange to black, initially showing only orange */
+    background-image: linear-gradient(to bottom, black 50%,#ffffff 50%);
+    background-size: 100% 200%;
+    background-position: top;
+    transition: background-position 0.4s, color 0.4s;
+
+}
+
+    .card-button .info-button:hover {
+    color: rgb(0, 0, 0);
+  
+    /* Change text color on hover */
+    background-position: bottom;
+    /* Shift the background to show the black part */ /* Color transition from bottom (orange) to top (black) */
+}
+.card-button {
+text-align: center; /* Centers the button text */
+margin: 0 auto; /* Centers the button div if needed */
+display: flex; /* Use Flexbox for centering */
+justify-content: center; /* Center horizontally in the flex container */
+padding: 10px 0; /* Optional: Adds some padding above and below the button */
+}
+
+  .btn {
+    font-family: 'bebas neue';
+    font-size: 30px;
+    color: #000000;
+  }
+
+  .btn:hover {
+    color: #EC613A;
+  }
+
+  .card {   
+    display: flex; /* Use Flexbox */
+    flex-direction: column; /* Stack children vertically */
+    height: 100%; /* Ensure full height */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    background-color: #FBF3EB;
+    border-radius: 0%;
+ 
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  }
+  .card-body {
+    flex: 1; /* Allows the card body to expand and push the button down */
+  }
+  .profile-pic-left {
+    width: 150px;
+    height: 150px;
+    /* Pas de hoogte aan om een rechthoekige vorm te krijgen */
+    object-fit: cover;
+    float: left;
+    margin-left: 15px;
+  }
+
+  .profile-pic-right {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    /* Maakt de foto cirkelvormig */
+    object-fit: cover;
+    float: right;
+    margin-right: 15px;
+  }
+
+  .footer {
+    background-color: #FBF3EB;
+    padding: 20px 0;
+  }
+
+  .footer-logo {
+    max-width: 300px;
+    /* Adjust based on your logo size */
+  }
+
+  .list-unstyled {
+    font-family: 'bebas neue';
+    font-size: 40px;
+    text-align: center;
+    margin-top: 20px;
+
+  }
+
+  .list-unstyled a {
+    color: #000000;
+  }
+
+  .mt-auto a {
+    color: #000000;
+  }
