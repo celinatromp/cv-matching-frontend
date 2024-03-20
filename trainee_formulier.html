@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="algemeen.js"></script>
+    <title>Document</title>
+
+</head>
+
+<body>
+    <form id="myform" onsubmit="return false;">
+        <input type="file" name="abc">
+        <input type="button" onclick="doen(event)" value="toevoegen">
+    </form>
+    <script>
+        function doen() {
+    console.log("het werkt");
+    var input = document.querySelector('input[type="file"]');
+
+    var data = new FormData();
+    data.append('file', input.files[0]);
+    data.append('user', 'hubot');
+
+    fetch(ipbackend + "/foto/create", {
+        method: 'POST',
+        // Removed headers: data.getHeaders(), as it's not necessary
+        body: data
+    }).then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    }).then(data => {
+        console.log(data);
+    }).catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+    });
+}
+document.getElementById('myform').addEventListener('submit', function (e) {
+    e.preventDefault(); // to prevent form submission
+    doen();
+});
+
+
+    </script>
+</body>
+
+</html>

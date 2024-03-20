@@ -1,5 +1,6 @@
 let ipbackend = "http://20.31.207.39:8080"
-// let ipbackend = "http://localhost:8080"
+let localhost = "http://localhost:8080"
+// let ipbackend = "http://localhost:8080"   
 let pythonBackend = "http://52.143.9.145:5000"
 // let pythonai = "http://localhost:5000"
 let pythonai = "http://20.73.213.206:5000"
@@ -100,7 +101,7 @@ function TekenNavBalk(modifier){
             </div>
 
             <div class="col-sm-1">
-            <a href="Talentmanager_python.html" class="btn">Python</a>
+            <a href="talentmanager_python.html" class="btn">Python</a>
             </div>
 
             <div class="col-sm-1">
@@ -181,4 +182,32 @@ function TekenNavBalk(modifier){
 
     }
     menudiv.innerHTML= navbarHTML;
+}
+
+function CheckValidLogin(endpoint, id){
+    fetch(ipbackend+"/"+endpoint+"/"+id)
+    .then(response => 
+    //     {
+    //     if (response.ok) {
+    //         console.log("ID " +id+ " exists.");
+    //         return true
+    //     } else {
+    //         console.error("ID "+ id + " does not exist.");
+    //         return false
+    //     }
+    // }
+    response.json()
+    ).then(d=>inlogCheck(d,endpoint))
+}
+function inlogCheck(data,loginType){
+    console.log(data);
+    if (data != null) {
+        switch (loginType) {
+          case "trainee"      :localStorage.setItem("trid", data.id); break;
+          case "talentmanager":localStorage.setItem("tmid", data.id); break;
+          case "bedrijf"      :localStorage.setItem("bfid", data.id); break;
+          default             :console.log("Unknown Login Type.");
+        }}
+      else{console.log("ID not found.");}
+      console.log("ABC")
 }
