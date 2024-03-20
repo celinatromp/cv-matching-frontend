@@ -32,7 +32,7 @@ function TekenNavBalk(modifier){
                 <a href="trainee_overzicht_bedrijven.html?`+localStorage.getItem("loginQuery")+`" class="btn">Bedrijven</a>
             </div>
 
-            <div class="col-sm-1">
+            <div class="col-sm-2">
             <button class="btn" onclick="logOut()">Log Uit</button>
             </div>
 

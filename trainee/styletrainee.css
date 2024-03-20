@@ -3,14 +3,16 @@ body {
   }
  
 
-  .navbar {
+  #navbalk {
     background-color: #FBF3EB !important;
+   
+
   }
 
   div h4 {
     color: #151515;
     font-family: 'bebas neue';
-    font-size: 40px
+    font-size: 30px
   }
 
 
@@ -174,24 +176,8 @@ padding: 10px 0; /* Optional: Adds some padding above and below the button */
   .card-body {
     flex: 1; /* Allows the card body to expand and push the button down */
   }
-  .profile-pic-left {
-    width: 150px;
-    height: 150px;
-    /* Pas de hoogte aan om een rechthoekige vorm te krijgen */
-    object-fit: cover;
-    float: left;
-    margin-left: 15px;
-  }
+  
 
-  .profile-pic-right {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    /* Maakt de foto cirkelvormig */
-    object-fit: cover;
-    float: right;
-    margin-right: 15px;
-  }
 
   .footer {
     background-color: #FBF3EB;
