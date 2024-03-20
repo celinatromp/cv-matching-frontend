@@ -32,9 +32,10 @@ function TekenNavBalk(modifier){
                 <a href="trainee_overzicht_bedrijven.html" class="btn">Bedrijven</a>
             </div>
 
-            <div class="col-sm-2">
-            <a href="../login.html" class="btn">Log Uit</a>
+            <div class="col-sm-1">
+            <button class="btn" onclick="logOut()">Log Uit</button>
             </div>
+
         
             <div class="col-sm-1">
                 <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
@@ -64,9 +65,10 @@ function TekenNavBalk(modifier){
                 <a href="bedrijf_chats.html" class="btn">Chats</a>
             </div>
         
-            <div class="col-sm-2">
-                <a href="../login.html" class="btn">Log uit</a>
+            <div class="col-sm-1">
+            <button class="btn" onclick="logOut()">Log Uit</button>
             </div>
+
         
             <div class="col-sm-1">
                 <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
@@ -105,7 +107,7 @@ function TekenNavBalk(modifier){
             </div>
 
             <div class="col-sm-1">
-            <a href="../login.html" class="btn">log uit</a>
+            <button class="btn" onclick="logOut()">Log Uit</button>
             </div>
 
             <div class="col-sm-1">
@@ -217,4 +219,12 @@ function inlogCheck(data,loginType){
     console.log(nextPage);
     
     if (succes){window.location.href = nextPage;}
+}
+
+function logOut(){
+    console.log("clearing loginQuery")
+    localStorage.setItem("loginQuery",null);
+    console.log("login Query = "+localStorage.getItem("loginQuery"))
+    window.location.href="../login.html";
+
 }
