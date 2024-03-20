@@ -14,9 +14,9 @@
     
     <!-- runs de navbalk script op pagina load -->
     <script>
-       window.onload=function(){
+       window.onload=function() {
         // gebruik als argument de type navbalk die je wilt, "trainee","talentmanager" of "bedrijf"
-        TekenNavBalk();
+        TekenNavBalk("talentmanager");
       };
     </script>
     
@@ -31,7 +31,7 @@
             <button class="col-4" type="button" id="askBtn" onclick="ask_ai()">Vraag AI</button>
         </div>
 
-        <div id="ai-res">
+        <div id="ai-res" class="row text-center">
         <!-- AI Response komt hier-->
         </div>
     </div>
