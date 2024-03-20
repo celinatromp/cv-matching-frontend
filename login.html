@@ -22,6 +22,7 @@
 
       function setLoginType(type) {
         loginType = type;
+        localStorage.setItem("logintype",type);
         console.log("Login type set to: " + loginType);
     
     }
@@ -87,7 +88,5 @@
     </div>
   </div>
 
-  <div class="col-sm-1">
-    <button onclick="logOut()">Log Uit</button>
-    </div>
+
   </body>
