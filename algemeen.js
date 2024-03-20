@@ -98,7 +98,7 @@ function TekenNavBalk(modifier){
             </div>
 
             <div class="col-sm-1">
-            <a href="Talentmanager_python.html" class="btn">Python</a>
+            <a href="talentmanager_python.html" class="btn">Python</a>
             </div>
 
             <div class="col-sm-1">
