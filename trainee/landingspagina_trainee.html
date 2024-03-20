@@ -15,11 +15,45 @@
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #f1f1f1;
-      background-color: #062e0c;
+      background-color: #e6ebe7;
     }
     div h4{
-      color: #062e0c;
-    }    
+      color: #151515;
+    }
+    /* Style for the container to ensure everything is aligned nicely */
+.container .row .col {
+    position: relative; /* Allows absolute positioning relative to this container */
+}
+
+/* Styling the progress bar for a more modern look */
+#progress-bar {
+    height: 20px; /* Height of the progress bar */
+    background-color: orange; /* Initial color of the progress bar */
+    border-radius: 10px; /* Rounded corners */
+    transition: width 0.4s ease; /* Smooth transition for width changes */
+    z-index: 1; /* Ensures progress bar is above the background if needed */
+}
+
+/* Adding a background bar to show the progress limit */
+#progress-bar-background {
+    position: absolute; /* Position it relative to the parent column */
+    bottom: 35px; /* Positioning it at the bottom of the column, adjust as needed */
+    right: 0; /* Align to the right side */
+    left: 0; /* Stretch from the left side, alongside the heading and button */
+    height: 20px; /* Match height of the progress bar */
+    background-color: #e0e0e0; /* Light gray background to indicate unfilled area */
+    border-radius: 10px; /* Rounded corners to match the progress bar */
+    z-index: 0; /* Ensures this background is behind the actual progress bar */
+}
+
+/* Adjust the text styling if needed */
+#progress-text {
+    margin-left: 10px; /* Spacing between the progress bar and text */
+    z-index: 2; /* Ensures text is above both the progress and its background */
+    position: relative; /* Required for z-index to take effect */
+   
+}
+    
     .navbar-light .navbar-nav .nav-link {
       color: #ff5100; /* Blauwe accentkleur */
     }
@@ -72,18 +106,22 @@
   <!-- Navigatiebalk -->
   <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbalk">     
   </nav>
+  
 
   <div class="container mt-3"><h1>Welcome Trainee!!</h1></div>
- 
   <div class="container mt-3">
     <div class="row">
       <div class="col d-flex justify-content-between align-items-center bg-light p-2">
         <h4>Vul je profiel aan</h4>
+        <div id="progress-bar" style="width: 0%; height: 20px; background-color: orange; position: relative;">
+          <span id="progress-text" style="position: absolute; width: 100%; text-align: center; color: rgb(0, 0, 0);">0%</span>
+        </div>
         <button class="btn btn-primary">Vul je profiel in</button>
       </div>
     </div>
   </div>
-  <div class="container mt-3"><h4>Meest Recente Vacatures</h4></div>
+  <div class="container mt-3">
+    <h4>Meest Recente Vacatures</h4></div>
   <div id="vacature-table" class="container mt-5"> <!-- Aangepaste ID -->
     <div class="row">
       <!-- Vacatures will be loaded here -->
@@ -99,6 +137,29 @@
   </div>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
  <script>
+ function displayProgressBar() {
+    // Retrieve the filled percentage from localStorage
+    
+    const filledPercentage = localStorage.getItem('progressFilledPercentage') || 0;
+
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+
+    if (progressBar && progressText) {
+        progressBar.style.width = filledPercentage + '%';
+        progressBar.style.backgroundColor = filledPercentage < 100 ? 'orange' : '#05a00a'; // Green if complete
+
+        progressText.innerText = `${filledPercentage}%`;
+    } else {
+        console.error("Progress bar or progress text element not found.");
+    }
+}
+
+// Call displayProgressBar to update UI on page load
+document.addEventListener('DOMContentLoaded', displayProgressBar);
+
+
+
     function loadData() {
       fetch(ipbackend +"/vacature/all")
         .then(response => {

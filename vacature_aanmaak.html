@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vacature Aanmaak</title>
+
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .container {
+        max-width: 500px;
+        margin: 0 auto;
+        border: 2px solid white;
+        border-radius: 10px;
+        padding: 20px;
+        background-color: white;
+        color: black;
+      }
+      .btn-primary {
+        background-color: black;
+        border-color: black;
+      }
+      .btn-primary:hover {
+        background-color: #333;
+        border-color: #333;
+      }
+      .form-control {
+        height: 35px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <form id="createVacatureForm" method="post">
+        <div class="form-group">
+          <label for="titel">Titel:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="titel"
+            name="titel"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="omschrijving">Omschrijving:</label>
+          <textarea
+            class="form-control"
+            id="omschrijving"
+            name="omschrijving"
+            rows="4"
+            required
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="contractLengte">Contract Lengte (in jaren):</label>
+          <input
+            type="number"
+            class="form-control"
+            id="contractLengte"
+            name="contractLengte"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="locatie">Locatie:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="locatie"
+            name="locatie"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="typeWerk">Type Werk:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="typeWerk"
+            name="typeWerk"
+          />
+        </div>
+        <div class="form-group">
+          <label for="uitStroomRichting">Uitstroomrichting:</label>
+          <select
+            class="form-control"
+            id="uitStroomRichting"
+            name="uitStroomRichting"
+            required
+          >
+            <option value="NietGekozen">Niet Gekozen</option>
+            <option value="DevOps">DevOps</option>
+            <option value="Techniek">Techniek</option>
+            <option value="Low Code">Low Code</option>
+            <option value="Informatie Analist">Informatie Analist</option>
+            <option value="C Sharp">C Sharp</option>
+            <option value="Software tester">Software tester</option>
+            <option value="Java">Java</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="aantalUren">Aantal Uren:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="aantalUren"
+            name="aantalUren"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Create Vacature</button>
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("createVacatureForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const formData = new FormData(this);
+          const formDataObject = {};
+          formData.forEach(function (value, key) {
+            formDataObject[key] = value;
+          });
+
+          fetch("http://localhost:8080/bedrijf/1/createVacature", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formDataObject),
+          })
+            .then((response) => {
+              if (response.ok) {
+                // window.location.href = "bedrijf_vacature.html";
+              } else {
+                console.error("Failed to create vacature");
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              e;
+            });
+        });
+    </script>
+  </body>
+</html>

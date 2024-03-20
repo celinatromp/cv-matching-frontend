@@ -1,0 +1,36 @@
+.adjust-margin{
+    margin-top: 20px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+    position: relative;
+    top: 0px; 
+}
+
+.dotOpen {
+    background-color: green;
+}
+
+.dotGematched {
+    background-color: orange;
+}
+
+.dotIngevuld {
+    background-color: red;
+}
+
+.dotGearchiveerd {
+    background-color: grey;
+}
+
+.aanmaaklink{
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
