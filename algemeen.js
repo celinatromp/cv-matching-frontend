@@ -1,5 +1,6 @@
 let ipbackend = "http://20.31.207.39:8080"
-// let ipbackend = "http://localhost:8080"
+let localhost = "http://localhost:8080"
+// let ipbackend = "http://localhost:8080"   
 let pythonBackend = "http://52.143.9.145:5000"
 
 function TekenNavBalk(modifier){
