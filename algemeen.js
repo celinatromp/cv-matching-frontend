@@ -153,7 +153,7 @@ function TekenNavBalk(modifier){
             navbarHTML = `<div class="container text-center">
 
             <div class="col-sm-2">
-                <a href="index.html"><img src="images/NextMatch_TextLogo.png" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+                <a href="index.html"><img src="../images/NextMatch_TextLogo.png" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
             </div>
         
             <div class="col-sm-3">
@@ -172,7 +172,7 @@ function TekenNavBalk(modifier){
             </div>
         
             <div class="col-sm-1">
-                <img src="images/NextMatch_TextLogo_round.png" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
+                <img src="../images/NextMatch_TextLogo_round.png" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
             </div>
         
         </div>
