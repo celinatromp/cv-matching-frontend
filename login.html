@@ -22,6 +22,7 @@
 
       function setLoginType(type) {
         loginType = type;
+        localStorage.setItem("logintype",type);
         console.log("Login type set to: " + loginType);
     
     }
@@ -86,3 +87,6 @@
         </div>
     </div>
   </div>
+
+
+  </body>

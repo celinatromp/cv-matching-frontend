@@ -10,7 +10,7 @@ function TekenNavBalk(modifier){
     let paginamodifier = modifier;
     let menudiv = document.getElementById("navbalk");
     let navbarHTML ='';
-    console.log("abc"+paginamodifier)
+    console.log("Pagina modifier: "+paginamodifier)
     switch (paginamodifier){
         //Dit is de navbalk voor Trainees
         case "trainee":
@@ -18,23 +18,24 @@ function TekenNavBalk(modifier){
             navbarHTML = `<div class="container text-center">
 
             <div class="col-sm-2">
-                <a href="landingspagina_trainee.html"><img src="../images/NEXTMATCH_text.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+                <a href="landingspagina_trainee.html"?`+localStorage.getItem("loginQuery")+`><img src="../images/NEXTMATCH_text.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
             </div>
         
             <div class="col-sm-3">
             </div>
         
             <div class="col-sm-2">
-                <a href="trainee_overzicht_vacature.html" class="btn">Vacatures</a>
+                <a href="trainee_overzicht_vacature.html?`+localStorage.getItem("loginQuery")+`" class="btn">Vacatures</a>
             </div>
         
             <div class="col-sm-2">
-                <a href="trainee_overzicht_bedrijven.html" class="btn">Bedrijven</a>
+                <a href="trainee_overzicht_bedrijven.html?`+localStorage.getItem("loginQuery")+`" class="btn">Bedrijven</a>
             </div>
 
-            <div class="col-sm-2">
-            <a href="../login.html" class="btn">Log Uit</a>
+            <div class="col-sm-1">
+            <button class="btn" onclick="logOut()">Log Uit</button>
             </div>
+
         
             <div class="col-sm-1">
                 <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
@@ -50,23 +51,24 @@ function TekenNavBalk(modifier){
             navbarHTML = `<div class="container text-center">
 
             <div class="col-sm-2">
-                <a href="bedrijf_landingspagina.html"><img src="../images/NEXTMATCHLOGO.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+                <a href="bedrijf_landingspagina.html?`+localStorage.getItem("loginQuery")+`"><img src="../images/NEXTMATCHLOGO.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
             </div>
         
             <div class="col-sm-3">
             </div>
             
             <div class="col-sm-2">
-                <a href="bedrijf_overzicht_vacatures.html" class="btn">Mijn Vacatures</a>
+                <a href="bedrijf_overzicht_vacatures.html?`+localStorage.getItem("loginQuery")+`" class="btn">Mijn Vacatures</a>
             </div>
         
             <div class="col-sm-2">
-                <a href="bedrijf_chats.html" class="btn">Chats</a>
+                <a href="bedrijf_chats.html?`+localStorage.getItem("loginQuery")+`" class="btn">Chats</a>
             </div>
         
-            <div class="col-sm-2">
-                <a href="../login.html" class="btn">Log uit</a>
+            <div class="col-sm-1">
+            <button class="btn" onclick="logOut()">Log Uit</button>
             </div>
+
         
             <div class="col-sm-1">
                 <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
@@ -81,31 +83,31 @@ function TekenNavBalk(modifier){
         navbarHTML = `<div class="container text-center">
 
             <div class="col-sm-2">
-                <a href="talentmanager_landingspagina.html"><img src="../images/NEXTMATCHLOGO.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+                <a href="talentmanager_landingspagina.html?`+localStorage.getItem("loginQuery")+`"><img src="../images/NEXTMATCHLOGO.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
             </div>
 
             <div class="col-sm-1">
             </div>
             
             <div class="col-sm-1">
-                <a href="talentmanager_overzicht_trainees.html" class="btn">Mijn Trainees</a>
+                <a href="talentmanager_overzicht_trainees.html?`+localStorage.getItem("loginQuery")+`" class="btn">Mijn Trainees</a>
             </div>
             
 
             <div class="col-sm-1">
-                <a href="talentmanager_overzicht_bedrijven.html" class="btn">Mijn Bedrijven</a>
+                <a href="talentmanager_overzicht_bedrijven.html?`+localStorage.getItem("loginQuery")+`" class="btn">Mijn Bedrijven</a>
             </div>
 
             <div class="col-sm-1">
-                <a href="talentmanager_chats.html" class="btn">Chats</a>
+                <a href="talentmanager_chats.html?`+localStorage.getItem("loginQuery")+`" class="btn">Chats</a>
             </div>
 
             <div class="col-sm-1">
-            <a href="talentmanager_python.html" class="btn">Python</a>
+            <a href="talentmanager_python.html?`+localStorage.getItem("loginQuery")+`" class="btn">Python</a>
             </div>
 
             <div class="col-sm-1">
-            <a href="../login.html" class="btn">log uit</a>
+            <button class="btn" onclick="logOut()">Log Uit</button>
             </div>
 
             <div class="col-sm-1">
@@ -187,15 +189,6 @@ function TekenNavBalk(modifier){
 function CheckValidLogin(endpoint, id){
     fetch(ipbackend+"/"+endpoint+"/"+id)
     .then(response => 
-    //     {
-    //     if (response.ok) {
-    //         console.log("ID " +id+ " exists.");
-    //         return true
-    //     } else {
-    //         console.error("ID "+ id + " does not exist.");
-    //         return false
-    //     }
-    // }
     response.json()
     ).then(d=>inlogCheck(d,endpoint))
 }
@@ -218,3 +211,78 @@ function inlogCheck(data,loginType){
     
     if (succes){window.location.href = nextPage;}
 }
+
+function logOut(){
+    console.log("clearing loginQuery")
+    localStorage.setItem("loginQuery",null);
+    localStorage.setItem("logintype",null);
+    console.log("login Query = "+localStorage.getItem("loginQuery"))
+    console.log("login type = "+localStorage.getItem("logintype"))
+    window.location.href="../login.html";
+
+}
+
+function loadProfileData(){
+    let url_string = window.location.href;
+    let url = new URL(url_string);
+    let loginType = localStorage.getItem("logintype");
+    let paramValue;
+    let succes = false;
+
+    switch (loginType){
+        case "trainee":
+            paramValue = url.searchParams.get("tmid");
+            localStorage.setItem("loginQuery", "trid="+paramValue);
+            succes = true;
+            break;
+        case "talentmanager":
+            paramValue = url.searchParams.get("tmid");
+            localStorage.setItem("loginQuery", "tmid="+paramValue);
+            succes = true;
+            break;
+        case "bedrijf":
+            paramValue = url.searchParams.get("bfid");
+            localStorage.setItem("loginQuery", "bfid="+paramValue);
+            succes = true;
+            break;
+        default:
+            console.log("Geen login Type bekend.")
+            succes = false;
+
+    }
+    if (succes){
+        console.log("login Query = "+localStorage.getItem("loginQuery"))
+        x = paramValue;
+        console.log("current profile id: "+ x);
+        console.log("current login type: "+loginType)
+
+        let fetchUrl= ipbackend+"/"+localStorage.getItem("logintype")+"/"+x;
+        console.log(fetchUrl);
+
+        TekenNavBalk(loginType);
+
+        fetch(fetchUrl)
+            .then(response => response.json())
+            .then(data => {
+                let jsonObject = data;
+                let stringyfiedJSON = JSON.stringify(jsonObject);
+
+                // console.log(jsonObject);
+                // console.log(stringyfiedJSON)
+                slaJSONstringOp(stringyfiedJSON)
+            }
+        )
+    }else{ console.log("Geen Actie.")}}
+
+function slaJSONstringOp(stringyfiedJSON){
+    localStorage.setItem("ProfielString",stringyfiedJSON)
+}
+function laatObject(){
+    let a = localStorage.getItem("ProfielString");
+    let hetObject = JSON.parse(a);
+    // console.log(hetObject)
+    return hetObject
+}
+
+// JSON.stringify()
+// JSON.parse()
