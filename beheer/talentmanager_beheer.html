@@ -51,7 +51,7 @@
           trainees: document.getElementById("invoer-trainees").value,
         };
         // Stap 2: Sturen van nieuwe data naar endpoint.
-        fetch("http://localhost:8080/talentmanager/create", {
+        fetch(ipbackend+"/talentmanager/create", {
           method: "POST",
           headers: {
             "Content-type": "application/json",
@@ -68,7 +68,7 @@
       }
 
       function loadData() {
-        fetch("http://localhost:8080/talentmanager/all")
+        fetch(ipbackend+"/talentmanager/all")
           .then((res) => res.json())
           .then((talentmanagers) => {
             console.log("talentmangers", talentmanagers);

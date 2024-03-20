@@ -9,7 +9,27 @@ li {
   float: inline-start;
 }
 
-h1 {
+body {
+  background-color: #FFFFFF;
+}
+
+.headliner {
+  color: #dbfb60;
+  font-family: 'Courier New', Courier, monospace;
+  size: 210px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #dbfb60;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  size: 72px;
+}
+
+p {
+  color: #dbfb60;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  size: 16px;
+
 }
 
 .navibar {
@@ -89,6 +109,19 @@ a:hover {
   opacity: 0.7;
   background-color: #ec613a;
   color: #000;
+}
+
+.card1 {
+  background-color: #fbf3eb;
+  padding: 10px;
+}
+
+img {
+  background-color: #fbf3eb;
+  max-height: 500px;
+  max-width: 1024px;
+  overflow: hidden;
+  padding: 10px;
 }
 
 .about1 {

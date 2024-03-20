@@ -12,10 +12,19 @@
     
     <!-- runs de navbalk script op pagina load -->
     <script>
+      var x;
        window.onload=function(){
         // gebruik als argument de type navbalk die je wilt, "trainee","talentmanager" of "bedrijf"
         TekenNavBalk("talentmanager");
+
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var paramValue = url.searchParams.get("tmid");
+        console.log(paramValue);
+        x = paramValue;
+        console.log(x);
       };
+
     </script>
     
     <title>Talentmanager Landingspagina</title>
