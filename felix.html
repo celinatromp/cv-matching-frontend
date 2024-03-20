@@ -1,52 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script>
-    function haalbigdataop(){
-      fetch("http://127.0.0.1:5000/derdetest")
-      .then(r => r.text())
-      .then(d => console.log(d))
-    }
-    function haalfotoop(){
-      fetch("http://localhost:8080/foto/1")
-      .then(r => r.blob())
-      .then(d => {
-        a = URL.createObjectURL(d);
-        document.getElementById("q").src = a;
-      })
-    }
-  </script>
-</head>
-<body>
-  <form id="myform">
-    <input type="file">
-    <input type="submit" value="submit">
-  </form>
-  <hr><hr>
-  <button onclick="haalfotoop()">Klik hier Foto</button>
-  <img id="q">
-  <button onclick="haalbigdataop()">Klik hier bigdata</button>
-  <script>
-    document.getElementById('myform').addEventListener('submit', function(e) {
-  e.preventDefault(); //to prevent form submission
-  doen();
-});
-function doen(){
-  console.log("hij doet het")
-  var input = document.querySelector('input[type="file"]')
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function haalbigdataop() {
+        fetch("http://127.0.0.1:5000/derdetest")
+          .then((r) => r.text())
+          .then((d) => console.log(d));
+      }
+      // function haalfotoop() {
+      //   fetch("http://localhost:8080/foto/1")
+      //     .then((r) => r.blob())
+      //     .then((d) => {
+      //       a = URL.createObjectURL(d);
+      //       document.getElementById("z").src = a;
+      //     });
+      // }
+    </script>
+  </head>
+  <body>
+    <form id="myform">
+      <input type="file" />
+      <input type="submit" value="submit" />
+    </form>
+    <hr />
+    <hr />
+    <img id="z" src="" />
+    <button onclick="haalfotoop()">Klik hier Foto</button>
 
-var data = new FormData()
-data.append('data', input.files[0])
-data.append('user', 'hubot')
+    <button onclick="haalbigdataop()">Klik hier bigdata</button>
 
-fetch('http://localhost:8080/foto/create', {
-  method: 'POST',
-  body: data
-})
-}
-  </script>
-</body>
+    <script>
+      document
+        .getElementById("myform")
+        .addEventListener("submit", function (e) {
+          e.preventDefault(); //to prevent form submission
+          doen();
+        });
+      function doen() {
+        console.log("hij doet het");
+        var input = document.querySelector('input[type="file"]');
+
+        var data = new FormData();
+        data.append("data", input.files[0]);
+        data.append("user", "hubot");
+        //let traineeID = 4;
+        fetch("http://localhost:8080/trainee/6/create/foto", {
+          method: "POST",
+          body: data,
+        });
+      }
+
+      function haalfotoop() {
+        // let traineeID = 4;
+        fetch("http://localhost:8080/trainee/6/foto")
+          .then((r) => r.blob())
+          .then((d) => {
+            console.log(d);
+            a = URL.createObjectURL(d);
+            console.log(a);
+            document.getElementById("z").src = a;
+          });
+      }
+    </script>
+  </body>
 </html>
