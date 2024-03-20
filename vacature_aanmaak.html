@@ -131,7 +131,7 @@
             formDataObject[key] = value;
           });
 
-          fetch("http://localhost:8080/bedrijf/1/createVacature", {
+          fetch(ipbackend + "/bedrijf/1/createVacature", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
