@@ -33,9 +33,10 @@
     <hr />
     <script>
       function fetchVacatures() {
-        fetch("http://localhost:8080/vacature/all")
+        fetch(ipbackend + "/vacature/all")
           .then((response) => response.json())
           .then((vacatures) => {
+            console.log(vacatures);
             vacatures.forEach((vacature) => {
               putData(vacature);
             });
@@ -51,14 +52,31 @@
         card.style.width = "18rem";
         card.style.marginBottom = "20px";
         card.style.marginLeft = "20px";
+        card.style.backgroundColor = "#fbf3eb";
 
         let cardBodyDiv = document.createElement("div");
         cardBodyDiv.classList.add("card-body");
         card.appendChild(cardBodyDiv);
 
+        let brancheDiv = document.createElement("div");
+        brancheDiv.textContent = vacature.bedrijf
+          ? vacature.bedrijf.branche || "N/A"
+          : "N/A";
+        brancheDiv.classList.add("branche-div");
+        brancheDiv.style.marginTop = "10px";
+        brancheDiv.style.fontSize = "12px";
+        brancheDiv.style.padding = "0.25rem 0.5rem";
+        brancheDiv.style.display = "inline-block";
+        brancheDiv.style.verticalAlign = "top";
+        brancheDiv.style.backgroundColor = "#6D9EF8";
+        brancheDiv.style.marginBottom = "10px";
+        brancheDiv.style.color = "white";
+        cardBodyDiv.appendChild(brancheDiv);
+
         let cardTitle = document.createElement("h5");
         cardTitle.classList.add("card-title");
         cardTitle.innerHTML = vacature.titel || "N/A";
+        cardTitle.style.marginBottom = "40px";
         cardBodyDiv.appendChild(cardTitle);
 
         let cardBedrijf = document.createElement("h6");
@@ -68,52 +86,23 @@
           : "N/A";
         cardBodyDiv.appendChild(cardBedrijf);
 
-        let cardLocatie = document.createElement("p");
-        cardLocatie.classList.add("card-text-locatie");
-        cardLocatie.innerHTML = vacature.locatie || "N/A";
-        cardBodyDiv.appendChild(cardLocatie);
-
         let cardAantalUren = document.createElement("p");
         cardAantalUren.classList.add("card-text-uren");
         cardAantalUren.innerHTML = vacature.aantalUren || "N/A";
+        cardAantalUren.style.marginBottom = "0rem";
         cardBodyDiv.appendChild(cardAantalUren);
 
-        let statusDiv = document.createElement("div");
-        statusDiv.classList.add("card-body");
-        card.appendChild(statusDiv);
+        let cardLocatie = document.createElement("p");
+        cardLocatie.classList.add("card-text-locatie");
+        cardLocatie.innerHTML = vacature.locatie || "N/A";
+        cardLocatie.style.marginBottom = "0rem";
+        cardBodyDiv.appendChild(cardLocatie);
 
-        let dotSpan = document.createElement("span");
-        dotSpan.classList.add("dot");
-
-        let dotClass = "";
-        switch (vacature.deStatusVacature) {
-          case "OPEN":
-            dotClass = "dotOpen";
-            break;
-          case "GEMATCHED":
-            dotClass = "dotGematched";
-            break;
-          case "INGEVULD":
-            dotClass = "dotIngevuld";
-            break;
-          case "GEARCHIVEERD":
-            dotClass = "dotGearchiveerd";
-            break;
-          default:
-            dotClass = "dotDefault";
-            break;
-        }
-
-        dotSpan.classList.add(dotClass);
-        statusDiv.appendChild(dotSpan);
-
-        let statusTextSpan = document.createElement("span");
-        statusTextSpan.textContent = "Status: ";
-        statusDiv.appendChild(statusTextSpan);
-
-        let statusText = document.createElement("span");
-        statusText.innerHTML = vacature.deStatusVacature || "N/A";
-        statusDiv.appendChild(statusText);
+        let cardUitstroomRichting = document.createElement("p");
+        cardUitstroomRichting.classList.add("card-text-uitstroom");
+        cardUitstroomRichting.innerHTML = vacature.uitStroomRichting || "N/A";
+        cardUitstroomRichting.style.marginBottom = "0rem";
+        cardBodyDiv.appendChild(cardUitstroomRichting);
 
         let button = document.createElement("button");
         button.classList.add("btn", "btn-primary");
