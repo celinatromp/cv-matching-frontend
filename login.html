@@ -22,24 +22,31 @@
 
       function setLoginType(type) {
         loginType = type;
+        localStorage.setItem("logintype",type);
         console.log("Login type set to: " + loginType);
     
     }
 
     function attemptLogin(){
-      let loginInput = document.getElementById("invoer-id").value
+      let loginInput = document.getElementById("invoer-id").value;
+      console.log("loginInput = " + loginInput)
       CheckValidLogin(loginType,loginInput)
     }
+    function changeModalText(){
+      console.log("changeModalText called!")
+      let loginTextElement = document.getElementById("login-text");
+      loginTextElement.textContent = "Login " + loginType;
+    }
+
 
     </script>
 
 <!-- modals -->
-  <!-- trainee modal -->
-  <div class="modal fade" id="TraineeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Login Trainee</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">  <p id="login-text"></p> </h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -48,42 +55,6 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary" onclick="attemptLogin()">Login</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Talentmanager Modal -->
-    <div class="modal fade" id="TalentmanagerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Login Talentmanager</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <input type="text" id="invoer-id" placeholder="id-login" />
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Login</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  <!-- Bedrijf Modal -->
-  <div class="modal fade" id="BedrijfModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Login Bedrijf</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <input type="text" id="invoer-id" placeholder="id-login" />
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Login</button>
         </div>
       </div>
     </div>
@@ -98,21 +69,24 @@
           
           <!-- knopje voor het inloggen op trainee -->
           <!-- <a href="trainee/landingspagina_trainee.html" class="btn btn-primary" aria-current="page">Trainee Login</a> -->
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#TraineeModal" onclick="setLoginType('trainee')">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#LoginModal" onclick="setLoginType('trainee');changeModalText()">
             Trainee Login
           </button>
 
           <!-- knopje voor het inloggen op talentmanager --> 
           <!-- <a href="talentmanager/talentmanager_landingspagina.html?tmid=1" class="btn btn-primary">Talent Manager Login</a> -->
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#TalentmanagerModal" onclick="setLoginType('talentmanager')">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#LoginModal" onclick="setLoginType('talentmanager');changeModalText()">
             Talentmanager Login
           </button>
 
           <!-- knopje voor het inloggen op bedrijf -->
           <!-- <a href="bedrijf/bedrijf_landingspagina.html" class="btn btn-primary">Bedrijf Login</a> -->
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#BedrijfModal" onclick="setLoginType('bedrijf')">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#LoginModal" onclick="setLoginType('bedrijf');changeModalText()">
             Bedrijf Login
           </button>
         </div>
     </div>
   </div>
+
+
+  </body>
