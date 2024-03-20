@@ -20,7 +20,7 @@
                 branche: document.getElementById("invoer-branche").value,
             };
             // Stap 2: Sturen van nieuwe data naar endpoint.
-            fetch("http://localhost:8080/bedrijf/create", {
+            fetch(ipbackend+"/bedrijf/create", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json",
@@ -37,7 +37,7 @@
         }
 
         function loadBedrijfData() {
-            fetch("http://localhost:8080/bedrijf/all")
+            fetch(ipbackend+"/bedrijf/all")
                 .then((res) => res.json())
                 .then((bedrijf) => {
                     console.log("Bedrijven", bedrijf);
@@ -69,7 +69,7 @@
             console.log("After fetch");
         }
         function deleteBedrijf(id) {
-  fetch("http://localhost:8080/bedrijf/delete/" + id, {
+  fetch(ipbackend+"/bedrijf/delete/" + id, {
     method: "DELETE",
   }).then((res) => {
     if (res.ok) {
@@ -90,7 +90,7 @@
                     branche: document.getElementById("update-branche").value,
                 };
                 // Stap 2: Sturen van bijgewerkte data naar endpoint.
-                fetch(`http://localhost:8080/bedrijf/${id}/update`, {
+                fetch(ipbackend+`/bedrijf/${id}/update`, {
                     method: "PUT",
                     headers: {
                         "Content-type": "application/json",
@@ -115,7 +115,7 @@
                 if (!confirm(`Weet je zeker dat je Bedrijf met ID ${id} wilt verwijderen?`)) {
                     return;
                 }
-                fetch(`http://localhost:8080/bedrijf/${id}/delete`, {
+                fetch(ipbackend+`/bedrijf/${id}/delete`, {
                     method: "DELETE",
                 })
                 .then((res) => {
