@@ -172,10 +172,6 @@ function TekenNavBalk(modifier){
             </div>
         
             <div class="col-sm-1">
-<<<<<<< HEAD
-=======
-                <img src="../images/NextMatch_TextLogo_round.png" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
->>>>>>> main
             </div>
         
         </div>
@@ -184,4 +180,32 @@ function TekenNavBalk(modifier){
 
     }
     menudiv.innerHTML= navbarHTML;
+}
+
+function CheckValidLogin(endpoint, id){
+    fetch(ipbackend+"/"+endpoint+"/"+id)
+    .then(response => 
+    //     {
+    //     if (response.ok) {
+    //         console.log("ID " +id+ " exists.");
+    //         return true
+    //     } else {
+    //         console.error("ID "+ id + " does not exist.");
+    //         return false
+    //     }
+    // }
+    response.json()
+    ).then(d=>inlogCheck(d,endpoint))
+}
+function inlogCheck(data,loginType){
+    console.log(data);
+    if (data != null) {
+        switch (loginType) {
+          case "trainee"      :localStorage.setItem("trid", data.id); break;
+          case "talentmanager":localStorage.setItem("tmid", data.id); break;
+          case "bedrijf"      :localStorage.setItem("bfid", data.id); break;
+          default             :console.log("Unknown Login Type.");
+        }}
+      else{console.log("ID not found.");}
+      console.log("ABC")
 }

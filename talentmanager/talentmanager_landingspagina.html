@@ -16,13 +16,15 @@
        window.onload=function(){
         // gebruik als argument de type navbalk die je wilt, "trainee","talentmanager" of "bedrijf"
         TekenNavBalk("talentmanager");
-        var url_string = window.location.href; // www.test.com?filename=test
-      var url = new URL(url_string);
-      var paramValue = url.searchParams.get("tmid");
-      console.log(paramValue);
-      x = paramValue;
-      console.log(x);
+
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var paramValue = url.searchParams.get("tmid");
+        console.log(paramValue);
+        x = paramValue;
+        console.log(x);
       };
+
     </script>
     
     <title>Talentmanager Landingspagina</title>
