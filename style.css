@@ -22,14 +22,11 @@ body {
 h1, h2, h3, h4, h5, h6 {
   color: #dbfb60;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  size: 72px;
 }
 
 p {
   color: #dbfb60;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  size: 16px;
-
 }
 
 .navibar {
