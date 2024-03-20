@@ -165,7 +165,7 @@ function TekenNavBalk(modifier){
             </div>
         
             <div class="col-sm-2">
-                <a href="YoungNext.html" class="btn">Young Next</a>
+                <a href="YoungNext.html" class="btn">About Next</a>
             </div>
         
             <div class="col-sm-2">
@@ -201,13 +201,20 @@ function CheckValidLogin(endpoint, id){
 }
 function inlogCheck(data,loginType){
     console.log(data);
+    let succes = false;
     if (data != null) {
         switch (loginType) {
-          case "trainee"      :localStorage.setItem("trid", data.id); break;
-          case "talentmanager":localStorage.setItem("tmid", data.id); break;
-          case "bedrijf"      :localStorage.setItem("bfid", data.id); break;
-          default             :console.log("Unknown Login Type.");
+          case "trainee"      :localStorage.setItem("loginQuery", "trid="+data.id); succes = true; break;
+          case "talentmanager":localStorage.setItem("loginQuery", "tmid="+data.id); succes = true; break;
+          case "bedrijf"      :localStorage.setItem("loginQuery", "bfid="+data.id); succes = true; break;
+          default             :console.log("Unknown Login Type."); succes = false;
         }}
-      else{console.log("ID not found.");}
-      console.log("ABC")
+    else{console.log("ID not found."); alert("ID does not exist."); succes = false;}
+            
+    console.log("login Query = "+localStorage.getItem("loginQuery"))
+    console.log("check succesful = "+succes)
+    let nextPage = loginType+"/"+loginType+"_landingspagina"+".html?"+localStorage.getItem("loginQuery");
+    console.log(nextPage);
+    
+    if (succes){window.location.href = nextPage;}
 }
