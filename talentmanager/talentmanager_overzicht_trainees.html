@@ -20,10 +20,79 @@
     
     <title>Overzicht trainees</title>
   </head>
-
   <body>
     <!-- dit is de navbalk zelf. -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbalk"></nav>
+    <h1 class="text-center mt-5">Mijn Trainees</h1>
+  <div id="trainee-table" class="container mt-5">
+    <div class="row">
+      <!-- Trainees will be loaded here -->
+    </div>
+  </div>
+ 
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    function getStatusColor(status) {
+      switch(status) {
+        case 'Beschikbaar': return 'green';
+        case 'Gesprek': return 'orange';
+        case 'Geplaatst': return 'red';
+        default: return 'grey'
+      }
+    }
+    
 
-    <h1>Dit is de pagina overzicht mijn trainees</h1>
+    function loadData() {
+  fetch(ipbackend +"/trainee/all")
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Error fetching trainees: ${response.statusText}`);
+      }
+      return response.json();
+    })
+    .then(trainees => {
+      let traineesContainer = document.getElementById("trainee-table").getElementsByClassName("row")[0];
+      traineesContainer.innerHTML = ""; // Clear existing content
+      
+      trainees.forEach(trainee => {
+        let traineeDiv = document.createElement("div");
+        traineeDiv.className = "col-sm-12 col-md-6 col-lg-3 mb-3";
+
+        // For demonstration, using a static "/foto/1" endpoint.
+        // You might need to adjust it to fetch specific images for each trainee.
+        fetch( ipbackend +"/foto/1")
+          .then(r => r.blob())
+          .then(blob => {
+            const imageUrl = URL.createObjectURL(blob);
+
+            traineeDiv.innerHTML = `
+              <img src="${imageUrl}" class="card-img-top" alt="Trainee Photo">
+              <div class="card-body">
+                <h5 class="card-title">${trainee.voornaam} ${trainee.achternaam}</h5>
+                <p class="card-text">Leeftijd: ${trainee.leeftijd}</p>
+                <p class="card-text">Uitstroomrichting: ${trainee.specialisatie}</p>
+                <p class="card-text">Woonplaats: ${trainee.woonplaats}</p>
+                <p class="card-text">Status: <span style="color: ${getStatusColor(trainee.status)}">${trainee.status}</span></p>
+              </div>
+            `;
+            traineesContainer.appendChild(traineeDiv);
+          })
+          .catch(error => {
+            console.error("Error fetching or processing trainee image:", error);
+            // Fallback or error handling for the image can go here
+          });
+      });
+
+      if (trainees.length === 0) {
+        traineesContainer.innerText = "Geen trainees gevonden";
+      }
+    })
+    .catch(error => {
+      console.error("Error fetching or processing trainees:", error);
+      alert("Er is een fout opgetreden bij het laden van de trainees. Probeer het opnieuw.");
+    });
+}
+loadData();
+
+  </script>
   </body>
