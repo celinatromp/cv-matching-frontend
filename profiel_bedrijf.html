@@ -17,38 +17,77 @@
         TekenNavBalk();
       };
     </script>
-    
+     <style>
+        @font-face {
+          font-family: "stratossemibold";
+          src: url("http://127.0.0.1:5500/css/fonts/stratos-semibold-trial-bf63c6049f9cf25-webfont.woff2")
+              format("woff2"),
+            url("http://127.0.0.1:5500/css/fonts/stratos-semibold-trial-bf63c6049f9cf25-webfont.woff")
+              format("woff");
+          font-weight: normal;
+          font-style: normal;
+        }
+  
+        @font-face {
+          font-family: "stratosregular";
+          src: url("http://127.0.0.1:5500/css/fonts/stratos-regular-trial-bf63c604a073a47-webfont.woff2")
+              format("woff2"),
+            url("http://127.0.0.1:5500/css/fonts/stratos-regular-trial-bf63c604a073a47-webfont.woff")
+              format("woff");
+          font-weight: normal;
+          font-style: normal;
+        }
+  
+        h1 {
+          font-family: "Bebas Neue", sans-serif;
+          font-size: 72px;
+        }
+  
+        h2 {
+          font-family: "stratossemibold", sans-serif;
+          font-size: 35px;
+          font-weight: bold;
+          font-style: bold;
+          color: #11310E;
+        }
+  
+        h3 {
+          font-family: "stratosregular";
+          font-size: 16px;
+          font-weight: normal;
+          font-style: normal;
+        }
+  
+        p {
+          font-family: "DM Sans", sans-serif;
+          font-size: 16px;
+        }
+  
+        .card-body {
+          color: #fbf3eb;
+        }
+  
+        .bttn {
+          display: flex;
+          justify-content: center;
+          border-radius: 0 !important;
+          color: #fff;
+          background-color: #000;
+        }
+  
+        .card {
+          margin-bottom: 20px;
+          border-radius: 0 !important;
+          background-color: #fbf3eb;
+          color: #11310E;
+        }
+      </style>
     <title>Profiel Bedrijf</title>
   </head>
 
   <body>
     <!-- dit is de navbalk zelf. -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbalk"></nav>
-    <div class="container text-center">
-  
-        <div class="col-sm-2">
-            <a href="index.html"><img src="images/NextMatch_TextLogo.png" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
-        </div>
- 
-        <div class="col-sm-3">
-        </div>
-        
-        <div class="col-sm-2">
-            <a href="url" class="btn">Actueel</a>
-        </div>
- 
-        <div class="col-sm-2">
-            <a href="url" class="btn">Vacatures</a>
-        </div>
- 
-        <div class="col-sm-2">
-            <a href="login.html" class="btn">Chats</a>
-        </div>
- 
-        <div class="col-sm-1">
-            <img src="images/NextMatch_TextLogo_round.png" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
-        </div>
-   </nav>
 
         <div class="row">
 
@@ -63,32 +102,30 @@
            </div>
 
            <div class="col-sm-4">
-               <button type="button">Wijzigen</button>
+               <button type="button" class="bttn"><h3>Wijzigen</h3></button>
            </div>
        </div>
 <br />
        <div class="row">
-           
-           <div class="card">
-               <div class="col-sm-3">
-                   abc
-               </div>
-               <br/>
-                   <div class="col-sm-6" style="text-align:left">
-                           <h2>Naam Bedrijf</h2>
-                           <p>Naam van het bedrijf</p>
-                           <h2>Locatie</h3>
-                           <p>Locatie van het bedrijf</p>
-                           <h2>Branche</h2>
-                           <p>Branche van het bedrijf</p>
-                    </div>
-           </div>
-<br />
+        <div class="about1 col-4">
+            <img class="about1" src="https://shop.raceya.fit/wp-content/uploads/2020/11/logo-placeholder.jpg">
+        </div>
+
+        <div class="about1 col-8">
+            <h2>NAAM BEDRIJF</h2>
+            <p>Naam van het bedrijf</p>
+            <h2>LOCATIE</h2>
+            <p>Locatie van het bedrijf</p>
+            <h2>BRANCHE</h2>
+            <p>Branche van het bedrijf</p>
+        </div>
+        <br />
+   
        <div class="row">
            <div class="col-sm-12">
                <div class="card">
                    <div class="card-body"></div>
-                       <h2 class="Header">Korte Omschrijving</h2>
+                       <h2 class="Header">KORTE OMSCHRIJVING</h2>
                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
                    </div>
                </div>
@@ -98,7 +135,7 @@
            <div class="col-sm-12">
                <div class="card">
                    <div class="card-body"></div>
-                       <h2 class="Header">Lange Omschrijving</h2>
+                       <h2 class="Header">LANGE OMSCHRIJVING</h2>
                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
                    </div>
                </div>
@@ -191,7 +228,7 @@
                     <div class="col-sm-6" style="text-align:left">
                             <h2>Naam Bedrijf</h2>
                             <p>Naam van het bedrijf</p>
-                            <h2>Locatie</h3>
+                            <h2>Locatie</h2>
                             <p>Locatie van het bedrijf</p>
                             <h2>Branche</h2>
                             <p>Branche van het bedrijf</p>
