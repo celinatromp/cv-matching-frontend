@@ -76,6 +76,7 @@
         let cardTitle = document.createElement("h5");
         cardTitle.classList.add("card-title");
         cardTitle.innerHTML = vacature.titel || "N/A";
+        cardTitle.style.marginBottom = "40px";
         cardBodyDiv.appendChild(cardTitle);
 
         let cardBedrijf = document.createElement("h6");
@@ -102,14 +103,6 @@
         cardUitstroomRichting.innerHTML = vacature.uitStroomRichting || "N/A";
         cardUitstroomRichting.style.marginBottom = "0rem";
         cardBodyDiv.appendChild(cardUitstroomRichting);
-
-        let cardBranche = document.createElement("p");
-        cardBranche.classList.add("card-text-branche");
-        cardBranche.innerHTML = vacature.bedrijf
-          ? vacature.bedrijf.branche || "N/A"
-          : "N/A";
-        cardBranche.style.marginBottom = "0rem";
-        cardBodyDiv.appendChild(cardBranche);
 
         let button = document.createElement("button");
         button.classList.add("btn", "btn-primary");
