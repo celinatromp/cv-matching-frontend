@@ -1,6 +1,8 @@
 let ipbackend = "http://20.31.207.39:8080"
 // let ipbackend = "http://localhost:8080"
 let pythonBackend = "http://52.143.9.145:5000"
+// let pythonai = "http://localhost:5000"
+let pythonai = "http://20.73.213.206:5000"
 
 function TekenNavBalk(modifier){
 
@@ -151,7 +153,7 @@ function TekenNavBalk(modifier){
             navbarHTML = `<div class="container text-center">
 
             <div class="col-sm-2">
-                <a href="index.html"><img src="images/NextMatch_TextLogo.png" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+                <a href="index.html"><img src="../images/NextMatch_TextLogo.png" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
             </div>
         
             <div class="col-sm-3">
@@ -170,6 +172,10 @@ function TekenNavBalk(modifier){
             </div>
         
             <div class="col-sm-1">
+<<<<<<< HEAD
+=======
+                <img src="../images/NextMatch_TextLogo_round.png" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
+>>>>>>> main
             </div>
         
         </div>
