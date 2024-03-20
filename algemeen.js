@@ -83,27 +83,27 @@ function TekenNavBalk(modifier){
         navbarHTML = `<div class="container text-center">
 
             <div class="col-sm-2">
-                <a href="talentmanager_landingspagina.html?`+localStorage.getItem("loginQuery")+`"><img src="../images/NEXTMATCHLOGO.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+                <a href="../talentmanager/talentmanager_landingspagina.html?`+localStorage.getItem("loginQuery")+`"><img src="../images/NEXTMATCHLOGO.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
             </div>
 
             <div class="col-sm-1">
             </div>
             
             <div class="col-sm-1">
-                <a href="talentmanager_overzicht_trainees.html?`+localStorage.getItem("loginQuery")+`" class="btn">Mijn Trainees</a>
+                <a href="../talentmanager/talentmanager_overzicht_trainees.html?`+localStorage.getItem("loginQuery")+`" class="btn">Mijn Trainees</a>
             </div>
             
 
             <div class="col-sm-1">
-                <a href="talentmanager_overzicht_bedrijven.html?`+localStorage.getItem("loginQuery")+`" class="btn">Mijn Bedrijven</a>
+                <a href="../talentmanager/talentmanager_overzicht_bedrijven.html?`+localStorage.getItem("loginQuery")+`" class="btn">Mijn Bedrijven</a>
             </div>
 
             <div class="col-sm-1">
-                <a href="talentmanager_chats.html?`+localStorage.getItem("loginQuery")+`" class="btn">Chats</a>
+                <a href="../talentmanager/talentmanager_chats.html?`+localStorage.getItem("loginQuery")+`" class="btn">Chats</a>
             </div>
 
             <div class="col-sm-1">
-            <a href="talentmanager_python.html?`+localStorage.getItem("loginQuery")+`" class="btn">Python</a>
+            <a href="../talentmanager/talentmanager_python.html?`+localStorage.getItem("loginQuery")+`" class="btn">Python</a>
             </div>
 
             <div class="col-sm-1">
