@@ -1,98 +1,208 @@
 <!doctype html>
 <html lang="nl">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- laad alle relevante links: -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <!-- <link rel="stylesheet" href="../trainee/styletrainee.css">*/-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="../algemeen.js"></script>
+
+  <!-- runs de navbalk script op pagina load -->
+  <script>
+    window.onload = function () {
+      // gebruik als argument de type navbalk die je wilt, "trainee","talentmanager" of "bedrijf"
+      TekenNavBalk("talentmanager");
+    };
+  </script>
+  <style>
+    /* style for talentmanager_overzicht_trainees.html */
+    .status-dot {
+      height: 10px;
+      width: 10px;
+      background-color: #bbb;
+      /* Default color, will be overridden by inline styles */
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 5px;
+    }
+    .card{
     
-    <!-- laad alle relevante links: -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="../algemeen.js"></script>
+    /* Adjust based on your needs */
+    background-color: #FBF3EB;
+    /* Light grey background for visibility */
     
-    <!-- runs de navbalk script op pagina load -->
-    <script>
-       window.onload=function(){
-        // gebruik als argument de type navbalk die je wilt, "trainee","talentmanager" of "bedrijf"
-        TekenNavBalk("talentmanager");
-      };
-    </script>
+    }
+    .btn-primary {
+
+    border-color: #000000;
+    color: white !important;
+    /* Text color */
+    position: relative;
+    /* Position relative to allow absolute positioned pseudo elements */
+    overflow: hidden;
+    /* Ensures pseudo elements don't overflow the button boundaries */
+    transition: color 0.4s ease;
+    /* Transition for text color */
+    border-radius: 0%;
+
+    /* Creating a gradient background from orange to black, initially showing only orange */
+    background-image: linear-gradient(to bottom, #000000 50%, rgb(255, 255, 255) 50%);
+    background-size: 100% 200%;
+    background-position: top;
+    transition: background-position 0.4s, color 0.4s;
+    /* Transition for the background and text color */
+  }
+
+  .btn-primary:hover {
+    color: rgb(0, 0, 0) !important;
+    /* Change text color on hover */
+    background-position: bottom;
+    /* Shift the background to show the black part */
+  }
+  .footer {
+    background-color: #FBF3EB;
+    padding: 20px 0;
+  }
+
+  .footer-logo {
+    max-width: 300px;
+    /* Adjust based on your logo size */
+  }
+
+  .list-unstyled {
+    font-family: 'bebas neue';
+    font-size: 40px;
+    text-align: center;
+    margin-top: 20px;
     
-    <title>Overzicht trainees</title>
-  </head>
-  <body>
-    <!-- dit is de navbalk zelf. -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbalk"></nav>
-    <h1 class="text-center mt-5">Mijn Trainees</h1>
+   
+
+  }
+
+  .list-unstyled a {
+    color: #000000;
+    text-decoration: none;
+  }
+
+  .mt-auto a {
+    color: #000000;
+  }
+  
+
+
+  
+  </style>
+
+  <title>Overzicht trainees</title>
+</head>
+
+<body>
+  <!-- dit is de navbalk zelf. -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbalk"></nav>
+  <h1 class="text-center mt-5">Mijn Trainees</h1>
   <div id="trainee-table" class="container mt-5">
     <div class="row">
       <!-- Trainees will be loaded here -->
     </div>
   </div>
- 
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <footer class="footer mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 d-flex align-items-end flex-column">
+          <img src="../images/NEXTMATCHLOGO.svg" alt="Logo" class="footer-logo">
+          <div class="mt-auto">
+            <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms & Conditions</a>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <ul class="list-unstyled footer-links">
+            <li><a href="#link1">Actueel</a></li>
+            <li><a href="#link2">Young Next</a></li>
+            <li><a href="#link3">FAQ</a></li>
+            <li><a href="#link4">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
   <script>
     function getStatusColor(status) {
-      switch(status) {
+      switch (status) {
         case 'Beschikbaar': return 'green';
         case 'Gesprek': return 'orange';
         case 'Geplaatst': return 'red';
         default: return 'grey'
       }
     }
-    
+
 
     function loadData() {
-  fetch(ipbackend +"/trainee/all")
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`Error fetching trainees: ${response.statusText}`);
-      }
-      return response.json();
-    })
-    .then(trainees => {
-      let traineesContainer = document.getElementById("trainee-table").getElementsByClassName("row")[0];
-      traineesContainer.innerHTML = ""; // Clear existing content
-      
-      trainees.forEach(trainee => {
-        let traineeDiv = document.createElement("div");
-        traineeDiv.className = "col-sm-12 col-md-6 col-lg-3 mb-3";
+      fetch(ipbackend + "/trainee/all")
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Error fetching trainees: ${response.statusText}`);
+          }
+          return response.json();
+        })
+        .then(trainees => {
+          let traineesContainer = document.getElementById("trainee-table").getElementsByClassName("row")[0];
+          traineesContainer.innerHTML = ""; // Clear existing content
 
-        // For demonstration, using a static "/foto/1" endpoint.
-        // You might need to adjust it to fetch specific images for each trainee.
-        fetch( ipbackend +"/foto/1")
-          .then(r => r.blob())
-          .then(blob => {
-            const imageUrl = URL.createObjectURL(blob);
+          trainees.forEach(trainee => {
+            let traineeDiv = document.createElement("div");
+            traineeDiv.className = "col-sm-12 col-md-6 col-lg-3 mb-3";
 
-            traineeDiv.innerHTML = `
-              <img src="${imageUrl}" class="card-img-top" alt="Trainee Photo">
-              <div class="card-body">
-                <h5 class="card-title">${trainee.voornaam} ${trainee.achternaam}</h5>
-                <p class="card-text">Leeftijd: ${trainee.leeftijd}</p>
-                <p class="card-text">Uitstroomrichting: ${trainee.specialisatie}</p>
-                <p class="card-text">Woonplaats: ${trainee.woonplaats}</p>
-                <p class="card-text">Status: <span style="color: ${getStatusColor(trainee.status)}">${trainee.status}</span></p>
-              </div>
-            `;
-            traineesContainer.appendChild(traineeDiv);
-          })
-          .catch(error => {
-            console.error("Error fetching or processing trainee image:", error);
-            // Fallback or error handling for the image can go here
+            // For demonstration, using a static "/foto/1" endpoint.
+            // You might need to adjust it to fetch specific images for each trainee.
+            fetch(ipbackend + "/foto/1")
+              .then(r => r.blob())
+              .then(blob => {
+                const imageUrl = URL.createObjectURL(blob);
+
+                traineeDiv.innerHTML = `
+                <div class="card">
+                  <img src="${imageUrl}" class="card-img-top" alt="Trainee Photo">
+                  <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-user"></i> ${trainee.voornaam} ${trainee.achternaam}</h5>
+                    <p class="card-text"><i class="fas fa-birthday-cake"></i> Leeftijd: ${trainee.leeftijd}</p>
+                    <p class="card-text"><i class="fas fa-graduation-cap"></i> Uitstroomrichting: ${trainee.specialisatie}</p>
+                    <p class="card-text"><i class="fas fa-home"></i> Woonplaats: ${trainee.woonplaats}</p>
+                    <p class="card-text">Status: <span class="status-dot" style="background-color: ${getStatusColor(trainee.status)};"></span> <span style="color: ${getStatusColor(trainee.status)}">${trainee.status}</span></p>
+                    <button class="btn btn-primary card-button">Bekijk profiel</button>
+                  </div>
+                </div>
+                  `;
+                traineesContainer.appendChild(traineeDiv);
+              })
+              .catch(error => {
+                console.error("Error fetching or processing trainee image:", error);
+                // Fallback or error handling for the image can go here
+              });
           });
-      });
 
-      if (trainees.length === 0) {
-        traineesContainer.innerText = "Geen trainees gevonden";
-      }
-    })
-    .catch(error => {
-      console.error("Error fetching or processing trainees:", error);
-      alert("Er is een fout opgetreden bij het laden van de trainees. Probeer het opnieuw.");
-    });
-}
-loadData();
+          if (trainees.length === 0) {
+            traineesContainer.innerText = "Geen trainees gevonden";
+          }
+        })
+        .catch(error => {
+          console.error("Error fetching or processing trainees:", error);
+          alert("Er is een fout opgetreden bij het laden van de trainees. Probeer het opnieuw.");
+        });
+    }
+    loadData();
 
   </script>
-  </body>
+</body>
