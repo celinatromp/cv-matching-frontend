@@ -279,7 +279,9 @@ function loadProfileData(){
                 if(location.pathname == "/trainee/trainee_landingspagina.html"){
                     abc()
                 }
-                
+                if(location.pathname == "/bedrijf/bedrijf_overzicht_vacatures.html"){
+                    fetchVacaturesForCompany();
+                }
             }
         )
     }else{ console.log("Geen Actie.")}}
