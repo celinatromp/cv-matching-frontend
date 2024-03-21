@@ -33,7 +33,6 @@
       };
     </script>
   </head>
-
   <body>
     <!-- Navigatiebalk -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbalk"></nav>
@@ -268,6 +267,8 @@
 
         // Use URLSearchParams with window.location.search to extract "trid"
         const urlParams = new URLSearchParams(window.location.search);
+
+       
         const traineeId = urlParams.get("trid"); // This will be '3' for your example URL
 
         fetch(ipbackend + `/trainee/${traineeId}`)
@@ -308,3 +309,4 @@
     </script>
   </body>
 </html>
+
