@@ -39,7 +39,7 @@ function TekenNavBalk(modifier){
 
         
             <div class="col-sm-1">
-                <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
+                <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;" onclick="uploadImage()" id="fotoId">
             </div>
         
         </div>
@@ -211,7 +211,7 @@ function inlogCheck(data,loginType){
     console.log("check succesful = "+succes)
     let nextPage = loginType+"/"+loginType+"_landingspagina"+".html?"+localStorage.getItem("loginQuery");
     console.log(nextPage);
-    alert("Ho wacht eens even!");
+  
     if (succes){window.location.href = nextPage;}
 }
 
@@ -275,6 +275,11 @@ function loadProfileData(){
                 slaJSONstringOp(stringyfiedJSON)
                 profiel = laatObject();
                 console.log(profiel.voornaam);
+                console.log(location)
+                if(location.pathname == "/trainee/trainee_landingspagina.html"){
+                    abc()
+                }
+                
             }
         )
     }else{ console.log("Geen Actie.")}}
@@ -287,6 +292,9 @@ function laatObject(){
     let hetObject = JSON.parse(a);
     // console.log(hetObject)
     return hetObject
+}
+function uploadImage(){
+    window.location = "/foto.html"
 }
 
 // JSON.stringify()
