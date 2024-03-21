@@ -1,6 +1,5 @@
 body {
-    background-color: #ffffff;
-  }
+    background-color: #ffffff;  }
  
 
   #navbalk {
@@ -194,6 +193,7 @@ padding: 10px 0; /* Optional: Adds some padding above and below the button */
     font-size: 40px;
     text-align: center;
     margin-top: 20px;
+   
 
   }
 
@@ -204,3 +204,4 @@ padding: 10px 0; /* Optional: Adds some padding above and below the button */
   .mt-auto a {
     color: #000000;
   }
+  

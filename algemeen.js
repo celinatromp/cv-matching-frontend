@@ -1,9 +1,10 @@
-let ipbackend = "http://20.31.207.39:8080"
-let localhost = "http://localhost:8080"
-// let ipbackend = "http://localhost:8080"   
-let pythonBackend = "http://52.143.9.145:5000"
-// let pythonai = "http://localhost:5000"
-let pythonai = "http://20.73.213.206:5000"
+let ipbackend = "http://20.31.207.39:8080";
+let localhost = "http://localhost:8080";
+// let ipbackend = "http://localhost:8080"   ;
+let pythonBackend = "http://52.143.9.145:5000";
+// let pythonai = "http://localhost:5000";
+let pythonai = "http://20.73.213.206:5000";
+let profiel;
 
 function TekenNavBalk(modifier){
 
@@ -18,7 +19,7 @@ function TekenNavBalk(modifier){
             navbarHTML = `<div class="container text-center">
 
             <div class="col-sm-2">
-                <a href="landingspagina_trainee.html"?`+localStorage.getItem("loginQuery")+`><img src="../images/NEXTMATCH_text.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+                <a href="trainee_landingspagina.html"?`+localStorage.getItem("loginQuery")+`><img src="../images/NEXTMATCH_text.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
             </div>
         
             <div class="col-sm-3">
@@ -272,6 +273,8 @@ function loadProfileData(){
                 // console.log(jsonObject);
                 // console.log(stringyfiedJSON)
                 slaJSONstringOp(stringyfiedJSON)
+                profiel = laatObject();
+                console.log(profiel.voornaam);
             }
         )
     }else{ console.log("Geen Actie.")}}
