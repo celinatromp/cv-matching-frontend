@@ -212,7 +212,9 @@
           alert("Er is een fout opgetreden bij het laden van de bedrijven. Probeer het opnieuw.");
         });
 
-      const traineeId = '4'; // Use the actual ID of the trainee you're interested in
+      // Use URLSearchParams with window.location.search to extract "trid"
+        const urlParams = new URLSearchParams(window.location.search);
+        const traineeId = urlParams.get('trid'); // This will be '3' for your example URL
 
       fetch(ipbackend+ `/trainee/${traineeId}`)
         .then(r => {
