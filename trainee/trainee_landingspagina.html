@@ -17,6 +17,7 @@
   <script>
     window.onload = function () {
       TekenNavBalk("trainee");
+      
     };
   </script>
 
@@ -215,8 +216,8 @@
       // Use URLSearchParams with window.location.search to extract "trid"
         const urlParams = new URLSearchParams(window.location.search);
         const traineeId = urlParams.get('trid'); // This will be '3' for your example URL
-
-      fetch(ipbackend+ `/trainee/${traineeId}`)
+        let url = ipbackend+ `/trainee/${traineeId}`
+      fetch(url)
         .then(r => {
           if (!r.ok) {
             throw new Error('Network response was not ok');
@@ -233,8 +234,8 @@
     }
 
     loadData();
+    
   </script>
-
 
 </body>
 
