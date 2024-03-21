@@ -292,6 +292,19 @@
       }
 
       loadData();
+
+      function abc() {
+        console.log(profiel);
+        console.log("let get foto");
+        fetch(ipbackend + "/trainee/" + profiel.id + "/foto")
+          .then((r) => r.blob())
+          .then((d) => {
+            console.log(d);
+            a = URL.createObjectURL(d);
+            console.log(a);
+            document.getElementById("fotoId").src = a;
+          });
+      }
     </script>
   </body>
 </html>
