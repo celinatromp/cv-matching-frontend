@@ -38,7 +38,8 @@ function TekenNavBalk(modifier){
 
         
             <div class="col-sm-1">
-                <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
+            
+                <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;" onclick="uploadImage()"> 
             </div>
         
         </div>
@@ -71,6 +72,7 @@ function TekenNavBalk(modifier){
 
         
             <div class="col-sm-1">
+           
                 <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
             </div>
         
@@ -282,6 +284,10 @@ function laatObject(){
     let hetObject = JSON.parse(a);
     // console.log(hetObject)
     return hetObject
+}
+
+function uploadImage(){
+    window.location = "/foto.html"
 }
 
 // JSON.stringify()
