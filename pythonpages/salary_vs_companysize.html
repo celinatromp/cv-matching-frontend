@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
     <script src="../algemeen.js"></script>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style2.css">
 
     <!-- runs de navbalk script op pagina load -->
     <script>
@@ -26,11 +26,19 @@
     <!-- dit is de navbalk zelf. -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbalk"></nav>
 
-    <div class="row col-4">
-        <button onclick="loadData('2020')">Update</button>
-    </div>
-    <div id="verwerkt" class="row text-center col-10">
-       <H1>Page is loading</H1>
+    <div class="container justify-content-center">
+        <div id="verwerkt" class="row text-center">
+            <H2>Page loading</H2>
+        </div>
+
+        <div class="row">
+            <div class="col-4 justify-content-right">
+            <button onclick="loadData('2020')">Update</button>
+        </div></div>
+
+        <div class="row">
+            <img src="../images/PythonAi3.webp" style="max-width: 20%;">
+        </div>
     </div>
     
     <script>
