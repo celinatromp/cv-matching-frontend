@@ -58,6 +58,9 @@
         card.style.width = "18rem";
         card.style.marginBottom = "20px";
         card.style.marginLeft = "20px";
+        card.style.marginTop = "20px";
+        card.style.marginBottom = "20px";
+        card.style.backgroundColor = "#fbf3eb";
 
         let cardBodyDiv = document.createElement("div");
         cardBodyDiv.classList.add("card-body");
@@ -122,10 +125,12 @@
 
         let button = document.createElement("button");
         button.classList.add("btn", "btn-primary");
-        button.textContent = "Button";
+        button.textContent = "REGULAR BUTTON";
         button.style.marginBottom = "10px";
         button.style.borderColor = "black";
         button.style.backgroundColor = "black";
+        button.style.border = "1px solid black";
+        button.style.borderRadius = "0";
         card.appendChild(button);
 
         document.getElementById("vacatureContainer").appendChild(card);
