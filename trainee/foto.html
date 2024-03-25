@@ -18,16 +18,27 @@
         padding: 20px;
         border-radius: 10px;
       }
+
+      #z {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 200px;
+        height: auto;
+        margin-top: 1rem;
+      }
     </style>
     <script src="/algemeen.js"></script>
     <script>
       window.onload = function () {
         TekenNavBalk();
+        loadProfileData();
       };
     </script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbalk"></nav>
+    <img id="z" src="" />
     <div class="middle-container">
       <form id="myform">
         <input type="file" />
@@ -43,35 +54,40 @@
           doen();
         });
       function doen() {
-        console.log("hij doet het");
         var input = document.querySelector('input[type="file"]');
 
-        var data = new FormData();
-        data.append("data", input.files[0]);
-        data.append("user", "hubot");
+        if (input.files.length > 0) {
+          var data = new FormData();
+          data.append("data", input.files[0]);
+          data.append("user", "hubot");
 
-        fetch(ipbackend + "/trainee/9/create/foto", {
-          method: "POST",
-          body: data,
-        })
-          .then((response) => {
-            if (response.ok) {
-              window.location.href = "/trainee/trainee_landingspagina.html";
-            } else {
-              console.error("Error submitting form");
-            }
+          console.log("FormData:", data);
+
+          fetch(ipbackend + "/trainee/" + profiel.id + "/create/foto", {
+            method: "POST",
+            body: data,
           })
-          .catch((error) => console.error("Error:", error));
+            .then((response) => {
+              if (response.ok) {
+                haalfotoop();
+              } else {
+                console.error("Error:", response.statusText);
+              }
+            })
+            .catch((error) => console.error("Error:", error));
+        } else {
+          console.error("No file selected");
+        }
       }
 
       function haalfotoop() {
-        fetch(ipbackend + "/trainee/6/foto")
+        fetch(ipbackend + "/trainee/" + profiel.id + "/foto")
           .then((r) => r.blob())
           .then((d) => {
             console.log(d);
-            a = URL.createObjectURL(d);
-            console.log(a);
-            document.getElementById("z").src = a;
+            var imageUrl = URL.createObjectURL(d);
+            console.log(imageUrl);
+            document.getElementById("z").src = imageUrl;
           });
       }
     </script>

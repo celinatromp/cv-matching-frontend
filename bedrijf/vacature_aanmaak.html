@@ -4,28 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vacature Aanmaak</title>
-
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       rel="stylesheet"
     />
     <script src="../algemeen.js"></script>
-    <script>
-      window.onload = function () {
-        TekenNavBalk("bedrijf");
-        loadProfileData();
-      };
-    </script>
-
     <style>
       body {
         background-color: white;
       }
-
       .navbar {
         background-color: #f8f9fa;
       }
-
       .form-container {
         max-width: 500px;
         margin: 0 auto;
@@ -35,23 +25,19 @@
         background-color: white;
         color: black;
       }
-
       .btn-primary {
         background-color: black;
         border-color: black;
       }
-
       .btn-primary:hover {
         background-color: #333;
         border-color: #333;
       }
-
       .form-control {
         height: 35px;
         width: 100%;
         margin-bottom: 10px;
       }
-
       label {
         margin-bottom: 5px;
       }
@@ -59,9 +45,8 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbalk"></nav>
-
     <div class="form-container mt-5">
-      <form id="createVacatureForm" method="post">
+      <form id="createVacatureForm">
         <div class="form-group">
           <label for="titel">Titel:</label>
           <input
@@ -119,14 +104,14 @@
             name="uitStroomRichting"
             required
           >
-            <option value="NietGekozen">Niet Gekozen</option>
             <option value="DevOps">DevOps</option>
-            <option value="Techniek">Techniek</option>
-            <option value="Low Code">Low Code</option>
-            <option value="Informatie Analist">Informatie Analist</option>
-            <option value="C Sharp">C Sharp</option>
-            <option value="Software tester">Software tester</option>
             <option value="Java">Java</option>
+            <option value="BigData">BigData</option>
+            <option value="LowCode">LowCode</option>
+            <option value="InformatieAnalyst">InformatieAnalyst</option>
+            <option value="CSharp">CSharp</option>
+            <option value="SoftwareTester">SoftwareTester</option>
+            <option value="NietGekozen">NietGekozen</option>
           </select>
         </div>
         <div class="form-group">
@@ -142,37 +127,60 @@
         <button type="submit" class="btn btn-primary">Create Vacature</button>
       </form>
     </div>
-
     <script>
-      document
-        .getElementById("createVacatureForm")
-        .addEventListener("submit", function (event) {
-          event.preventDefault();
-
-          const formData = new FormData(this);
-          const formDataObject = {};
-          formData.forEach(function (value, key) {
-            formDataObject[key] = value;
+      window.onload = function () {
+        TekenNavBalk("bedrijf");
+        loadProfileData();
+      };
+      function bindFormSubmission() {
+        document
+          .getElementById("createVacatureForm")
+          .addEventListener("submit", function (event) {
+            event.preventDefault();
+            console.log("i dont get here? " + profiel.id);
+            if (!profiel || !profiel.id) {
+              console.error("Profiel ID is not available.");
+              return;
+            }
+            createVacatureForBedrijf(profiel.id);
           });
+      }
 
-          fetch(ipbackend + "/bedrijf/1/createVacature", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formDataObject),
+      function createVacatureForBedrijf(bedrijfId) {
+        const formDataObject = {
+          titel: document.getElementById("titel").value,
+          omschrijving: document.getElementById("omschrijving").value,
+          contractLengte: parseInt(
+            document.getElementById("contractLengte").value,
+            10
+          ),
+          locatie: document.getElementById("locatie").value,
+          typeWerk: document.getElementById("typeWerk").value,
+          uitStroomRichting: document.getElementById("uitStroomRichting").value,
+          aantalUren: parseInt(document.getElementById("aantalUren").value, 10),
+        };
+
+        fetch(ipbackend + "/bedrijf/" + bedrijfId + "/createVacature", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formDataObject),
+        })
+          .then((response) =>
+            response
+              .json()
+              .then((data) => ({ status: response.status, body: data }))
+          )
+          .then(({ status, body }) => {
+            if (status === 200) {
+              console.log("Vacature successfully created");
+            } else {
+              console.error("Failed to create vacature:", body);
+            }
           })
-            .then((response) => {
-              if (response.ok) {
-                window.location.href = "bedrijf_overzicht_vacatures";
-              } else {
-                console.error("Failed to create vacature");
-              }
-            })
-            .catch((error) => {
-              console.error("Error:", error);
-            });
-        });
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
     </script>
   </body>
 </html>
