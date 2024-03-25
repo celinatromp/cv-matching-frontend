@@ -46,7 +46,7 @@
           <div class="title-and-button-container">
             <h4>Vul je profiel aan</h4>
             <button class="btn btn-primary">
-              <a href="http://108.141.26.181/trainee/trainee_profiel_editor.html">Vul je profiel in</a>
+              <a onclick="">Vul je profiel in</a>
             </button>
           </div>
           <div id="progress-bar-background">
@@ -111,6 +111,14 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+      function navigateTo(url) {
+    const trid = localStorage.getItem('trid');
+    if (trid) {
+        window.location.href = `${url}?trid=${trid}`;
+    } else {
+        window.location.href = url;
+    }
+}  
       function displayProgressBar() {
         // Retrieve the filled percentage from localStorage
         const filledPercentage =
