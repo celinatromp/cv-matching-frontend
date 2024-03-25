@@ -21,6 +21,7 @@
     window.onload = function () {
       // gebruik als argument de type navbalk die je wilt, "trainee","talentmanager" of "bedrijf"
       TekenNavBalk("talentmanager");
+
     };
   </script>
   <style>
@@ -177,6 +178,9 @@
                   <img src="${imageUrl}" class="card-img-top" alt="Trainee Photo">
                   <div class="card-body">
                     <h5 class="card-title"><i class="fas fa-user"></i> ${trainee.voornaam} ${trainee.achternaam}</h5>
+                    ${
+                      checkinlowcode(trainee.id)
+                    }
                     <p class="card-text"><i class="fas fa-birthday-cake"></i> Leeftijd: ${trainee.leeftijd}</p>
                     <p class="card-text"><i class="fas fa-graduation-cap"></i> Uitstroomrichting: ${trainee.specialisatie}</p>
                     <p class="card-text"><i class="fas fa-home"></i> Woonplaats: ${trainee.woonplaats}</p>
@@ -202,7 +206,30 @@
           alert("Er is een fout opgetreden bij het laden van de trainees. Probeer het opnieuw.");
         });
     }
-    loadData();
+    fetch("https://personal-pnvw4ymj.outsystemscloud.com/NEXTMatch2/rest/Status/all")
+    .then(r=> r.json())
+    .then(d => def(d))
+    let lowcodetrainees = [];
+    function def(d ){
+     
+      d.forEach((e)=>{
+        console.log("hij doet het")
+        lowcodetrainees.push(e.TraineeId)
+      })
+      console.log(lowcodetrainees)
+      loadData()
+    }  
+    function checkinlowcode (traineeId){
+      console.log("fff", traineeId, lowcodetrainees.includes ( traineeId ))
+      if (lowcodetrainees.includes ( traineeId )){
+      return ` <div>ja</div> `
+      }
+      else{
+        return ` <div>nee</div> `
+      }
+
+    }
+   
 
   </script>
 </body>
