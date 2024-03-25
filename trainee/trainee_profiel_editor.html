@@ -143,7 +143,7 @@
 <body>
     <div class="main-container">
         <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbalk"></nav>
-        
+
         <div class="accordion" id="accordionTrainee">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
@@ -213,7 +213,7 @@
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                     data-bs-parent="#accordionTrainee">
                     <div class="accordion-body">
-                        
+
                         <form id="createTraineeForm">
                             <div class="form-group">
                                 <label for="update-traineeId">ID nummer:</label>
@@ -265,223 +265,227 @@
             </div>
             <!-- Add more sections as needed -->
         </div>
-        
-    <script>
-         function updateProgressBar() {
-            const inputFields = document.querySelectorAll('input[id=invoer-voornaam], input[id=invoer-achternaam],input[id=invoer-leeftijd], input[id=invoer-specialistatie],input[id=invoer-woonplaats], textarea[id=invoer-bio],textarea[id=invoer-bio_long]');
-            let filledFields = 0;
-            inputFields.forEach(input => {
-                if (input.value) filledFields++;
-            });
 
-            const totalFields = inputFields.length;
-            const filledPercentage = Math.round((filledFields / totalFields) * 100);
+        <script>
+            function updateProgressBar() {
+                const inputFields = document.querySelectorAll('input[id=invoer-voornaam], input[id=invoer-achternaam],input[id=invoer-leeftijd], input[id=invoer-specialistatie],input[id=invoer-woonplaats], textarea[id=invoer-bio],textarea[id=invoer-bio_long]');
+                let filledFields = 0;
+                inputFields.forEach(input => {
+                    if (input.value) filledFields++;
+                });
 
-            // Store the filled percentage in localStorage
-            localStorage.setItem('progressFilledPercentage', filledPercentage);
-        }
+                const totalFields = inputFields.length;
+                const filledPercentage = Math.round((filledFields / totalFields) * 100);
 
-        // Call updateProgressBar function every time any input field changes
-        document.querySelectorAll('input[type=text], input[type=number], textarea, select').forEach(input => {
-            input.addEventListener('input', updateProgressBar);
-        });
-
-        // Initial call to set progress on page load (in case some fields are pre-filled)
-        updateProgressBar(); 
-
-        /*function deleteSelectedTrainees() {
-            let selectedTraineeIds = [];
-            document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
-                selectedTraineeIds.push(checkbox.dataset.traineeId);
-            });
-
-            if (selectedTraineeIds.length === 0) {
-                alert("Selecteer ten minste één trainee om te verwijderen.");
-                return;
+                // Store the filled percentage in localStorage
+                localStorage.setItem('progressFilledPercentage', filledPercentage);
             }
 
-            if (!confirm("Weet je zeker dat je de geselecteerde trainees wilt verwijderen?")) {
-                return;
-            }
-            selectedTraineeIds.forEach(traineeId => {
-                fetch(ipbackend + `/trainee/${traineeId}/delete`, {
-                    method: "DELETE",
+            // Call updateProgressBar function every time any input field changes
+            document.querySelectorAll('input[type=text], input[type=number], textarea, select').forEach(input => {
+                input.addEventListener('input', updateProgressBar);
+            });
+
+            // Initial call to set progress on page load (in case some fields are pre-filled)
+            updateProgressBar();
+
+            /*function deleteSelectedTrainees() {
+                let selectedTraineeIds = [];
+                document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+                    selectedTraineeIds.push(checkbox.dataset.traineeId);
+                });
+    
+                if (selectedTraineeIds.length === 0) {
+                    alert("Selecteer ten minste één trainee om te verwijderen.");
+                    return;
+                }
+    
+                if (!confirm("Weet je zeker dat je de geselecteerde trainees wilt verwijderen?")) {
+                    return;
+                }
+                selectedTraineeIds.forEach(traineeId => {
+                    fetch(ipbackend + `/trainee/${traineeId}/delete`, {
+                        method: "DELETE",
+                    })
+                        .then((res) => {
+                            res.json();
+                        })
+                        .then(() => {
+                            alert(`Trainee met ID ${traineeId} is succesvol verwijderd!`);
+                            // Reload data after successful deletion
+                            loadData();
+                        })
+                        .catch((error) => {
+                            console.error(error.message);
+                            alert(`Er is een fout opgetreden bij het verwijderen van trainee ${traineeId}. Probeer het opnieuw.`);
+                        });
+                });
+            }*/
+            function updateTrainee() {
+                let url_string = window.location.href;
+                let url = new URL(url_string);
+                let traineeId = url.searchParams.get("trid");
+                console.log("this the traineeId:" + traineeId);
+
+                
+
+
+                let fieldsToUpdate = {};
+
+                // Check each field for a value and if it's changed, add it to the fieldsToUpdate object
+                document.querySelectorAll('#update-voornaam, #update-achternaam, #update-leeftijd, #update-woonplaats, #update-specialisatie, #update-bio, #update-status')
+                    .forEach(input => {
+                        // Assuming you've attached an onChange handler to mark fields as changed
+                        // For simplicity, we'll just check if the field is not empty
+                        if (input.value) {
+                            // Use the input id to map to the correct field name in your database or backend
+                            let fieldName = input.id.replace('update-', '');
+                            fieldsToUpdate[fieldName] = input.value;
+                        }
+                    });
+
+                if (Object.keys(fieldsToUpdate).length === 0) {
+                    alert("Geen wijzigingen aangebracht.");
+                    return;
+                }
+
+                fetch(ipbackend + `/trainee/${traineeId}/update`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-type": "application/json"
+                    },
+                    body: JSON.stringify(fieldsToUpdate)
                 })
-                    .then((res) => {
+                    .then(res => {
+
                         res.json();
                     })
                     .then(() => {
-                        alert(`Trainee met ID ${traineeId} is succesvol verwijderd!`);
-                        // Reload data after successful deletion
+                        alert("Trainee with ID " + traineeId + " was updated!");
                         loadData();
+                    })
+            };
+            function createTrainee() {
+                //stap 1 - Verzamelen van data uit de invoer velden
+                let newTrainee = {
+                    "voornaam": document.getElementById("invoer-voornaam").value,
+                    "voornaam": document.getElementById("invoer-voornaam").value,
+                    "achternaam": document.getElementById("invoer-achternaam").value,
+                    "leeftijd": document.getElementById("invoer-leeftijd").value,
+                    "woonplaats": document.getElementById("invoer-woonplaats").value,
+                    "specialisatie": document.getElementById("invoer-specialisatie").value,
+                    "bio": document.getElementById("invoer-bio").value,
+                    "bio_long": document.getElementById("invoer-bio_long").value,
+                    "status": document.getElementById("status").value
+                };
+                //stap 2 - Sturen van de nieuwe trainee
+                fetch(ipbackend + "/trainee/create", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(newTrainee),
+                })
+                    .then((res) => res.json())
+                    .then((newTrainee) => {
+                        alert("Trainee aangemaakt met id: " + newTrainee.id);
+                        alert("Sla Uw nieuw ID op! Uw ID is: " + newTrainee.id);
+
+
+                        //stap 3 - Herladen van de table
+                        loadData();
+                    });
+            }
+
+            document.getElementById('myform').addEventListener('submit', function (e) {
+                e.preventDefault(); //to prevent form submission
+                uploadFoto();
+            });
+            function uploadFoto() {
+                console.log("hij doet het")
+                var input = document.querySelector('input[type="file"]')
+
+                var data = new FormData()
+                data.append('data', input.files[0])
+                data.append('user', 'hubot')
+
+                fetch(ipbackend + '/create/foto', {
+                    method: 'POST',
+                    body: data
+                })
+            }
+
+
+
+            /*function loadData() {
+                fetch(ipbackend + "/trainee/all")
+                    .then((res) => {
+                        if (!res.ok) {
+                            throw new Error(`Error fetching trainees: ${res.statusText}`);
+                        }
+                        return res.json();
+                    })
+                    .then((trainees) => {
+                        console.log(trainees);
+                        let traineesHtml = "";
+                        trainees.forEach((trainee) => {
+                            traineesHtml +=
+                                `
+                        <tr>
+                            <td><input type="checkbox" data-trainee-id="${trainee.id}"></td>
+                            <td>${trainee.id}</td>
+                            <td>${trainee.voornaam}</td>
+                            <td>${trainee.achternaam}</td>
+                            <td>${trainee.leeftijd}</td>
+                            <td>${trainee.woonplaats}</td>
+                            <td>${trainee.specialisatie}</td>
+                            <td>${trainee.bio}</td>
+                            <td>${trainee.bio_long}</td>
+                            <td>${trainee.status}</td>
+                        </tr>
+                    `;
+                        });
+    
+                        // Check if there are no trainees
+                        if (trainees.length === 0) {
+                            // If no trainees, display a single row with colspan to span across all columns
+                            traineesHtml = `
+                        <tr>
+                            <td colspan="8">Geen trainees gevonden</td>
+                        </tr>
+                    `;
+                        }
+    
+                        // Prepend the table headers to the traineesHtml
+                        const tableHtml = `
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>ID</th>
+                            <th>Voornaam</th>
+                            <th>Achternaam</th>
+                            <th>Leeftijd</th>
+                            <th>Woonplaats</th>
+                            <th>Specialisatie</th>
+                            <th>korte bio</th>
+                            <th>uitgebreide bio</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${traineesHtml}
+                    </tbody>
+                `;
+    
+                        document.getElementById("trainee-table").innerHTML = tableHtml;
                     })
                     .catch((error) => {
                         console.error(error.message);
-                        alert(`Er is een fout opgetreden bij het verwijderen van trainee ${traineeId}. Probeer het opnieuw.`);
+                        alert("Er is een fout opgetreden bij het laden van de trainees. Probeer het opnieuw.");
                     });
-            });
-        }*/
-        function updateTrainee() {
-            
-            let traineeId = localStorage.getItem("trid");
-            console.log(localStorage.getItem("trid")); // Check if trid is set correctly
-
-            let fieldsToUpdate = {};
-
-            // Check each field for a value and if it's changed, add it to the fieldsToUpdate object
-            document.querySelectorAll('#update-voornaam, #update-achternaam, #update-leeftijd, #update-woonplaats, #update-specialisatie, #update-bio, #update-status')
-                .forEach(input => {
-                    // Assuming you've attached an onChange handler to mark fields as changed
-                    // For simplicity, we'll just check if the field is not empty
-                    if (input.value) {
-                        // Use the input id to map to the correct field name in your database or backend
-                        let fieldName = input.id.replace('update-', '');
-                        fieldsToUpdate[fieldName] = input.value;
-                    }
-                });
-
-            if (Object.keys(fieldsToUpdate).length === 0) {
-                alert("Geen wijzigingen aangebracht.");
-                return;
-            }
-
-            fetch(ipbackend + `/trainee/${traineeId}/update`, {
-                method: "PUT",
-                headers: {
-                    "Content-type": "application/json"
-                },
-                body: JSON.stringify(fieldsToUpdate)
-            })
-                .then(res => {
-
-                    res.json();
-                })
-                .then(() => {
-                    alert("Trainee with ID " + traineeId + " was updated!");
-                    loadData();
-                })
-        };
-        function createTrainee() {
-            //stap 1 - Verzamelen van data uit de invoer velden
-            let newTrainee = {
-                "voornaam": document.getElementById("invoer-voornaam").value,
-                "voornaam": document.getElementById("invoer-voornaam").value,
-                "achternaam": document.getElementById("invoer-achternaam").value,
-                "leeftijd": document.getElementById("invoer-leeftijd").value,
-                "woonplaats": document.getElementById("invoer-woonplaats").value,
-                "specialisatie": document.getElementById("invoer-specialisatie").value,
-                "bio": document.getElementById("invoer-bio").value,
-                "bio_long": document.getElementById("invoer-bio_long").value,
-                "status": document.getElementById("status").value
             };
-            //stap 2 - Sturen van de nieuwe trainee
-            fetch(ipbackend + "/trainee/create", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(newTrainee),
-            })
-                .then((res) => res.json())
-                .then((newTrainee) => {
-                    alert("Trainee aangemaakt met id: " + newTrainee.id);
-                    alert("Sla Uw nieuw ID op! Uw ID is: " + newTrainee.id);
-
-
-                    //stap 3 - Herladen van de table
-                    loadData();
-                });
-        }
-
-        document.getElementById('myform').addEventListener('submit', function (e) {
-            e.preventDefault(); //to prevent form submission
-            uploadFoto();
-        });
-        function uploadFoto() {
-            console.log("hij doet het")
-            var input = document.querySelector('input[type="file"]')
-
-            var data = new FormData()
-            data.append('data', input.files[0])
-            data.append('user', 'hubot')
-
-            fetch(ipbackend + '/create/foto', {
-                method: 'POST',
-                body: data
-            })
-        }
-
-
-
-        /*function loadData() {
-            fetch(ipbackend + "/trainee/all")
-                .then((res) => {
-                    if (!res.ok) {
-                        throw new Error(`Error fetching trainees: ${res.statusText}`);
-                    }
-                    return res.json();
-                })
-                .then((trainees) => {
-                    console.log(trainees);
-                    let traineesHtml = "";
-                    trainees.forEach((trainee) => {
-                        traineesHtml +=
-                            `
-                    <tr>
-                        <td><input type="checkbox" data-trainee-id="${trainee.id}"></td>
-                        <td>${trainee.id}</td>
-                        <td>${trainee.voornaam}</td>
-                        <td>${trainee.achternaam}</td>
-                        <td>${trainee.leeftijd}</td>
-                        <td>${trainee.woonplaats}</td>
-                        <td>${trainee.specialisatie}</td>
-                        <td>${trainee.bio}</td>
-                        <td>${trainee.bio_long}</td>
-                        <td>${trainee.status}</td>
-                    </tr>
-                `;
-                    });
-
-                    // Check if there are no trainees
-                    if (trainees.length === 0) {
-                        // If no trainees, display a single row with colspan to span across all columns
-                        traineesHtml = `
-                    <tr>
-                        <td colspan="8">Geen trainees gevonden</td>
-                    </tr>
-                `;
-                    }
-
-                    // Prepend the table headers to the traineesHtml
-                    const tableHtml = `
-                <thead>
-                    <tr>
-                        <th>Select</th>
-                        <th>ID</th>
-                        <th>Voornaam</th>
-                        <th>Achternaam</th>
-                        <th>Leeftijd</th>
-                        <th>Woonplaats</th>
-                        <th>Specialisatie</th>
-                        <th>korte bio</th>
-                        <th>uitgebreide bio</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${traineesHtml}
-                </tbody>
-            `;
-
-                    document.getElementById("trainee-table").innerHTML = tableHtml;
-                })
-                .catch((error) => {
-                    console.error(error.message);
-                    alert("Er is een fout opgetreden bij het laden van de trainees. Probeer het opnieuw.");
-                });
-        };
-        loadData();*/
-    </script>
+            loadData();*/
+        </script>
 </body>
 
 </html>
