@@ -19,11 +19,73 @@
     </script>
     
     <title>Mijn bedrijven</title>
+
   </head>
 
   <body>
     <!-- dit is de navbalk zelf. -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbalk"></nav>
 
-    <h1>Dit is de pagina overzicht mijn bedrijven</h1>
+    <h1>mijn bedrijven</h1>
+
+    <div id="bedrijven-table" class="container mt-5"> <!-- Aangepaste ID -->
+      <div class="row">
+        <!-- Bedrijven will be loaded here -->
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script>
+    <script>
+      function loadData() {
+        fetch(ipbackend + "/vacature/all")
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`Error fetching vacatures: ${response.statusText}`);
+            }
+            return response.json();
+          })
+
+        fetch(ipbackend + "/bedrijf/all")
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`Error fetching bedrijven: ${response.statusText}`);
+            }
+            return response.json();
+          })
+          .then(bedrijven => {
+            let bedrijfContainer = document.getElementById("bedrijven-table").getElementsByClassName("row")[0];
+            bedrijfContainer.innerHTML = ""; // Clear existing content
+
+            // Sorteren op ID in aflopende volgorde en de eerste drie pakken
+            const alleBedrijven = bedrijven;
+
+            alleBedrijven.forEach(bedrijf => {
+              let bedrijfDiv = document.createElement("div");
+              bedrijfDiv.className = "col-sm-12 col-md-6 col-lg-4 mb-3"; // Aangepast voor 3 kolommen
+              bedrijfDiv.innerHTML = `
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">${bedrijf.naamBedrijf}</h5>
+                    <p class="card-text">Bio: ${bedrijf.bio}</p>
+                    <p class="card-text">Branche: ${bedrijf.branche}</p>
+                    <p class="card-text">Locatie: ${bedrijf.locatie}</p>
+                  </div>
+                </div>
+              `;
+              bedrijfContainer.appendChild(bedrijfDiv);
+            });
+
+            if (bedrijven.length === 0) {
+              bedrijfContainer.innerText = "Geen bedrijven gevonden";
+            }
+          })
+          .catch(error => {
+            console.error("Error fetching or processing bedrijven:", error);
+            alert("Er is een fout opgetreden bij het laden van de bedrijven. Probeer het opnieuw.");
+          });
+      }
+
+      loadData();
+    </script>
   </body>
