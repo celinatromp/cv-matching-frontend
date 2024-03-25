@@ -19,10 +19,6 @@
         loadProfileData();
       };
       
-      function ikbengeklikt(){
-        console.log(profiel.voornaam);
-      }
-      
     </script>
     
     <title>Talentmanager Landingspagina</title>
@@ -32,6 +28,15 @@
     <!-- dit is de navbalk zelf. -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbalk"></nav>
 
-    <h1 id="intro">Dit is de talentmanager landingspagina</h1>
-    <button onclick="ikbengeklikt()">KNOP</button>
+    <h1 id="welcomeMessage">Dit is de talentmanager landingspagina</h1>
+      <script>
+        let a = localStorage.getItem("ProfielString")
+        let profiellokaal = JSON.parse(a);
+        console.log(profiellokaal.voornaam)
+
+        let voornaam = profiellokaal.voornaam;
+        let welcomeMessage = document.getElementById("welcomeMessage");
+
+        welcomeMessage.textContent = `Welcome ${profiellokaal.voornaam}!`;
+    </script>
   </body>

@@ -211,7 +211,6 @@ function inlogCheck(data,loginType){
     console.log("check succesful = "+succes)
     let nextPage = loginType+"/"+loginType+"_landingspagina"+".html?"+localStorage.getItem("loginQuery");
     console.log(nextPage);
-    alert("Ho wacht eens even!");
     if (succes){window.location.href = nextPage;}
 }
 
