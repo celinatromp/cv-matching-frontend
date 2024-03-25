@@ -15,6 +15,7 @@
     <script>
         window.onload = function () {
             TekenNavBalk("trainee");
+            loadProfileData();
         };
     </script>
 
@@ -321,7 +322,9 @@
             });
         }*/
         function updateTrainee() {
-            let traineeId = document.getElementById("update-traineeId").value;
+            
+            let traineeId = localStorage.getItem("trid");
+
             let fieldsToUpdate = {};
 
             // Check each field for a value and if it's changed, add it to the fieldsToUpdate object
