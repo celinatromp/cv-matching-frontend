@@ -39,7 +39,7 @@ function TekenNavBalk(modifier){
 
         
             <div class="col-sm-1">
-                <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;" onclick="uploadImage()" id="fotoId">
+            <a href="foto.html?` + localStorage.getItem("loginQuery") + `"> <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;" onclick="uploadImage()" id="fotoId"></a>
             </div>
         
         </div>
@@ -274,13 +274,30 @@ function loadProfileData(){
                 slaJSONstringOp(stringyfiedJSON)
                 profiel = laatObject();
                 console.log(profiel.voornaam);
+                console.log("and this " +profiel.id)
                 console.log(location)
                 if(location.pathname == "/trainee/trainee_landingspagina.html"){
-                    abc()
+                    if (profiel.foto!= null){
+                        abc()
+                    }
+                  
                 }
                 if(location.pathname == "/bedrijf/bedrijf_overzicht_vacatures.html"){
                     fetchVacaturesForCompany();
                 }
+                if (location.pathname == "/trainee/foto.html") {
+                  
+                    doen();
+                }
+                if (location.pathname == "bedrijf/bedrijf_landingspagina.html") {
+                    navigateToVacatureAanmaak()
+                }
+                if (location.pathname.endsWith("/bedrijf/vacature_aanmaak.html")) {
+                    console.log("Binding form submission for vacature creation.");
+                    bindFormSubmission();
+                }
+      
+                
             }
         )
     }else{ console.log("Geen Actie.")}}
@@ -295,7 +312,7 @@ function laatObject(){
     return hetObject
 }
 function uploadImage(){
-    window.location = "/foto.html"
+    window.location = "/trainee/foto.html"
 }
 
 // JSON.stringify()
