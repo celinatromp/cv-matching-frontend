@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vacature Aanmaak</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="../algemeen.js"></script>
+    <style>
+      body {
+        background-color: white;
+      }
+      .navbar {
+        background-color: #f8f9fa;
+      }
+      .form-container {
+        max-width: 500px;
+        margin: 0 auto;
+        border: 2px solid white;
+        border-radius: 10px;
+        padding: 20px;
+        background-color: white;
+        color: black;
+      }
+      .btn-primary {
+        background-color: black;
+        border-color: black;
+      }
+      .btn-primary:hover {
+        background-color: #333;
+        border-color: #333;
+      }
+      .form-control {
+        height: 35px;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      label {
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbalk"></nav>
+    <div class="form-container mt-5">
+      <form id="createVacatureForm">
+        <div class="form-group">
+          <label for="titel">Titel:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="titel"
+            name="titel"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="omschrijving">Omschrijving:</label>
+          <textarea
+            class="form-control"
+            id="omschrijving"
+            name="omschrijving"
+            rows="4"
+            required
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="contractLengte">Contract Lengte (in jaren):</label>
+          <input
+            type="number"
+            class="form-control"
+            id="contractLengte"
+            name="contractLengte"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="locatie">Locatie:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="locatie"
+            name="locatie"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="typeWerk">Type Werk:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="typeWerk"
+            name="typeWerk"
+          />
+        </div>
+        <div class="form-group">
+          <label for="uitStroomRichting">Uitstroomrichting:</label>
+          <select
+            class="form-control"
+            id="uitStroomRichting"
+            name="uitStroomRichting"
+            required
+          >
+            <option value="DevOps">DevOps</option>
+            <option value="Java">Java</option>
+            <option value="BigData">BigData</option>
+            <option value="LowCode">LowCode</option>
+            <option value="InformatieAnalyst">InformatieAnalyst</option>
+            <option value="CSharp">CSharp</option>
+            <option value="SoftwareTester">SoftwareTester</option>
+            <option value="NietGekozen">NietGekozen</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="aantalUren">Aantal Uren:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="aantalUren"
+            name="aantalUren"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Create Vacature</button>
+      </form>
+    </div>
+    <script>
+      window.onload = function () {
+        TekenNavBalk("bedrijf");
+        loadProfileData();
+      };
+      function bindFormSubmission() {
+        document
+          .getElementById("createVacatureForm")
+          .addEventListener("submit", function (event) {
+            event.preventDefault();
+            console.log("i dont get here? " + profiel.id);
+            if (!profiel || !profiel.id) {
+              console.error("Profiel ID is not available.");
+              return;
+            }
+            createVacatureForBedrijf(profiel.id);
+          });
+      }
+
+      function createVacatureForBedrijf(bedrijfId) {
+        const formDataObject = {
+          titel: document.getElementById("titel").value,
+          omschrijving: document.getElementById("omschrijving").value,
+          contractLengte: parseInt(
+            document.getElementById("contractLengte").value,
+            10
+          ),
+          locatie: document.getElementById("locatie").value,
+          typeWerk: document.getElementById("typeWerk").value,
+          uitStroomRichting: document.getElementById("uitStroomRichting").value,
+          aantalUren: parseInt(document.getElementById("aantalUren").value, 10),
+        };
+
+        fetch(ipbackend + "/bedrijf/" + bedrijfId + "/createVacature", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formDataObject),
+        })
+          .then((response) =>
+            response
+              .json()
+              .then((data) => ({ status: response.status, body: data }))
+          )
+          .then(({ status, body }) => {
+            if (status === 200) {
+              console.log("Vacature successfully created");
+            } else {
+              console.error("Failed to create vacature:", body);
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+    </script>
+  </body>
+</html>

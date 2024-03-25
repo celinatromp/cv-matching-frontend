@@ -1,24 +1,274 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="nl">
-
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
     <script src="algemeen.js"></script>
     <script>
-       window.onload=function(){
+      window.onload = function () {
         TekenNavBalk();
       };
     </script>
-    
+    <style>
+      @font-face {
+        font-family: "stratossemibold";
+        src: url("http://127.0.0.1:5500/css/fonts/stratos-semibold-trial-bf63c6049f9cf25-webfont.woff2")
+            format("woff2"),
+          url("http://127.0.0.1:5500/css/fonts/stratos-semibold-trial-bf63c6049f9cf25-webfont.woff")
+            format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "stratosregular";
+        src: url("http://127.0.0.1:5500/css/fonts/stratos-regular-trial-bf63c604a073a47-webfont.woff2")
+            format("woff2"),
+          url("http://127.0.0.1:5500/css/fonts/stratos-regular-trial-bf63c604a073a47-webfont.woff")
+            format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      h1 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 80px;
+      }
+
+      h2 {
+        font-family: "stratossemibold", sans-serif;
+        font-size: 72px;
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      h3 {
+        font-family: "stratosregular";
+        font-size: 16px;
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      p {
+        font-family: "DM Sans", sans-serif;
+        font-size: 16px;
+      }
+
+      .card-body {
+        background-color: #fbf3eb;
+      }
+
+      .btn {
+        display: flex;
+        justify-content: center;
+        border-radius: 0 !important;
+      }
+
+      .card {
+        margin-bottom: 20px;
+        border-radius: 0 !important;
+      }
+    </style>
     <title>Actueel</title>
   </head>
 
   <body>
-
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbalk"></nav>
-    <h1>Dit is de Actueel pagina.</h1>
-
+    <br />
+    <h1>Actueel</h1>
+    <br />
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6 col-xl-4">
+          <div class="card" style="width: 22rem">
+            <img
+              src="https://cdn.sanity.io/images/e96q6p80/production/50fb5637f05511cfb2e4668826124c39f611fbb4-6000x3376.jpg?rect=0,1,6000,3375&w=2880&h=1620&auto=format"
+              class="card-img-top"
+              alt="YC Next blog post"
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                “EEN BAAN VINDEN IN EEN COMPLEET NIEUW VAKGEBIED, DAT DOE JE
+                NIET EVEN”
+              </h5>
+              <p class="card-text">16 januari 2024</p>
+              <a
+                href="https://next.youngcapital.nl/blog/nafiza"
+                class="btn"
+                style="color: #fff; background-color: #000"
+                >Lezen</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-xl-4">
+          <div class="card" style="width: 22rem">
+            <img
+              src="https://cdn.sanity.io/images/e96q6p80/production/c0d31714c4301c14e1f73dcd111cbec9b7738d64-1920x1280.jpg?rect=18,0,1885,1280&w=1508&h=1024&auto=format"
+              class="card-img-top"
+              alt="YC Next blog post"
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                UNIGARANT ZET YOUNGCAPITAL NEXT IN ALS SPRINGPLANK VOOR YOUNG
+                PROFESSIONALS
+              </h5>
+              <p class="card-text">07 februari 2024</p>
+              <a
+                href="https://next.youngcapital.nl/blog/unigarant"
+                class="btn"
+                style="color: #fff; background-color: #000"
+                >Lezen</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-xl-4">
+          <div class="card" style="width: 22rem">
+            <img
+              src="https://cdn.sanity.io/images/e96q6p80/production/073cc32bfd9d9c9bfe3ad6bfb37f4082a99e5ee3-3556x2000.jpg?rect=306,0,2945,2000&w=1508&h=1024&auto=format"
+              class="card-img-top"
+              alt="YC Next blog post"
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                MET SUCCES SOLLICITEREN VOOR EEN TRAINEESHIP. WE GEVEN 5 INSIDE
+                TIPS
+              </h5>
+              <p class="card-text">06 februari 2024</p>
+              <a
+                href="https://next.youngcapital.nl/blog/sollicitatietips"
+                class="btn"
+                style="color: #fff; background-color: #000"
+                >Lezen</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6 col-xl-4">
+          <div class="card" style="width: 22rem">
+            <img
+              src="https://cdn.sanity.io/images/e96q6p80/production/111b60466c5f5019c59a9eca52c4eb1e35d9fc89-3555x2000.jpg?rect=306,0,2945,2000&w=1508&h=1024&auto=format"
+              class="card-img-top"
+              alt="YC Next blog post"
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                PERSBERICHT: YOUNGCAPITAL NEXT WORDT ONAFHANKELIJKE DETACHEERDER
+              </h5>
+              <p class="card-text">30 januari 2024</p>
+              <a
+                href="https://next.youngcapital.nl/blog/persbericht-youngcapital-next-wordt-onafhankelijke-detacheerder"
+                class="btn"
+                style="color: #fff; background-color: #000"
+                >Lezen</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-xl-4">
+          <div class="card" style="width: 22rem">
+            <img
+              src="https://cdn.sanity.io/images/e96q6p80/production/36309a44462dbeb5425e55c3268b9f2aabec5a61-1200x799.jpg?rect=12,0,1177,799&w=1508&h=1024&auto=format"
+              class="card-img-top"
+              alt="YC Next blog post"
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                "IN NO-TIME KON NEXT YOUNG PROFESSIONALS VINDEN EN NON-STOP
+                COACHEN."
+              </h5>
+              <p class="card-text">16 januari 2024</p>
+              <a
+                href="https://next.youngcapital.nl/blog/ing"
+                class="btn"
+                style="color: #fff; background-color: #000"
+                >Lezen</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-xl-4">
+          <div class="card" style="width: 22rem">
+            <img
+              src="https://cdn.sanity.io/images/e96q6p80/production/aae822b82cccdc5a49c73556f981d90a5ab73e59-2057x1080.jpg?rect=234,0,1590,1080&w=1508&h=1024&auto=format"
+              class="card-img-top"
+              alt="YC Next blog post"
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                "TOEN IK AFGESTUDEERD WAS, DACHT IK: HOE DOEN ANDERE MENSEN
+                DIT?"
+              </h5>
+              <p class="card-text">12 januari 2024</p>
+              <a
+                href="https://next.youngcapital.nl/blog/andrew"
+                class="btn"
+                style="color: #fff; background-color: #000"
+                >Lezen</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6 col-xl-4">
+          <div class="card" style="width: 22rem">
+            <img
+              src="https://cdn.sanity.io/images/e96q6p80/production/7344f36bc221d87acdc5ba7dd5b0505f8d9d791d-4585x2957.jpg?rect=116,0,4355,2957&w=1508&h=1024&auto=format"
+              class="card-img-top"
+              alt="YC Next blog post"
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                "JE KOMT BINNEN BIJ BEDRIJVEN WAAR DAT IN JE EENTJE NOOIT WAS
+                GELUKT."
+              </h5>
+              <p class="card-text">24 oktober 2023</p>
+              <a
+                href="https://next.youngcapital.nl/blog/sofie"
+                class="btn"
+                style="color: #fff; background-color: #000"
+                >Lezen</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-xl-4">
+          <div class="card" style="width: 22rem">
+            <img
+              src="https://cdn.sanity.io/images/e96q6p80/production/7b321af7572ec23bb36f34285d5bef0973ef9b5e-3859x2573.jpg?rect=36,0,3789,2573&w=1508&h=1024&auto=format"
+              class="card-img-top"
+              alt="YC Next blog post"
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                "DE WAARDEVOLSTE LESSEN DIE IK MEENEEM NAAR 2024"
+              </h5>
+              <p class="card-text">24 oktober 2023</p>
+              <a
+                href="https://next.youngcapital.nl/blog/blog-fien"
+                class="btn"
+                style="color: #fff; background-color: #000"
+                >Lezen</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
+</html>

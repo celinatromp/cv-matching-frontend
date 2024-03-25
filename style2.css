@@ -1,0 +1,106 @@
+@font-face {
+  font-family: "stratossemibold";
+  src: url("http://127.0.0.1:5500/css/fonts/stratos-semibold-trial-bf63c6049f9cf25-webfont.woff2")
+      format("woff2"),
+    url("http://127.0.0.1:5500/css/fonts/stratos-semibold-trial-bf63c6049f9cf25-webfont.woff")
+      format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "stratosregular";
+  src: url("http://127.0.0.1:5500/css/fonts/stratos-regular-trial-bf63c604a073a47-webfont.woff2")
+      format("woff2"),
+    url("http://127.0.0.1:5500/css/fonts/stratos-regular-trial-bf63c604a073a47-webfont.woff")
+      format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 210px;
+}
+
+h2 {
+  font-family: "stratossemibold", sans-serif;
+  font-size: 72px;
+  font-weight: normal;
+  font-style: normal;
+}
+
+h3 {
+  font-family: "stratosregular";
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+}
+
+p {
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+}
+
+.resize {
+  width: 300px;
+  height: auto;
+  margin-left: 30px;
+  margin-right: auto;
+}
+
+.card {
+  display: inline-block;
+  margin: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-shadow: 0 0px 25px 0 rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0);
+  transition: 0.3s;
+  background-color: #fbf3eb;
+  color: #11310e;
+}
+
+.card-body {
+  position: absolute;
+  bottom: 0;
+  margin: auto;
+}
+
+.button {
+  color: #000;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 10px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 80%;
+}
+
+a {
+  text-decoration: none;
+  color: #11310e;
+  font-size: 16px;
+}
+
+button:hover,
+a:hover {
+  opacity: 0.7;
+  background-color: #ec613a;
+  color: #000;
+}
+
+.btn:hover {
+  color: #ffff;
+  background-color: #ec613a;
+}
+
+table {
+  color: #11310e;
+}

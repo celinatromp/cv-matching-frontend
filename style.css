@@ -9,6 +9,26 @@ li {
   float: inline-start;
 }
 
+body {
+  background-color: #FFFFFF;
+}
+
+.headliner {
+  color: #dbfb60;
+  font-family: 'Courier New', Courier, monospace;
+  size: 210px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #dbfb60;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p {
+  color: #dbfb60;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 .navibar {
   display: block;
   padding: 8px;
@@ -40,7 +60,7 @@ li {
   background-color: #000;
   text-align: center;
   cursor: pointer;
-  width: 10%;
+  width: 22%;
   font-size: 18px;
 }
 
@@ -56,6 +76,10 @@ li {
 .title {
   color: grey;
   font-size: 18px;
+}
+
+.button {
+  color: #000;
 }
 
 button {
@@ -74,10 +98,62 @@ button {
 a {
   text-decoration: none;
   font-size: 22px;
-  color: black;
+  /*color: black;*/
 }
 
 button:hover,
 a:hover {
   opacity: 0.7;
+  background-color: #ec613a;
+  color: #000;
 }
+
+.card1 {
+  background-color: #fbf3eb;
+  padding: 10px;
+}
+
+img {
+  background-color: #fbf3eb;
+  max-height: 500px;
+  max-width: 1024px;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.about1 {
+  background-color: rgb(0, 50, 7);
+  color: whitesmoke;
+  height: 500px;
+  max-width: 1024px;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.about2 {
+  background-color: rgb(253, 243, 234);
+  color: black;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.about3 {
+  background-color: rgb(253, 243, 234);
+  color: rgb(255, 84, 39);
+  overflow: hidden;
+  padding: 10px;
+}
+
+.about4 {
+  background-color: rgb(255, 84, 39);
+  color: whitesmoke;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.about5 {
+  background-color: whitesmoke;
+  color: rgb(0, 50, 7);
+  padding: 10px;
+}
+
