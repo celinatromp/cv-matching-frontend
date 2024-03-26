@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link rel="stylesheet" href="styletrainee.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -24,16 +25,22 @@
 <style>
     /* Overall body styling for better typography */
     body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f4f4f4;
-        color: #333;
+        font-family: 'bebas neue', Tahoma, Geneva, Verdana, sans-serif;
+       
+        color: #000000;
         margin: 0;
         padding: 20px;
     }
 
     h1,
     h2 {
-        color: #0056b3;
+        font-family: 'bebas neue', Tahoma, Geneva, Verdana, sans-serif;
+        color: #000000;
+    }
+
+    h4 {
+        font-family: 'bebas neue', Tahoma, Geneva, Verdana, sans-serif;
+        color: white !important;
     }
 
     /* Styling for form elements for better visual appeal */
@@ -51,20 +58,58 @@
     }
 
     /* Enhancements to buttons for a more interactive feel */
-    button {
-        width: 100%;
-        background-color: #0056b3;
-        color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
+    .accordion-button {
+        
+        
+        /* Text color */
+        position: relative;
+        /* Position relative to allow absolute positioned pseudo elements */
+        overflow: hidden;
+        /* Ensures pseudo elements don't overflow the button boundaries */
+        transition: color 0.4s ease;
+        /* Transition for text color */
+        border-radius: 0%;
+
+        /* Creating a gradient background from orange to black, initially showing only orange */
+        background-image: linear-gradient(to bottom, #EC613A 50%, black 50%);
+        background-size: 100% 200%;
+        background-position: top;
+        transition: background-position 0.4s, color 0.4s;
+        /* Transition for the background and text color */
     }
 
-    button:hover {
-        background-color: #004494;
+    .accordion-button:hover {
+        
+        /* Change text color on hover */
+        background-position: bottom;
+        /* Shift the background to show the black part */
     }
+    .button{
+        border-color: #ffffff;
+        color: white !important;
+        /* Text color */
+        position: relative;
+        /* Position relative to allow absolute positioned pseudo elements */
+        overflow: hidden;
+        /* Ensures pseudo elements don't overflow the button boundaries */
+        transition: color 0.4s ease;
+        /* Transition for text color */
+        border-radius: 0%;
+
+        /* Creating a gradient background from orange to black, initially showing only orange */
+        background-image: linear-gradient(to bottom, #EC613A 50%, black 50%);
+        background-size: 100% 200%;
+        background-position: top;
+        transition: background-position 0.4s, color 0.4s;
+        /* Transition for the background and text color */
+    }
+    .button:hover {
+        
+        /* Change text color on hover */
+        background-position: bottom;
+        /* Shift the background to show the black part */
+    }
+
 
     .main-container {
         max-width: 80%;
@@ -194,11 +239,11 @@
                                 </select>
                             </div>
                         </form>
-                        <button type="button" onclick="createTrainee()">Opslaan</button>
-                        <h4>upload hier je foto</h4>
+                        <button class="button" type="button" onclick="createTrainee()">Opslaan</button>
+                        <h5>upload hier je foto</h5>
                         <form id="myform">
                             <input type="file">
-                            <input type="submit" value="submit"><br>
+                            <input class="button" type="submit" value="submit"><br>
                         </form>
                     </div>
                 </div>
@@ -215,10 +260,6 @@
                     <div class="accordion-body">
 
                         <form id="createTraineeForm">
-                            <div class="form-group">
-                                <label for="update-traineeId">ID nummer:</label>
-                                <input type="text" id="update-traineeId" name="id" required>
-                            </div>
                             <div class="form-group">
                                 <label for="update-voornaam">Voornaam:</label>
                                 <input type="text" id="update-voornaam" name="voornaam" required>
@@ -258,13 +299,34 @@
                             </div>
                         </form>
 
-                        <button type="button" onclick="updateTrainee()">Update</button>
+                        <button class="button" type="button" onclick="updateTrainee()">Update</button>
 
                     </div>
                 </div>
             </div>
             <!-- Add more sections as needed -->
         </div>
+        <footer class="footer mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 d-flex align-items-end flex-column">
+                        <img src="../images/NEXTMATCHLOGO.svg" alt="Logo" class="footer-logo" />
+                        <div class="mt-auto">
+                            <a href="#privacy">Privacy Policy</a> |
+                            <a href="#terms">Terms & Conditions</a>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <ul class="list-unstyled footer-links">
+                            <li><a href="#link1">Actueel</a></li>
+                            <li><a href="#link2">Young Next</a></li>
+                            <li><a href="#link3">FAQ</a></li>
+                            <li><a href="#link4">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
         <script>
             function updateProgressBar() {
@@ -325,9 +387,9 @@
                 let url_string = window.location.href;
                 let url = new URL(url_string);
                 let traineeId = url.searchParams.get("trid");
-                console.log("this the traineeId:" + traineeId);
 
-                
+
+
 
 
                 let fieldsToUpdate = {};
