@@ -57,6 +57,7 @@ p {
 }
 
 .card {
+  display: inline-block;
   margin: 20px;
   padding-left: 20px;
   padding-right: 20px;
@@ -69,6 +70,7 @@ p {
 }
 
 button {
+  font-family: "DM Sans", sans-serif;
   border: none;
   outline: 0;
   display: inline-block;
@@ -99,6 +101,7 @@ a:hover {
 }
 
 table {
+  font-family: "DM Sans", sans-serif;
   color: #11310e;
 }
 
@@ -134,11 +137,22 @@ table {
 }
 
 .footer {
+  font-family: "DM Sans", sans-serif;
   background-color: #FBF3EB;
   padding: 20px 0;
 }
 
 .footer-logo {
-  max-width: 300px;
+  max-width: 200px;
   /* Adjust based on your logo size */
+}
+
+.menustyle {
+  font-weight: bold;
+  color: black;
+}
+
+.menustyle-underlined {
+  color: black;
+  text-decoration: underline;
 }
