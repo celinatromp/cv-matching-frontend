@@ -9,13 +9,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script src="../algemeen.js"></script>
-    <link rel="stylesheet" href="../style2.css">
+    <link rel="stylesheet" href="../stylecopy.css">
 
     <!-- runs de navbalk script op pagina load -->
     <script>
         window.onload=function(){
          // gebruik als argument de type navbalk die je wilt, "trainee","talentmanager" of "bedrijf"
          TekenNavBalk("talentmanager");
+         LoadFooter();
          // loadData(2020);
          loadDropdown(2020);
        };
@@ -55,6 +56,8 @@
             </div>
         </div>
     </div>
+
+    <footer class="footer" id="ourFooter"></footer>
 
     <script>
         /*
