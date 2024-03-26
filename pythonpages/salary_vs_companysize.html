@@ -130,27 +130,34 @@
                         let salaryMax = Math.max(...myvalues);
                         // console.log(salaryMin + ',' + salaryMax);
                         mydataHtml += `
-                            <tr>
-                                <td> ${x.position} </td>
-                                ${formatMinMax(salaryMin, salaryMax, x.small)}
-                                ${formatMinMax(salaryMin, salaryMax, x.medium)} 
-                                ${formatMinMax(salaryMin, salaryMax, x.large)}
-                                ${formatMinMax(salaryMin, salaryMax, x.xlarge)} 
-                            </tr>`;
+                            <tbody>
+                                <tr>
+                                    <td> ${x.position} </td>
+                                    ${formatMinMax(salaryMin, salaryMax, x.small)}
+                                    ${formatMinMax(salaryMin, salaryMax, x.medium)} 
+                                    ${formatMinMax(salaryMin, salaryMax, x.large)}
+                                    ${formatMinMax(salaryMin, salaryMax, x.xlarge)} 
+                                </tr>
+                            </tbody>
+                        `;
                     });
 
                     // update table with data
                     document.getElementById("verwerkt").innerHTML = `
-                        <table>
-                            <tr>
-                                <th> Position </th>
-                                <th> Small companies </th>
-                                <th> Medium companies </th>
-                                <th> Large companies </th>
-                                <th> XL companies </th>
-                            </tr>
-                            ${mydataHtml}
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table-striped align-middle table-bordered card" cellpadding="10">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> Position </th>
+                                        <th scope="col"> Small companies </th>
+                                        <th scope="col"> Medium companies </th>
+                                        <th scope="col"> Large companies </th>
+                                        <th scope="col"> XL companies </th>
+                                    </tr>
+                                </thead>
+                                ${mydataHtml}
+                            </table>
+                        </div>
                     `;
                 });
             }
@@ -188,27 +195,34 @@
                         let salaryMax = Math.max(...myvalues);
                         // console.log(salaryMin + ',' + salaryMax);
                         mydataHtml += `
-                            <tr>
-                                <td> ${x.position} </td>
-                                ${formatMinMax(salaryMin, salaryMax, x.small)}
-                                ${formatMinMax(salaryMin, salaryMax, x.medium)}
-                                ${formatMinMax(salaryMin, salaryMax, x.large)}
-                                ${formatMinMax(salaryMin, salaryMax, x.xlarge)}
-                            </tr>`;
-                    });
+                            <tbody>
+                                    <tr>
+                                        <td> ${x.position} </td>
+                                        ${formatMinMax(salaryMin, salaryMax, x.small)}
+                                        ${formatMinMax(salaryMin, salaryMax, x.medium)} 
+                                        ${formatMinMax(salaryMin, salaryMax, x.large)}
+                                        ${formatMinMax(salaryMin, salaryMax, x.xlarge)} 
+                                    </tr>
+                                </tbody>
+                            `;
+                        });
 
-                    // update table with data
-                    document.getElementById("verwerkt").innerHTML = `
-                        <table>
-                            <tr>
-                                <th> Position </th>
-                                <th> Small companies </th>
-                                <th> Medium companies </th>
-                                <th> Large companies </th>
-                                <th> XL companies </th>
-                            </tr>
-                            ${mydataHtml}
-                        </table>
+                        // update table with data
+                        document.getElementById("verwerkt").innerHTML = `
+                            <div class="table-responsive">
+                                <table class="table-striped align-middle table-bordered card" cellpadding="10">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"> Position </th>
+                                            <th scope="col"> Small companies </th>
+                                            <th scope="col"> Medium companies </th>
+                                            <th scope="col"> Large companies </th>
+                                            <th scope="col"> XL companies </th>
+                                        </tr>
+                                    </thead>
+                                    ${mydataHtml}
+                                </table>
+                            </div>
                     `;
                 });
         }
