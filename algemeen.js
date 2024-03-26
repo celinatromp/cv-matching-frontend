@@ -331,17 +331,17 @@ function LoadFooter() {
                     </div>
                     <div class="col">
                         <ul class="list-unstyled footer-links">
-                            <li><a href="../Actueel.html">Actueel</a></li>
-                            <li><a href="../YoungNext.html">Young Next</a></li>
-                            <li><a href="#faq">FAQ</a></li>
-                            <li><a href="#contact">Contact</a></li>
+                            <li><a href="../Actueel.html" class="menustyle"><p>Actueel</h2></a></li>
+                            <li><a href="../YoungNext.html" class="menustyle"><p>Young Next</p></a></li>
+                            <li><a href="#faq" class="menustyle"><p>FAQ</p></a></li>
+                            <li><a href="#contact" class="menustyle"><p>Contact</p></a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="row align-items-center p-2">
                     <div class="col">
-                        <a href="#privacy">Privacy Policy</a> |
-                        <a href="#terms">Terms & Conditions</a>
+                        <a href="#privacy" class="menustyle-underlined"><p>Privacy Policy</a> |
+                        <a href="#terms" class="menustyle-underlined">Terms & Conditions</p></a>
                     </div>
                 </div>
             </div>

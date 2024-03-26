@@ -130,3 +130,13 @@ img {
   max-width: 300px;
   /* Adjust based on your logo size */
 }
+
+.menustyle {
+  font-weight: bold;
+  color: black;
+}
+
+.menustyle-underlined {
+  color: black;
+  text-decoration: underline;
+}
