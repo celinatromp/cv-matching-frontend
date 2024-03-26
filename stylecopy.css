@@ -1,21 +1,28 @@
 @font-face {
-  font-family: "stratossemibold";
-  src: url("http://127.0.0.1:5500/css/fonts/stratos-semibold-trial-bf63c6049f9cf25-webfont.woff2")
-      format("woff2"),
-    url("http://127.0.0.1:5500/css/fonts/stratos-semibold-trial-bf63c6049f9cf25-webfont.woff")
-      format("woff");
+  font-family: 'Stratos SemiBold';
+  src: url('/webfontkit-Stratos/stratos-semibold-trial-bf63c6049f9cf25-webfont.woff') format('woff'),
+       url('/webfontkit-Stratos/stratos-semibold-trial-bf63c6049f9cf25-webfont.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+
 }
 
 @font-face {
-  font-family: "stratosregular";
-  src: url("http://127.0.0.1:5500/css/fonts/stratos-regular-trial-bf63c604a073a47-webfont.woff2")
-      format("woff2"),
-    url("http://127.0.0.1:5500/css/fonts/stratos-regular-trial-bf63c604a073a47-webfont.woff")
-      format("woff");
+  font-family: 'Stratos Regular';
+  src: url('/webfontkit-Stratos/stratos-regular-trial-bf63c604a073a47-webfont.woff') format('woff'),
+       url('/webfontkit-Stratos/stratos-regular-trial-bf63c604a073a47-webfont.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+
+}
+
+#navbalk {
+  background-color: #FBF3EB !important;
+
+}
+
+body {
+  background-color: #ffff;
 }
 
 h1 {
@@ -24,14 +31,14 @@ h1 {
 }
 
 h2 {
-  font-family: "stratossemibold", sans-serif;
+  font-family: "Stratos SemiBold", sans-serif;
   font-size: 72px;
   font-weight: normal;
   font-style: normal;
 }
 
 h3 {
-  font-family: "stratosregular";
+  font-family: "Stratos Regular";
   font-size: 16px;
   font-weight: normal;
   font-style: normal;
@@ -54,17 +61,8 @@ p {
   margin: 20px;
   padding-left: 20px;
   padding-right: 20px;
-  box-shadow: 0 0px 25px 0 rgba(0, 0, 0, 0.2);
-  background-color: rgba(0, 0, 0, 0);
-  transition: 0.3s;
   background-color: #fbf3eb;
   color: #11310e;
-}
-
-.card-body {
-  position: absolute;
-  bottom: 0;
-  margin: auto;
 }
 
 .button {
@@ -72,6 +70,7 @@ p {
 }
 
 button {
+  font-family: "DM Sans", sans-serif;
   border: none;
   outline: 0;
   display: inline-block;
@@ -102,6 +101,7 @@ a:hover {
 }
 
 table {
+  font-family: "DM Sans", sans-serif;
   color: #11310e;
 }
 
@@ -134,4 +134,25 @@ table {
 .dropdown-item:hover {
   background-color: #6d9ef8;
   color: #ffff;
+}
+
+.footer {
+  font-family: "DM Sans", sans-serif;
+  background-color: #FBF3EB;
+  padding: 20px 0;
+}
+
+.footer-logo {
+  max-width: 200px;
+  /* Adjust based on your logo size */
+}
+
+.menustyle {
+  font-weight: bold;
+  color: black;
+}
+
+.menustyle-underlined {
+  color: black;
+  text-decoration: underline;
 }
