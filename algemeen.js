@@ -16,7 +16,7 @@ function TekenNavBalk(modifier){
         //Dit is de navbalk voor Trainees
         case "trainee":
 
-            navbarHTML = `<div class="container text-center">
+            navbarHTML = `<div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
             <div class="col-2">
                 <a href="trainee_landingspagina.html"?`+localStorage.getItem("loginQuery")+`><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
@@ -48,7 +48,7 @@ function TekenNavBalk(modifier){
 
         //Dit is de navbalk voor Bedrijven
         case ("bedrijf"):
-            navbarHTML = `<div class="container text-center">
+            navbarHTML = `<div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
             <div class="col-2">
                 <a href="bedrijf_landingspagina.html?`+localStorage.getItem("loginQuery")+`"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
@@ -120,7 +120,7 @@ function TekenNavBalk(modifier){
 
         //Dit is de navbalk voor het beheer
         case ("beheer"):
-            navbarHTML = `<div class="container text-center">
+            navbarHTML = `<div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
             <div class="col-2">
                 <a href="../index.html"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
@@ -152,7 +152,7 @@ function TekenNavBalk(modifier){
         break;
 
         default:
-            navbarHTML = `<div class="container text-center">
+            navbarHTML = `<div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
             <div class="col-2">
                 <a href="index.html"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
