@@ -315,5 +315,40 @@ function uploadImage(){
     window.location = "/trainee/foto.html"
 }
 
+function LoadFooter() {
+    let menudiv = document.getElementById("ourFooter");
+    let footerHtml =
+    `
+        <footer class="footer">
+            <div class="container text-center justify-content-center">
+                <div class="row align-items-center p-2">
+                    <div class="col">
+                        <img
+                            src="../images/NEXTMATCHLOGO.svg"
+                            alt="Logo"
+                            class="footer-logo"
+                        >
+                    </div>
+                    <div class="col">
+                        <ul class="list-unstyled footer-links">
+                            <li><a href="../Actueel.html">Actueel</a></li>
+                            <li><a href="../YoungNext.html">Young Next</a></li>
+                            <li><a href="#faq">FAQ</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row align-items-center p-2">
+                    <div class="col">
+                        <a href="#privacy">Privacy Policy</a> |
+                        <a href="#terms">Terms & Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    `
+    menudiv.innerHTML = footerHtml;
+}
+
 // JSON.stringify()
 // JSON.parse()

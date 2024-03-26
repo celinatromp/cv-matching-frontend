@@ -9,13 +9,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script src="../algemeen.js"></script>
-    <link rel="stylesheet" href="../style2.css">
+    <link rel="stylesheet" href="../stylecopy.css">
 
     <!-- runs de navbalk script op pagina load -->
     <script>
         window.onload=function(){
          // gebruik als argument de type navbalk die je wilt, "trainee","talentmanager" of "bedrijf"
          TekenNavBalk("talentmanager");
+         LoadFooter();
          // loadData(2020);
          loadDropdown(2020);
        };
@@ -55,6 +56,8 @@
             </div>
         </div>
     </div>
+
+    <footer class="footer" id="ourFooter"></footer>
 
     <script>
         /*
@@ -130,27 +133,34 @@
                         let salaryMax = Math.max(...myvalues);
                         // console.log(salaryMin + ',' + salaryMax);
                         mydataHtml += `
-                            <tr>
-                                <td> ${x.position} </td>
-                                ${formatMinMax(salaryMin, salaryMax, x.small)}
-                                ${formatMinMax(salaryMin, salaryMax, x.medium)} 
-                                ${formatMinMax(salaryMin, salaryMax, x.large)}
-                                ${formatMinMax(salaryMin, salaryMax, x.xlarge)} 
-                            </tr>`;
+                            <tbody>
+                                <tr>
+                                    <td> ${x.position} </td>
+                                    ${formatMinMax(salaryMin, salaryMax, x.small)}
+                                    ${formatMinMax(salaryMin, salaryMax, x.medium)} 
+                                    ${formatMinMax(salaryMin, salaryMax, x.large)}
+                                    ${formatMinMax(salaryMin, salaryMax, x.xlarge)} 
+                                </tr>
+                            </tbody>
+                        `;
                     });
 
                     // update table with data
                     document.getElementById("verwerkt").innerHTML = `
-                        <table>
-                            <tr>
-                                <th> Position </th>
-                                <th> Small companies </th>
-                                <th> Medium companies </th>
-                                <th> Large companies </th>
-                                <th> XL companies </th>
-                            </tr>
-                            ${mydataHtml}
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table-striped align-middle table-bordered card" cellpadding="10">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> Position </th>
+                                        <th scope="col"> Small companies </th>
+                                        <th scope="col"> Medium companies </th>
+                                        <th scope="col"> Large companies </th>
+                                        <th scope="col"> XL companies </th>
+                                    </tr>
+                                </thead>
+                                ${mydataHtml}
+                            </table>
+                        </div>
                     `;
                 });
             }
@@ -188,27 +198,34 @@
                         let salaryMax = Math.max(...myvalues);
                         // console.log(salaryMin + ',' + salaryMax);
                         mydataHtml += `
-                            <tr>
-                                <td> ${x.position} </td>
-                                ${formatMinMax(salaryMin, salaryMax, x.small)}
-                                ${formatMinMax(salaryMin, salaryMax, x.medium)}
-                                ${formatMinMax(salaryMin, salaryMax, x.large)}
-                                ${formatMinMax(salaryMin, salaryMax, x.xlarge)}
-                            </tr>`;
-                    });
+                            <tbody>
+                                    <tr>
+                                        <td> ${x.position} </td>
+                                        ${formatMinMax(salaryMin, salaryMax, x.small)}
+                                        ${formatMinMax(salaryMin, salaryMax, x.medium)} 
+                                        ${formatMinMax(salaryMin, salaryMax, x.large)}
+                                        ${formatMinMax(salaryMin, salaryMax, x.xlarge)} 
+                                    </tr>
+                                </tbody>
+                            `;
+                        });
 
-                    // update table with data
-                    document.getElementById("verwerkt").innerHTML = `
-                        <table>
-                            <tr>
-                                <th> Position </th>
-                                <th> Small companies </th>
-                                <th> Medium companies </th>
-                                <th> Large companies </th>
-                                <th> XL companies </th>
-                            </tr>
-                            ${mydataHtml}
-                        </table>
+                        // update table with data
+                        document.getElementById("verwerkt").innerHTML = `
+                            <div class="table-responsive">
+                                <table class="table-striped align-middle table-bordered card" cellpadding="10">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"> Position </th>
+                                            <th scope="col"> Small companies </th>
+                                            <th scope="col"> Medium companies </th>
+                                            <th scope="col"> Large companies </th>
+                                            <th scope="col"> XL companies </th>
+                                        </tr>
+                                    </thead>
+                                    ${mydataHtml}
+                                </table>
+                            </div>
                     `;
                 });
         }
