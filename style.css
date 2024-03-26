@@ -29,10 +29,15 @@ p {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+.img-thumbnail {
+  background-color: #FBF3EB;
+  border: hidden;
+}
+
 .navibar {
   display: block;
   padding: 8px;
-  background-color: #dddddd;
+  background-color: #FBF3EB;
 }
 
 .resize {
@@ -122,12 +127,12 @@ img {
 }
 
 .footer {
+  font-family: "DM Sans", sans-serif;
   background-color: #FBF3EB;
-  padding: 20px 0;
 }
 
 .footer-logo {
-  max-width: 300px;
+  max-width: 200px;
   /* Adjust based on your logo size */
 }
 

@@ -16,10 +16,18 @@
 
 }
 
+/* Voor Navbalk */
+.img-thumbnail {
+  background-color: #FBF3EB;
+  border: hidden;
+}
+
 #navbalk {
   background-color: #FBF3EB !important;
 
 }
+/* Einde Navbalk */
+
 
 body {
   background-color: #ffff;
@@ -136,6 +144,10 @@ table {
   color: #ffff;
 }
 
+
+/*
+Dit word gebruikt in de Footer
+*/
 .footer {
   font-family: "DM Sans", sans-serif;
   background-color: #FBF3EB;
@@ -155,3 +167,4 @@ table {
   color: black;
   text-decoration: underline;
 }
+/* Einde Footer */
