@@ -57,21 +57,11 @@ p {
 }
 
 .card {
-  display: inline-block;
   margin: 20px;
   padding-left: 20px;
   padding-right: 20px;
-  box-shadow: 0 0px 25px 0 rgba(0, 0, 0, 0.2);
-  background-color: rgba(0, 0, 0, 0);
-  transition: 0.3s;
   background-color: #fbf3eb;
   color: #11310e;
-}
-
-.card-body {
-  position: absolute;
-  bottom: 0;
-  margin: auto;
 }
 
 .button {
