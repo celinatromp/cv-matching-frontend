@@ -27,25 +27,25 @@
     <!-- dit is de navbalk zelf. -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbalk"></nav>
 
-    <div class="btn-group dropend">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" role="button">
-          Dropend
-        </button>
-        <ul class="dropdown-menu" id="my-dropdown-list">
-          <li><a class="dropdown-item" href="#">Loading...</a></li>
-        </ul>
-      </div>
-
     <div class="container justify-content-center">
         <div id="verwerkt" class="row text-center">
-            <div class="col">
-                <H2>Table loading</H2>
-            </div>
+           <!-- Hier komen de tabelgegevens-->
         </div>
 
-        <div class="row justify-content-end">
+        <div class="row">
+            <div class="col">
+                <div class="btn-group dropend mydropdown">
+                    <button type="button" class="mydropdown dropdown-toggle fw-bold" data-bs-toggle="dropdown" aria-expanded="false" role="button">
+                    Selecteer Baan
+                    </button>
+                    <ul class="dropdown-menu scrollable-menu" id="my-dropdown-list">
+                    <li><a class="dropdown-item" href="#">Loading...</a></li>
+                    </ul>
+                </div>
+            </div>
+        
             <div class="col-4">
-                <button onclick="loadData('2020')">Update</button>
+                <button onclick="loadData('2020')">Show Table</Table></button>
             </div>
         </div>
 
@@ -157,6 +157,9 @@
 
 
         function loadData(jaar) {
+            document.getElementById("verwerkt").innerHTML = `
+                    <h3> Table Loading.. </h3>
+                    `
             let apiUrl = pythonBackend + '/salaryCompanySize/' + jaar
             console.log('Waiting on response from: ' + apiUrl)
             fetch(apiUrl)
@@ -213,13 +216,13 @@
         function formatMinMax(min, max, value) {
             if (value == min) {
                 myHtml = `
-                    <td style="background-color: red;"> ${value} </td>
+                    <td class="table-lowest-value"> ${value} </td>
                 `
                 return myHtml
             }
             if (value == max) {
                 myHtml = `
-                    <td style="background-color: green;"> ${value} </td>
+                    <td class="table-highest-value"> ${value} </td>
                 `
                 return myHtml
             }
