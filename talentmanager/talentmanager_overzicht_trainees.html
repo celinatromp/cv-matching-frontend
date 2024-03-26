@@ -21,6 +21,7 @@
     window.onload = function () {
       // gebruik als argument de type navbalk die je wilt, "trainee","talentmanager" of "bedrijf"
       TekenNavBalk("talentmanager");
+
     };
   </script>
   <style>
@@ -96,7 +97,27 @@
   .mt-auto a {
     color: #000000;
   }
-  
+  .actie{
+    display: inline-block;
+    background-color: rgb(173, 8, 8);
+    color:white;
+    border-radius: 4px;
+    border: 2px solid  rgb(173, 8, 8);
+    padding: 0px 5px 0px 5px;
+    margin-bottom: 10px;
+  }
+  a {
+  position: relative;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+a[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  top: -100%;
+  left: 0;
+}
 
 
   
@@ -181,11 +202,26 @@
                     <p class="card-text"><i class="fas fa-graduation-cap"></i> Uitstroomrichting: ${trainee.specialisatie}</p>
                     <p class="card-text"><i class="fas fa-home"></i> Woonplaats: ${trainee.woonplaats}</p>
                     <p class="card-text">Status: <span class="status-dot" style="background-color: ${getStatusColor(trainee.status)};"></span> <span style="color: ${getStatusColor(trainee.status)}">${trainee.status}</span></p>
+                    ${
+                      checkinlowcode(trainee.id)
+                    }
                     <button class="btn btn-primary card-button">Bekijk profiel</button>
                   </div>
                 </div>
                   `;
                 traineesContainer.appendChild(traineeDiv);
+                if(lowcodetrainees.includes ( trainee.id )){
+                var e = document.getElementById("infodiv0"+trainee.id);
+  e.onmouseover = function() {
+    document.getElementById(`popup0${trainee.id}`).style.display = 'block';
+    tooninformatielowcode(trainee.id)
+  }
+  e.onmouseout = function() {
+    document.getElementById(`popup0${trainee.id}`).style.display = 'none';
+
+  }
+}
+
               })
               .catch(error => {
                 console.error("Error fetching or processing trainee image:", error);
@@ -202,7 +238,47 @@
           alert("Er is een fout opgetreden bij het laden van de trainees. Probeer het opnieuw.");
         });
     }
-    loadData();
+    fetch("https://personal-pnvw4ymj.outsystemscloud.com/NEXTMatch2/rest/Status/all")
+    .then(r=> r.json())
+    .then(d => def(d))
+    let lowcodetrainees = [];
+    function def(d ){
+     
+      d.forEach((e)=>{
+        console.log("hij doet het")
+        lowcodetrainees.push(e.TraineeId)
+      })
+      console.log(lowcodetrainees)
+      loadData()
+    }  
+    function checkinlowcode (traineeId){
+      console.log("fff", traineeId, lowcodetrainees.includes ( traineeId ))
+      if (lowcodetrainees.includes ( traineeId )){
+      return ` 
+      
+      <div class="actie" id="infodiv0${traineeId}">(info)
+        <div id="popup0${traineeId}" style="display: none"></div>
+        </div><br> `
+      }
+      else{
+        return ` <div>-</div> `
+      }
+
+    }
+    function tooninformatielowcode(tid){
+      fetch("https://personal-pnvw4ymj.outsystemscloud.com/NEXTMatch2/rest/Status/trainee/"+tid)
+      .then(r => r.json())
+      .then(d => toonilc(d))
+    }
+    function toonilc(datalc){
+      let detekst = " - "
+      console.log(datalc)
+      if(datalc[0].GesprekGeplanned){
+        detekst += " gesprek "
+      }
+      document.getElementById("popup0"+datalc[0].TraineeId).innerHTML = "Er is een " + detekst;
+
+    }
 
   </script>
 </body>

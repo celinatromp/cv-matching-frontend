@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <title>Profiel editor</title>
+    <script src="../algemeen.js"></script>
+    <script>
+        window.onload = function () {
+            TekenNavBalk("trainee");
+            loadProfileData();
+        };
+    </script>
+
+
+</head>
+<style>
+    /* Overall body styling for better typography */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1,
+    h2 {
+        color: #0056b3;
+    }
+
+    /* Styling for form elements for better visual appeal */
+    input[type=text],
+    input[type=number],
+    textarea,
+    select {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    /* Enhancements to buttons for a more interactive feel */
+    button {
+        width: 100%;
+        background-color: #0056b3;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #004494;
+    }
+
+    .main-container {
+        max-width: 80%;
+        /* Adjust this value based on your preference */
+        margin: 0 auto;
+        /* Centers the container */
+        padding: 20px;
+        /* Adds some padding inside the container */
+        background-color: #ffffff;
+        /* Optional: sets a background color */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        /* Optional: adds a subtle shadow for depth */
+    }
+
+    /* Style adjustments for the progress container */
+    #progress-container {
+        width: 100%;
+        background-color: #e0e0e0;
+        border-radius: 8px;
+        overflow: hidden;
+        /* Ensures the inner bar stays within the rounded corners */
+    }
+
+    #progress-bar {
+        height: 20px;
+        background-color: #4CAF50;
+        text-align: center;
+        line-height: 20px;
+        /* Center the text vertically */
+        color: white;
+    }
+
+    /* Table styling for clarity and readability */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        background-color: white;
+    }
+
+    th,
+    td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    th {
+        background-color: #0056b3;
+        color: white;
+    }
+
+    /* Adjusting form layout for a cleaner look */
+    form>label {
+        display: block;
+        /* Makes the label take the full width, pushing the input to a new line */
+        margin-top: 10px;
+    }
+
+    #progress-container {
+        width: 50%;
+        background-color: #dddddd;
+    }
+
+    #progress-bar {
+        width: 0%;
+        height: 20px;
+        background-color: #05a00a;
+        transition: ease, 0.5s;
+    }
+</style>
+
+
+<body>
+    <div class="main-container">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbalk"></nav>
+
+        <div class="accordion" id="accordionTrainee">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <h4>Profiel aanmaken</h4>
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionTrainee">
+                    <div class="accordion-body">
+                        <form id="createTraineeForm">
+                            <div class="form-group">
+                                <label for="invoer-voornaam">Voornaam:</label>
+                                <input type="text" id="invoer-voornaam" name="voornaam" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="invoer-achternaam">Achternaam:</label>
+                                <input type="text" id="invoer-achternaam" name="achternaam" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="invoer-leeftijd">Leeftijd</label>
+                                <input type="number" id="invoer-leeftijd" name="leeftijd" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="invoer-woonplaats">Woonplaats:</label>
+                                <input type="text" id="invoer-woonplaats" name="woonplaats" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="invoer-specialisatie">Specialisatie:</label>
+                                <input type="text" id="invoer-specialisatie" name="specialisatie" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="invoer-bio">Kort Omschrijving:</label>
+                                <textarea id="invoer-bio" name="bio" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="invoer-bio_long">Uitgebreid Omschrijving:</label>
+                                <textarea id="invoer-bio_long" name="bio_long" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="status">Status:</label>
+                                <select id="status" name="status">
+                                    <option value="Beschikbaar">Beschikbaar</option>
+                                    <option value="Gesprek">In Gesprek</option>
+                                    <option value="Geplaatst">Geplaatst</option>
+                                </select>
+                            </div>
+                        </form>
+                        <button type="button" onclick="createTrainee()">Opslaan</button>
+                        <h4>upload hier je foto</h4>
+                        <form id="myform">
+                            <input type="file">
+                            <input type="submit" value="submit"><br>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <h4>Profiel aanpassen</h4>
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionTrainee">
+                    <div class="accordion-body">
+
+                        <form id="createTraineeForm">
+                            <div class="form-group">
+                                <label for="update-traineeId">ID nummer:</label>
+                                <input type="text" id="update-traineeId" name="id" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="update-voornaam">Voornaam:</label>
+                                <input type="text" id="update-voornaam" name="voornaam" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="update-achternaam">Achternaam:</label>
+                                <input type="text" id="update-achternaam" name="achternaam" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="update-leeftijd">Leeftijd</label>
+                                <input type="number" id="update-leeftijd" name="leeftijd" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="update-woonplaats">Woonplaats:</label>
+                                <input type="text" id="update-woonplaats" name="woonplaats" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="update-specialisatie">Specialisatie:</label>
+                                <input type="text" id="update-specialisatie" name="specialisatie" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="update-bio">Kort Omschrijving:</label>
+                                <textarea id="update-bio" name="bio" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="update-bio_long">Uitgebreid Omschrijving:</label>
+                                <textarea id="update-bio_long" name="bio_long" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="status">Status:</label>
+                                <select id="status" name="status">
+                                    <option value="Beschikbaar">Beschikbaar</option>
+                                    <option value="Gesprek">In Gesprek</option>
+                                    <option value="Geplaatst">Geplaatst</option>
+                                </select>
+                            </div>
+                        </form>
+
+                        <button type="button" onclick="updateTrainee()">Update</button>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Add more sections as needed -->
+        </div>
+
+        <script>
+            function updateProgressBar() {
+                const inputFields = document.querySelectorAll('input[id=invoer-voornaam], input[id=invoer-achternaam],input[id=invoer-leeftijd], input[id=invoer-specialistatie],input[id=invoer-woonplaats], textarea[id=invoer-bio],textarea[id=invoer-bio_long]');
+                let filledFields = 0;
+                inputFields.forEach(input => {
+                    if (input.value) filledFields++;
+                });
+
+                const totalFields = inputFields.length;
+                const filledPercentage = Math.round((filledFields / totalFields) * 100);
+
+                // Store the filled percentage in localStorage
+                localStorage.setItem('progressFilledPercentage', filledPercentage);
+            }
+
+            // Call updateProgressBar function every time any input field changes
+            document.querySelectorAll('input[type=text], input[type=number], textarea, select').forEach(input => {
+                input.addEventListener('input', updateProgressBar);
+            });
+
+            // Initial call to set progress on page load (in case some fields are pre-filled)
+            updateProgressBar();
+
+            /*function deleteSelectedTrainees() {
+                let selectedTraineeIds = [];
+                document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+                    selectedTraineeIds.push(checkbox.dataset.traineeId);
+                });
+    
+                if (selectedTraineeIds.length === 0) {
+                    alert("Selecteer ten minste één trainee om te verwijderen.");
+                    return;
+                }
+    
+                if (!confirm("Weet je zeker dat je de geselecteerde trainees wilt verwijderen?")) {
+                    return;
+                }
+                selectedTraineeIds.forEach(traineeId => {
+                    fetch(ipbackend + `/trainee/${traineeId}/delete`, {
+                        method: "DELETE",
+                    })
+                        .then((res) => {
+                            res.json();
+                        })
+                        .then(() => {
+                            alert(`Trainee met ID ${traineeId} is succesvol verwijderd!`);
+                            // Reload data after successful deletion
+                            loadData();
+                        })
+                        .catch((error) => {
+                            console.error(error.message);
+                            alert(`Er is een fout opgetreden bij het verwijderen van trainee ${traineeId}. Probeer het opnieuw.`);
+                        });
+                });
+            }*/
+            function updateTrainee() {
+                let url_string = window.location.href;
+                let url = new URL(url_string);
+                let traineeId = url.searchParams.get("trid");
+                console.log("this the traineeId:" + traineeId);
+
+                
+
+
+                let fieldsToUpdate = {};
+
+                // Check each field for a value and if it's changed, add it to the fieldsToUpdate object
+                document.querySelectorAll('#update-voornaam, #update-achternaam, #update-leeftijd, #update-woonplaats, #update-specialisatie, #update-bio, #update-status')
+                    .forEach(input => {
+                        // Assuming you've attached an onChange handler to mark fields as changed
+                        // For simplicity, we'll just check if the field is not empty
+                        if (input.value) {
+                            // Use the input id to map to the correct field name in your database or backend
+                            let fieldName = input.id.replace('update-', '');
+                            fieldsToUpdate[fieldName] = input.value;
+                        }
+                    });
+
+                if (Object.keys(fieldsToUpdate).length === 0) {
+                    alert("Geen wijzigingen aangebracht.");
+                    return;
+                }
+
+                fetch(ipbackend + `/trainee/${traineeId}/update`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-type": "application/json"
+                    },
+                    body: JSON.stringify(fieldsToUpdate)
+                })
+                    .then(res => {
+
+                        res.json();
+                    })
+                    .then(() => {
+                        alert("Trainee with ID " + traineeId + " was updated!");
+                        loadData();
+                    })
+            };
+            function createTrainee() {
+                //stap 1 - Verzamelen van data uit de invoer velden
+                let newTrainee = {
+                    "voornaam": document.getElementById("invoer-voornaam").value,
+                    "voornaam": document.getElementById("invoer-voornaam").value,
+                    "achternaam": document.getElementById("invoer-achternaam").value,
+                    "leeftijd": document.getElementById("invoer-leeftijd").value,
+                    "woonplaats": document.getElementById("invoer-woonplaats").value,
+                    "specialisatie": document.getElementById("invoer-specialisatie").value,
+                    "bio": document.getElementById("invoer-bio").value,
+                    "bio_long": document.getElementById("invoer-bio_long").value,
+                    "status": document.getElementById("status").value
+                };
+                //stap 2 - Sturen van de nieuwe trainee
+                fetch(ipbackend + "/trainee/create", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(newTrainee),
+                })
+                    .then((res) => res.json())
+                    .then((newTrainee) => {
+                        alert("Trainee aangemaakt met id: " + newTrainee.id);
+                        alert("Sla Uw nieuw ID op! Uw ID is: " + newTrainee.id);
+
+
+                        //stap 3 - Herladen van de table
+                        loadData();
+                    });
+            }
+
+            document.getElementById('myform').addEventListener('submit', function (e) {
+                e.preventDefault(); //to prevent form submission
+                uploadFoto();
+            });
+            function uploadFoto() {
+                console.log("hij doet het")
+                var input = document.querySelector('input[type="file"]')
+
+                var data = new FormData()
+                data.append('data', input.files[0])
+                data.append('user', 'hubot')
+
+                fetch(ipbackend + '/create/foto', {
+                    method: 'POST',
+                    body: data
+                })
+            }
+
+
+
+            /*function loadData() {
+                fetch(ipbackend + "/trainee/all")
+                    .then((res) => {
+                        if (!res.ok) {
+                            throw new Error(`Error fetching trainees: ${res.statusText}`);
+                        }
+                        return res.json();
+                    })
+                    .then((trainees) => {
+                        console.log(trainees);
+                        let traineesHtml = "";
+                        trainees.forEach((trainee) => {
+                            traineesHtml +=
+                                `
+                        <tr>
+                            <td><input type="checkbox" data-trainee-id="${trainee.id}"></td>
+                            <td>${trainee.id}</td>
+                            <td>${trainee.voornaam}</td>
+                            <td>${trainee.achternaam}</td>
+                            <td>${trainee.leeftijd}</td>
+                            <td>${trainee.woonplaats}</td>
+                            <td>${trainee.specialisatie}</td>
+                            <td>${trainee.bio}</td>
+                            <td>${trainee.bio_long}</td>
+                            <td>${trainee.status}</td>
+                        </tr>
+                    `;
+                        });
+    
+                        // Check if there are no trainees
+                        if (trainees.length === 0) {
+                            // If no trainees, display a single row with colspan to span across all columns
+                            traineesHtml = `
+                        <tr>
+                            <td colspan="8">Geen trainees gevonden</td>
+                        </tr>
+                    `;
+                        }
+    
+                        // Prepend the table headers to the traineesHtml
+                        const tableHtml = `
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>ID</th>
+                            <th>Voornaam</th>
+                            <th>Achternaam</th>
+                            <th>Leeftijd</th>
+                            <th>Woonplaats</th>
+                            <th>Specialisatie</th>
+                            <th>korte bio</th>
+                            <th>uitgebreide bio</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${traineesHtml}
+                    </tbody>
+                `;
+    
+                        document.getElementById("trainee-table").innerHTML = tableHtml;
+                    })
+                    .catch((error) => {
+                        console.error(error.message);
+                        alert("Er is een fout opgetreden bij het laden van de trainees. Probeer het opnieuw.");
+                    });
+            };
+            loadData();*/
+        </script>
+</body>
+
+</html>

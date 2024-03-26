@@ -33,7 +33,6 @@
       };
     </script>
   </head>
-
   <body>
     <!-- Navigatiebalk -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbalk"></nav>
@@ -46,8 +45,8 @@
         <div class="col bg-light p-2 custom-container">
           <div class="title-and-button-container">
             <h4>Vul je profiel aan</h4>
-            <button href="trainee_profiel_aanmaken" class="btn btn-primary">
-              Vul je profiel in
+            <button class="btn btn-primary">
+              <a onclick="navigateTo('http://108.141.26.181/trainee/trainee_profiel_editor.html')">Vul je profiel in</a>
             </button>
           </div>
           <div id="progress-bar-background">
@@ -112,6 +111,15 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+    function navigateTo(baseUrl) {
+    console.log(baseUrl); // Check the value of baseUrl
+    const trid = localStorage.getItem("loginQuery");
+    const urlWithParam = trid ? `${baseUrl}?${trid}` : baseUrl;
+    console.log(urlWithParam); // Check the final URL
+    window.location.href = urlWithParam;
+}
+
+
       function displayProgressBar() {
         // Retrieve the filled percentage from localStorage
         const filledPercentage =
@@ -268,6 +276,8 @@
 
         // Use URLSearchParams with window.location.search to extract "trid"
         const urlParams = new URLSearchParams(window.location.search);
+
+       
         const traineeId = urlParams.get("trid"); // This will be '3' for your example URL
 
         fetch(ipbackend + `/trainee/${traineeId}`)
@@ -308,3 +318,4 @@
     </script>
   </body>
 </html>
+
