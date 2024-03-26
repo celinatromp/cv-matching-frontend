@@ -104,3 +104,34 @@ a:hover {
 table {
   color: #11310e;
 }
+
+.table-highest-value {
+  color: green;
+  font-weight: bold;
+}
+
+.table-lowest-value {
+  color: red;
+  font-weight: bold;
+}
+
+.mydropdown {
+  background-color: white;
+  color: #000;
+}
+
+.scrollable-menu {
+  height: auto;
+  max-height: 300px;
+  overflow-x: hidden;
+}
+
+.mydropdown:hover {
+  background-color: #000;
+  color: #ffff;
+}
+
+.dropdown-item:hover {
+  background-color: #6d9ef8;
+  color: #ffff;
+}
