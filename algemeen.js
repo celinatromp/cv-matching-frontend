@@ -320,8 +320,8 @@ function LoadFooter() {
     let footerHtml =
     `
         <footer class="footer">
-            <div class="container text-center justify-content-center">
-                <div class="row align-items-center p-2">
+            <div class="container-fluid text-center justify-content-center border-top border-bottom border-3 border-secondary-subtle">
+                <div class="row align-items-center">
                     <div class="col">
                         <img
                             src="../images/NEXTMATCHLOGO.svg"
@@ -329,7 +329,7 @@ function LoadFooter() {
                             class="footer-logo"
                         >
                     </div>
-                    <div class="col">
+                    <div class="col border-start border-secondary-subtle p-3">
                         <ul class="list-unstyled footer-links">
                             <li><a href="../Actueel.html" class="menustyle"><p>Actueel</h2></a></li>
                             <li><a href="../YoungNext.html" class="menustyle"><p>Young Next</p></a></li>
@@ -338,10 +338,12 @@ function LoadFooter() {
                         </ul>
                     </div>
                 </div>
-                <div class="row align-items-center p-2">
-                    <div class="col">
-                        <a href="#privacy" class="menustyle-underlined"><p>Privacy Policy</a> |
-                        <a href="#terms" class="menustyle-underlined">Terms & Conditions</p></a>
+                <div class="row border-top border-secondary-subtle justify-content-center">
+                    <div class="col-3 align-self-center">
+                        <a href="#privacy" class="menustyle-underlined mx-3"><p>Privacy Policy</p></a>
+                    </div>
+                    <div class="col-3 align-self-center">
+                        <a href="#terms" class="menustyle-underlined"><p>Terms & Conditions</p></a>
                     </div>
                 </div>
             </div>
