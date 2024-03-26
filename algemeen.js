@@ -16,62 +16,61 @@ function TekenNavBalk(modifier){
         //Dit is de navbalk voor Trainees
         case "trainee":
 
-            navbarHTML = `<div class="container text-center">
+            navbarHTML = `<div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
-            <div class="col-sm-2">
+            <div class="col-2">
                 <a href="trainee_landingspagina.html"?`+localStorage.getItem("loginQuery")+`><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
             </div>
         
-            <div class="col-sm-3">
+            <div class="col-3">
             </div>
         
-            <div class="col-sm-2">
+            <div class="col-2">
                 <a href="trainee_overzicht_vacature.html?`+localStorage.getItem("loginQuery")+`" class="btn">Vacatures</a>
             </div>
         
-            <div class="col-sm-2">
+            <div class="col-2">
                 <a href="trainee_overzicht_bedrijven.html?`+localStorage.getItem("loginQuery")+`" class="btn">Bedrijven</a>
             </div>
 
-            <div class="col-sm-2">
+            <div class="col-2">
             <button class="btn" onclick="logOut()">Log Uit</button>
             </div>
 
         
-            <div class="col-sm-1">
+            <div class="col-1">
             <a href="foto.html?` + localStorage.getItem("loginQuery") + `"> <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;" onclick="uploadImage()" id="fotoId"></a>
             </div>
         
-        </div>
         </div>
         `;
         break;
 
         //Dit is de navbalk voor Bedrijven
         case ("bedrijf"):
-            navbarHTML = `<div class="container text-center">
+            navbarHTML = `<div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
-            <div class="col-sm-2">
+            <div class="col-2">
                 <a href="bedrijf_landingspagina.html?`+localStorage.getItem("loginQuery")+`"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
             </div>
         
-            <div class="col-sm-3">
+            <div class="col-3">
             </div>
             
-            <div class="col-sm-2">
+            <div class="col-2">
                 <a href="bedrijf_overzicht_vacatures.html?`+localStorage.getItem("loginQuery")+`" class="btn">Mijn Vacatures</a>
             </div>
         
-            <div class="col-sm-2">
+            <div class="col-2">
                 <a href="bedrijf_chats.html?`+localStorage.getItem("loginQuery")+`" class="btn">Chats</a>
             </div>
         
-            <div class="col-sm-1">
+            <div class="col-1">
             <button class="btn" onclick="logOut()">Log Uit</button>
             </div>
 
         
-            <div class="col-sm-1">
+            <div class="col-1">
                 <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
             </div>
         
@@ -81,70 +80,69 @@ function TekenNavBalk(modifier){
         break;
  //Dit is de navbalk voor de talentmanagers
     case ("talentmanager"):
-        navbarHTML = `<div class="container text-center">
+        navbarHTML = `<div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
-            <div class="col-sm-2">
+            <div class="col-2">
                 <a href="../talentmanager/talentmanager_landingspagina.html?`+localStorage.getItem("loginQuery")+`"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
             </div>
 
-            <div class="col-sm-1">
+            <div class="col-1">
             </div>
             
-            <div class="col-sm-1">
+            <div class="col-1">
                 <a href="../talentmanager/talentmanager_overzicht_trainees.html?`+localStorage.getItem("loginQuery")+`" class="btn">Mijn Trainees</a>
             </div>
             
 
-            <div class="col-sm-1">
+            <div class="col-1">
                 <a href="../talentmanager/talentmanager_overzicht_bedrijven.html?`+localStorage.getItem("loginQuery")+`" class="btn">Mijn Bedrijven</a>
             </div>
 
-            <div class="col-sm-1">
+            <div class="col-1">
                 <a href="../talentmanager/talentmanager_chats.html?`+localStorage.getItem("loginQuery")+`" class="btn">Chats</a>
             </div>
 
-            <div class="col-sm-1">
+            <div class="col-1">
             <a href="../talentmanager/talentmanager_python.html?`+localStorage.getItem("loginQuery")+`" class="btn">Python</a>
             </div>
 
-            <div class="col-sm-1">
+            <div class="col-1">
             <button class="btn" onclick="logOut()">Log Uit</button>
             </div>
 
-            <div class="col-sm-1">
+            <div class="col-1">
                 <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
             </div>
 
-        </div>
         </div>
     `;
     break;
 
         //Dit is de navbalk voor het beheer
         case ("beheer"):
-            navbarHTML = `<div class="container text-center">
+            navbarHTML = `<div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
-            <div class="col-sm-2">
+            <div class="col-2">
                 <a href="../index.html"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
             </div>
         
-            <div class="col-sm-3">
+            <div class="col-3">
             </div>
             
-            <div class="col-sm-2">
+            <div class="col-2">
                 <a href="bedrijf_beheer.html" class="btn">bedrijf</a>
             </div>
             
         
-            <div class="col-sm-2">
+            <div class="col-2">
                 <a href="trainee_beheer.html" class="btn">Trainee</a>
             </div>
         
-            <div class="col-sm-2">
+            <div class="col-2">
                 <a href="talentmanager_beheer.html" class="btn">Talentmanager</a>
             </div>
         
-            <div class="col-sm-1">
+            <div class="col-1">
                 <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
             </div>
         
@@ -154,28 +152,28 @@ function TekenNavBalk(modifier){
         break;
 
         default:
-            navbarHTML = `<div class="container text-center">
+            navbarHTML = `<div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
-            <div class="col-sm-2">
+            <div class="col-2">
                 <a href="index.html"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
             </div>
         
-            <div class="col-sm-3">
+            <div class="col-3">
             </div>
             
-            <div class="col-sm-2">
+            <div class="col-2">
                 <a href="Actueel.html" class="btn">Actueel</a>
             </div>
         
-            <div class="col-sm-2">
+            <div class="col-2">
                 <a href="YoungNext.html" class="btn">About Next</a>
             </div>
         
-            <div class="col-sm-2">
+            <div class="col-2">
                 <a href="../login.html" class="btn">Login</a>
             </div>
         
-            <div class="col-sm-1">
+            <div class="col-1">
                 <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
             </div>
         
