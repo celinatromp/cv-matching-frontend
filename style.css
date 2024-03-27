@@ -138,6 +138,7 @@ p {
   background-color: #fbf3eb;
   color: #11310e;
   border: hidden;
+  border-radius: 0;
 }
 
 .title {
