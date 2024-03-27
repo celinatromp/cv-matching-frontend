@@ -325,28 +325,28 @@ function LoadFooter() {
                         <img src="../images/NEXTMATCHLOGO.svg" alt="Logo" class="footer-logo">
                     </div>
 
-                    <div class="menustyle col border-start border-secondary-subtle p-3">
-                        <div class="col">
-                            <a href="../Actueel.html" class="menustyle"><p>Actueel</p></a>
+                    <div class="col border-start border-secondary-subtle p-3">
+                        <div class="col by-2">
+                            <a href="../Actueel.html" class="menustyle">Actueel</a>
                         </div>
-                        <div class="col">
-                            <a href="../YoungNext.html"><p>Young Next</p></a>
+                        <div class="col my-3">
+                            <a href="../YoungNext.html" class="menustyle">Young Next</a>
                         </div>
-                        <div class="col">
-                            <a href="#faq"><p>FAQ</p></a>
+                        <div class="col my-3">
+                            <a href="#faq" class="menustyle">FAQ</a>
                         </div>
-                        <div class="col">
-                            <a href="#contact"><p>Contact</p></a>
+                        <div class="col ty-2">
+                            <a href="#contact" class="menustyle">Contact</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="row border-top border-secondary-subtle justify-content-center">
-                    <div class="col-3 align-self-center">
-                        <a href="#privacy" class="menustyle-underlined mx-2"><p>Privacy Policy</p></a>
+                    <div class="col-3 align-self-center my-3">
+                        <a href="#privacy" class="menustyle-underlined mx-2">Privacy Policy</a>
                     </div>
                     <div class="col-3 align-self-center">
-                        <a href="#terms" class="menustyle-underlined"><p>Terms & Conditions</p></a>
+                        <a href="#terms" class="menustyle-underlined">Terms & Conditions</a>
                     </div>
                 </div>
             </div>

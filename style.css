@@ -180,11 +180,23 @@ img {
 }
 
 .menustyle {
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
   font-weight: bold;
   color: black;
 }
 
+.menustyle:hover {
+  background-color: transparent;
+}
+
 .menustyle-underlined {
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
   color: black;
   text-decoration: underline;
+}
+
+.menustyle-underlined:hover {
+  background-color: transparent;
 }
