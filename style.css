@@ -32,14 +32,15 @@ body {
 }
 
 .headliner {
-  color: #dbfb60;
-  font-family: 'Courier New', Courier, monospace;
+  color: #11310e;
+  font-family: "Bebas Neue", sans-serif;
   size: 210px;
 }
 
 h1 {
   font-family: "Bebas Neue", sans-serif;
   font-size: 210px;
+  color: #11310e;
 }
 
 h2 {
@@ -47,6 +48,7 @@ h2 {
   font-size: 72px;
   font-weight: normal;
   font-style: normal;
+  color: #11310e;
 }
 
 h3 {
@@ -54,11 +56,13 @@ h3 {
   font-size: 16px;
   font-weight: normal;
   font-style: normal;
+  color: #11310e;
 }
 
 p {
   font-family: "DM Sans", sans-serif;
   font-size: 16px;
+  color: #11310e;
 }
 
 .img-thumbnail {
@@ -71,12 +75,14 @@ p {
   background-color: #FBF3EB;
 }
 
+/* dubbele functie
 .resize {
   width: 400px;
   height: auto;
   margin-left: 30px;
   margin-right: auto;
 }
+*/
 
 .resize {
   width: 300px;
@@ -100,13 +106,24 @@ p {
   font-size: 18px;
 }
 
+/* old function
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 500px;
   margin-left: auto;
   margin-right: 30px;
   text-align: right;
   padding: 30px;
+}
+*/
+
+.card {
+  display: inline-block;
+  margin: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #fbf3eb;
+  color: #11310e;
+  border: hidden;
 }
 
 .title {
@@ -134,7 +151,7 @@ button {
 a {
   text-decoration: none;
   font-size: 22px;
-  /*color: black;*/
+  color: #11310e;
 }
 
 button:hover,
@@ -144,13 +161,8 @@ a:hover {
   color: #000;
 }
 
-.card1 {
-  background-color: #fbf3eb;
-  padding: 10px;
-}
-
 img {
-  background-color: #fbf3eb;
+  background-color: transparent;
   max-height: 500px;
   max-width: 1024px;
   overflow: hidden;
