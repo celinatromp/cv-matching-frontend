@@ -93,12 +93,12 @@ function TekenNavBalk(modifier){
                 </div>
                 
                 <div class="col-1">
-                    <a href="../talentmanager/talentmanager_overzicht_trainees.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Mijn Trainees</a>
+                    <a href="../talentmanager/talentmanager_overzicht_trainees.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Trainees</a>
                 </div>
                 
 
                 <div class="col-1">
-                    <a href="../talentmanager/talentmanager_overzicht_bedrijven.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Mijn Bedrijven</a>
+                    <a href="../talentmanager/talentmanager_overzicht_bedrijven.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Bedrijven</a>
                 </div>
 
                 <div class="col-1">
