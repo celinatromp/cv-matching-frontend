@@ -169,8 +169,9 @@ img {
   padding: 10px;
 }
 
+
+/* Footer styling */
 .footer {
-  font-family: "DM Sans", sans-serif;
   background-color: #FBF3EB;
 }
 
@@ -178,13 +179,29 @@ img {
   max-width: 200px;
   /* Adjust based on your logo size */
 }
+/* Einde Footer styling */
 
+
+/* Navbar en Footer styling */
 .menustyle {
-  font-weight: bold;
+  font-family: "Stratos SemiBold", sans-serif;
+  font-size: 16px;
+  /* font-weight: normal; */
   color: black;
+}
+
+.menustyle:hover {
+  background-color: transparent;
 }
 
 .menustyle-underlined {
+  font-family: "Stratos Regular", sans-serif;
+  font-size: 16px;
   color: black;
   text-decoration: underline;
 }
+
+.menustyle-underlined:hover {
+  background-color: transparent;
+}
+/* Einde Navbar en Footer styling */

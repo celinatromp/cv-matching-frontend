@@ -19,27 +19,27 @@ function TekenNavBalk(modifier){
             navbarHTML = `<div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
             <div class="col-2">
-                <a href="trainee_landingspagina.html"?`+localStorage.getItem("loginQuery")+` class="btn"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+                <a href="trainee_landingspagina.html"?`+localStorage.getItem("loginQuery")+` class="btn menustyle"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
             </div>
         
             <div class="col-3">
             </div>
         
             <div class="col-2">
-                <a href="trainee_overzicht_vacature.html?`+localStorage.getItem("loginQuery")+`" class="btn">Vacatures</a>
+                <a href="trainee_overzicht_vacature.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Vacatures</a>
             </div>
         
             <div class="col-2">
-                <a href="trainee_overzicht_bedrijven.html?`+localStorage.getItem("loginQuery")+`" class="btn">Bedrijven</a>
+                <a href="trainee_overzicht_bedrijven.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Bedrijven</a>
             </div>
 
             <div class="col-2">
-            <button class="btn" onclick="logOut()">Log Uit</button>
+            <button class="btn menustyle" onclick="logOut()">Log Uit</button>
             </div>
 
         
             <div class="col-1">
-            <a href="foto.html?` + localStorage.getItem("loginQuery") + `" class="btn"> <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;" onclick="uploadImage()" id="fotoId"></a>
+            <a href="foto.html?` + localStorage.getItem("loginQuery") + `" class="btn menustyle"> <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;" onclick="uploadImage()" id="fotoId"></a>
             </div>
         
         </div>
@@ -52,22 +52,22 @@ function TekenNavBalk(modifier){
                 <div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
                     <div class="col-2">
-                        <a href="bedrijf_landingspagina.html?`+localStorage.getItem("loginQuery")+`" class="btn"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+                        <a href="bedrijf_landingspagina.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
                     </div>
                 
                     <div class="col-3">
                     </div>
                     
                     <div class="col-2">
-                        <a href="bedrijf_overzicht_vacatures.html?`+localStorage.getItem("loginQuery")+`" class="btn">Mijn Vacatures</a>
+                        <a href="bedrijf_overzicht_vacatures.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Mijn Vacatures</a>
                     </div>
                 
                     <div class="col-2">
-                        <a href="bedrijf_chats.html?`+localStorage.getItem("loginQuery")+`" class="btn">Chats</a>
+                        <a href="bedrijf_chats.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Chats</a>
                     </div>
                 
                     <div class="col-1">
-                    <button class="btn" onclick="logOut()">Log Uit</button>
+                    <button class="btn menustyle" onclick="logOut()">Log Uit</button>
                     </div>
 
                 
@@ -84,7 +84,7 @@ function TekenNavBalk(modifier){
             <div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
                 <div class="col-2">
-                    <a href="../talentmanager/talentmanager_landingspagina.html?`+localStorage.getItem("loginQuery")+`" class="btn">
+                    <a href="../talentmanager/talentmanager_landingspagina.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">
                         <img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail">
                     </a>
                 </div>
@@ -93,24 +93,24 @@ function TekenNavBalk(modifier){
                 </div>
                 
                 <div class="col-1">
-                    <a href="../talentmanager/talentmanager_overzicht_trainees.html?`+localStorage.getItem("loginQuery")+`" class="btn">Mijn Trainees</a>
+                    <a href="../talentmanager/talentmanager_overzicht_trainees.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Trainees</a>
                 </div>
                 
 
                 <div class="col-1">
-                    <a href="../talentmanager/talentmanager_overzicht_bedrijven.html?`+localStorage.getItem("loginQuery")+`" class="btn">Mijn Bedrijven</a>
+                    <a href="../talentmanager/talentmanager_overzicht_bedrijven.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Bedrijven</a>
                 </div>
 
                 <div class="col-1">
-                    <a href="../talentmanager/talentmanager_chats.html?`+localStorage.getItem("loginQuery")+`" class="btn">Chats</a>
+                    <a href="../talentmanager/talentmanager_chats.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Chats</a>
                 </div>
 
                 <div class="col-1">
-                <a href="../talentmanager/talentmanager_python.html?`+localStorage.getItem("loginQuery")+`" class="btn">Python</a>
+                <a href="../talentmanager/talentmanager_python.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Python</a>
                 </div>
 
                 <div class="col-1">
-                <button class="btn" onclick="logOut()">Log Uit</button>
+                <button class="btn menustyle" onclick="logOut()">Log Uit</button>
                 </div>
 
                 <div class="col-1">
@@ -126,23 +126,23 @@ function TekenNavBalk(modifier){
             <div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
                 <div class="col-2">
-                    <a href="../index.html" class="btn"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+                    <a href="../index.html" class="btn menustyle"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
                 </div>
             
                 <div class="col-3">
                 </div>
                 
                 <div class="col-2">
-                    <a href="bedrijf_beheer.html" class="btn">bedrijf</a>
+                    <a href="bedrijf_beheer.html" class="btn menustyle">Bedrijf</a>
                 </div>
                 
             
                 <div class="col-2">
-                    <a href="trainee_beheer.html" class="btn">Trainee</a>
+                    <a href="trainee_beheer.html" class="btn menustyle">Trainee</a>
                 </div>
             
                 <div class="col-2">
-                    <a href="talentmanager_beheer.html" class="btn">Talentmanager</a>
+                    <a href="talentmanager_beheer.html" class="btn menustyle">Talentmanager</a>
                 </div>
             
                 <div class="col-1">
@@ -158,22 +158,22 @@ function TekenNavBalk(modifier){
             <div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
                 <div class="col-2">
-                    <a href="index.html" class="btn"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+                    <a href="index.html" class="btn menustyle"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
                 </div>
             
                 <div class="col-3">
                 </div>
                 
                 <div class="col-2">
-                    <a href="Actueel.html" class="btn">Actueel</a>
+                    <a href="Actueel.html" class="btn menustyle">Actueel</a>
                 </div>
             
                 <div class="col-2">
-                    <a href="YoungNext.html" class="btn">About Next</a>
+                    <a href="YoungNext.html" class="btn menustyle">About Next</a>
                 </div>
             
                 <div class="col-2">
-                    <a href="../login.html" class="btn">Login</a>
+                    <a href="../login.html" class="btn menustyle">Login</a>
                 </div>
             
                 <div class="col-1">
@@ -325,28 +325,28 @@ function LoadFooter() {
                         <img src="../images/NEXTMATCHLOGO.svg" alt="Logo" class="footer-logo">
                     </div>
 
-                    <div class="menustyle col border-start border-secondary-subtle p-3">
-                        <div class="col">
-                            <a href="../Actueel.html" class="menustyle"><p>Actueel</p></a>
+                    <div class="col border-start border-secondary-subtle p-3">
+                        <div class="col by-2">
+                            <a href="../Actueel.html" class="menustyle">Actueel</a>
                         </div>
-                        <div class="col">
-                            <a href="../YoungNext.html"><p>Young Next</p></a>
+                        <div class="col my-3">
+                            <a href="../YoungNext.html" class="menustyle">Young Next</a>
                         </div>
-                        <div class="col">
-                            <a href="#faq"><p>FAQ</p></a>
+                        <div class="col my-3">
+                            <a href="#faq" class="menustyle">FAQ</a>
                         </div>
-                        <div class="col">
-                            <a href="#contact"><p>Contact</p></a>
+                        <div class="col ty-2">
+                            <a href="#contact" class="menustyle">Contact</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="row border-top border-secondary-subtle justify-content-center">
-                    <div class="col-3 align-self-center">
-                        <a href="#privacy" class="menustyle-underlined mx-2"><p>Privacy Policy</p></a>
+                    <div class="col-3 align-self-center my-3">
+                        <a href="#privacy" class="menustyle-underlined mx-2">Privacy Policy</a>
                     </div>
                     <div class="col-3 align-self-center">
-                        <a href="#terms" class="menustyle-underlined"><p>Terms & Conditions</p></a>
+                        <a href="#terms" class="menustyle-underlined">Terms & Conditions</a>
                     </div>
                 </div>
             </div>
