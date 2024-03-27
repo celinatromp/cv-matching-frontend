@@ -19,7 +19,7 @@ function TekenNavBalk(modifier){
             navbarHTML = `<div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
             <div class="col-2">
-                <a href="trainee_landingspagina.html"?`+localStorage.getItem("loginQuery")+` class="btn"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+                <a href="trainee_landingspagina.html"?`+localStorage.getItem("loginQuery")+` class="btn menustyle"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
             </div>
         
             <div class="col-3">
@@ -39,7 +39,7 @@ function TekenNavBalk(modifier){
 
         
             <div class="col-1">
-            <a href="foto.html?` + localStorage.getItem("loginQuery") + `" class="btn"> <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;" onclick="uploadImage()" id="fotoId"></a>
+            <a href="foto.html?` + localStorage.getItem("loginQuery") + `" class="btn menustyle"> <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;" onclick="uploadImage()" id="fotoId"></a>
             </div>
         
         </div>
@@ -52,22 +52,22 @@ function TekenNavBalk(modifier){
                 <div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
                     <div class="col-2">
-                        <a href="bedrijf_landingspagina.html?`+localStorage.getItem("loginQuery")+`" class="btn"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+                        <a href="bedrijf_landingspagina.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
                     </div>
                 
                     <div class="col-3">
                     </div>
                     
                     <div class="col-2">
-                        <a href="bedrijf_overzicht_vacatures.html?`+localStorage.getItem("loginQuery")+`" class="btn">Mijn Vacatures</a>
+                        <a href="bedrijf_overzicht_vacatures.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Mijn Vacatures</a>
                     </div>
                 
                     <div class="col-2">
-                        <a href="bedrijf_chats.html?`+localStorage.getItem("loginQuery")+`" class="btn">Chats</a>
+                        <a href="bedrijf_chats.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Chats</a>
                     </div>
                 
                     <div class="col-1">
-                    <button class="btn" onclick="logOut()">Log Uit</button>
+                    <button class="btn menustyle" onclick="logOut()">Log Uit</button>
                     </div>
 
                 
@@ -84,7 +84,7 @@ function TekenNavBalk(modifier){
             <div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
                 <div class="col-2">
-                    <a href="../talentmanager/talentmanager_landingspagina.html?`+localStorage.getItem("loginQuery")+`" class="btn">
+                    <a href="../talentmanager/talentmanager_landingspagina.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">
                         <img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail">
                     </a>
                 </div>
@@ -126,7 +126,7 @@ function TekenNavBalk(modifier){
             <div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
                 <div class="col-2">
-                    <a href="../index.html" class="btn"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+                    <a href="../index.html" class="btn menustyle"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
                 </div>
             
                 <div class="col-3">
@@ -158,7 +158,7 @@ function TekenNavBalk(modifier){
             <div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
                 <div class="col-2">
-                    <a href="index.html" class="btn"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+                    <a href="index.html" class="btn menustyle"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
                 </div>
             
                 <div class="col-3">
