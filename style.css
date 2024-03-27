@@ -62,8 +62,8 @@ p {
 }
 
 .img-thumbnail {
-  background-color: #FBF3EB;
   border: hidden;
+  background-color: transparent;
 }
 
 .navbar {
