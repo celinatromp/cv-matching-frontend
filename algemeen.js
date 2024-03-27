@@ -327,18 +327,24 @@ function LoadFooter() {
                             class="footer-logo"
                         >
                     </div>
-                    <div class="col border-start border-secondary-subtle p-3">
-                        <ul class="list-unstyled footer-links">
-                            <li><a href="../Actueel.html" class="menustyle"><p>Actueel</h2></a></li>
-                            <li><a href="../YoungNext.html" class="menustyle"><p>Young Next</p></a></li>
-                            <li><a href="#faq" class="menustyle"><p>FAQ</p></a></li>
-                            <li><a href="#contact" class="menustyle"><p>Contact</p></a></li>
-                        </ul>
+                    <div class="menustyle col border-start border-secondary-subtle p-3">
+                        <div class="col">
+                            <a href="../Actueel.html" class="menustyle"><p>Actueel</p></a>
+                        </div>
+                        <div class="col">
+                            <a href="../YoungNext.html"><p>Young Next</p></a>
+                        </div>
+                        <div class="col">
+                            <a href="#faq"><p>FAQ</p></a>
+                        </div>
+                        <div class="col">
+                            <a href="#contact"><p>Contact</p></a>
+                        </div>
                     </div>
                 </div>
                 <div class="row border-top border-secondary-subtle justify-content-center">
                     <div class="col-3 align-self-center">
-                        <a href="#privacy" class="menustyle-underlined mx-3"><p>Privacy Policy</p></a>
+                        <a href="#privacy" class="menustyle-underlined mx-2"><p>Privacy Policy</p></a>
                     </div>
                     <div class="col-3 align-self-center">
                         <a href="#terms" class="menustyle-underlined"><p>Terms & Conditions</p></a>
