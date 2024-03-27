@@ -30,6 +30,12 @@ li {
 }
 */
 
+.indexbackground {
+  background: url(images/indexBackground.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
 
 body {
   background-color: #FFFFFF;
@@ -185,7 +191,7 @@ a:hover {
 img {
   background-color: transparent;
   max-height: 500px;
-  max-width: 1024px;
+  max-width: 500px;
   overflow: hidden;
   padding: 10px;
 }
