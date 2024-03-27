@@ -16,6 +16,8 @@
 
 }
 
+
+/* Gebruik specifieke class, AI response word hierdoor heel raar
 ul {
   list-style-type: none;
   margin: 0;
@@ -26,6 +28,8 @@ ul {
 li {
   float: inline-start;
 }
+*/
+
 
 body {
   background-color: #FFFFFF;
@@ -115,6 +119,16 @@ p {
   padding: 30px;
 }
 */
+
+.airesp {
+  display: inline-block;
+  margin: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #fbf3eb;
+  color: #11310e;
+  border: hidden;
+}
 
 .card {
   display: inline-block;
