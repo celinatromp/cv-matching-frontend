@@ -84,7 +84,7 @@ function TekenNavBalk(modifier){
             <div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
                 <div class="col-2">
-                    <a href="../talentmanager/talentmanager_landingspagina.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">
+                    <a href="../talentmanager/talentmanager_landingspagina.html?`+localStorage.getItem("loginQuery")+`" class="btn">
                         <img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail">
                     </a>
                 </div>
@@ -327,26 +327,26 @@ function LoadFooter() {
 
                     <div class="col border-start border-secondary-subtle p-3">
                         <div class="col by-2">
-                            <a href="../Actueel.html" class="menustyle">Actueel</a>
+                            <a href="../Actueel.html" class="btn menustyle">Actueel</a>
                         </div>
                         <div class="col my-3">
-                            <a href="../YoungNext.html" class="menustyle">Young Next</a>
+                            <a href="../YoungNext.html" class="btn menustyle">Young Next</a>
                         </div>
                         <div class="col my-3">
-                            <a href="#faq" class="menustyle">FAQ</a>
+                            <a href="#faq" class="btn menustyle">FAQ</a>
                         </div>
                         <div class="col ty-2">
-                            <a href="#contact" class="menustyle">Contact</a>
+                            <a href="#contact" class="btn menustyle">Contact</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="row border-top border-secondary-subtle justify-content-center">
                     <div class="col-3 align-self-center my-3">
-                        <a href="#privacy" class="menustyle-underlined mx-2">Privacy Policy</a>
+                        <a href="#privacy" class="btn menustyle-underlined mx-2">Privacy Policy</a>
                     </div>
                     <div class="col-3 align-self-center">
-                        <a href="#terms" class="menustyle-underlined">Terms & Conditions</a>
+                        <a href="#terms" class="btn menustyle-underlined">Terms & Conditions</a>
                     </div>
                 </div>
             </div>
