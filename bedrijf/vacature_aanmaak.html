@@ -8,14 +8,15 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="../stylecopy.css" />
     <script src="../algemeen.js"></script>
     <style>
-      body {
+      /* body {
         background-color: white;
       }
       .navbar {
         background-color: #f8f9fa;
-      }
+      } */
       .form-container {
         max-width: 500px;
         margin: 0 auto;
@@ -30,8 +31,8 @@
         border-color: black;
       }
       .btn-primary:hover {
-        background-color: #333;
-        border-color: #333;
+        background-color: #ec613a;
+        border-color: #ec613a;
       }
       .form-control {
         height: 35px;
@@ -40,6 +41,14 @@
       }
       label {
         margin-bottom: 5px;
+      }
+      #uitStroomRichting:hover {
+        background-color: black;
+        color: white;
+      }
+      #uitStroomRichting option {
+        background-color: white;
+        color: black;
       }
     </style>
   </head>
@@ -127,10 +136,12 @@
         <button type="submit" class="btn btn-primary">Create Vacature</button>
       </form>
     </div>
+    <footer class="footer" id="ourFooter"></footer>
     <script>
       window.onload = function () {
         TekenNavBalk("bedrijf");
         loadProfileData();
+        LoadFooter();
       };
       function bindFormSubmission() {
         document
@@ -173,6 +184,7 @@
           .then(({ status, body }) => {
             if (status === 200) {
               console.log("Vacature successfully created");
+              navigateToBedrijfVacatureOverzicht();
             } else {
               console.error("Failed to create vacature:", body);
             }
@@ -180,6 +192,12 @@
           .catch((error) => {
             console.error("Error:", error);
           });
+      }
+      function navigateToBedrijfVacatureOverzicht() {
+        let destinationUrl =
+          "/bedrijf/bedrijf_overzicht_vacatures.html?bfid=" + profiel.id;
+
+        window.location.href = destinationUrl;
       }
     </script>
   </body>
