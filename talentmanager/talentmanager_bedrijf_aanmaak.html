@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bedrijf Aanmaak</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../stylecopy.css" />
+    <script src="../algemeen.js"></script>
+    <script src="../algemeen.js"></script>
+    <style>
+      .form-container {
+        max-width: 500px;
+        margin: 0 auto;
+        border: 2px solid white;
+        border-radius: 10px;
+        padding: 20px;
+        background-color: white;
+        color: black;
+      }
+      .submit-btn {
+        background-color: black;
+        border-color: black;
+        color: white;
+      }
+      .submit-btn:hover {
+        background-color: #ec613a;
+        border-color: #ec613a;
+      }
+      .input-field,
+      .text-area,
+      .select-field {
+        height: 35px;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      .text-area {
+        height: auto;
+      }
+      label {
+        margin-bottom: 5px;
+      }
+      .select-field:hover {
+        background-color: black;
+        color: white;
+      }
+      .select-field option {
+        background-color: white;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar" id="navbalk"></nav>
+    <div class="form-container mt-5">
+      <form id="companyCreationForm">
+        <div class="form-group">
+          <label for="companyName">Bedrijf naam:</label>
+          <input
+            type="text"
+            class="input-field"
+            id="companyName"
+            name="companyName"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="location">Locatie:</label>
+          <input
+            type="text"
+            class="input-field"
+            id="location"
+            name="location"
+            required
+          ></input>
+        </div>
+        <div class="form-group">
+          <label for="industry">Branche:</label>
+          <input
+            type="text"
+            class="input-field"
+            id="industry"
+            name="industry"
+            required
+          />
+        </div>
+        <div class="form-group">
+            <label for="bio">Bio:</label>
+            <textarea class="text-area" id="bio" name="bio" rows="4" required></textarea>
+          </div>
+
+        <button type="submit" class="btn submit-btn">Bedrijf Aanmaken</button>
+      </form>
+    </div>
+    <footer class="footer" id="ourFooter"></footer>
+    <script>
+        window.onload = function () {
+            TekenNavBalk("bedrijf");
+            loadProfileData();
+            LoadFooter();
+    
+           
+            document.getElementById("companyCreationForm").addEventListener("submit", function (event) {
+                event.preventDefault();
+                submitCompanyForm();
+            });
+        };
+    
+        function submitCompanyForm() {
+            const formData = {
+                companyName: document.getElementById("companyName").value,
+                location: document.getElementById("location").value,
+                industry: document.getElementById("industry").value,
+                bio: document.getElementById("bio").value,
+            };
+    
+            fetch(ipbackend + "/talentmanager/"+ profiel.id+"/bedrijf", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Failed to create company");
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Company successfully created", data);
+                navigateToTalentLandingPage();
+            })
+            .catch(error => {
+                console.error("Error:", error.message);
+            });
+        }
+    
+        function navigateToTalentLandingPage() {
+            const profileId = profiel.id;
+            let destinationUrl = `/talentmanager/talentmanager_landingspagina.html?tmid=${profileId}`;
+            window.location.href = destinationUrl;
+        }
+    </script>
+  </body>
+</html>
