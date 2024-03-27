@@ -16,173 +16,172 @@ function TekenNavBalk(modifier){
         //Dit is de navbalk voor Trainees
         case "trainee":
 
-            navbarHTML = `<div class="container text-center">
+            navbarHTML = `<div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
-            <div class="col-sm-2">
-                <a href="trainee_landingspagina.html"?`+localStorage.getItem("loginQuery")+`><img src="../images/NEXTMATCH_text.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+            <div class="col-2">
+                <a href="trainee_landingspagina.html"?`+localStorage.getItem("loginQuery")+` class="btn"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
             </div>
         
-            <div class="col-sm-3">
+            <div class="col-3">
             </div>
         
-            <div class="col-sm-2">
-                <a href="trainee_overzicht_vacature.html?`+localStorage.getItem("loginQuery")+`" class="btn">Vacatures</a>
+            <div class="col-2">
+                <a href="trainee_overzicht_vacature.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Vacatures</a>
             </div>
         
-            <div class="col-sm-2">
-                <a href="trainee_overzicht_bedrijven.html?`+localStorage.getItem("loginQuery")+`" class="btn">Bedrijven</a>
-            </div>
-
-            <div class="col-sm-2">
-            <button class="btn" onclick="logOut()">Log Uit</button>
+            <div class="col-2">
+                <a href="trainee_overzicht_bedrijven.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Bedrijven</a>
             </div>
 
+            <div class="col-2">
+            <button class="btn menustyle" onclick="logOut()">Log Uit</button>
+            </div>
+
         
-            <div class="col-sm-1">
-            <a href="foto.html?` + localStorage.getItem("loginQuery") + `"> <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;" onclick="uploadImage()" id="fotoId"></a>
+            <div class="col-1">
+            <a href="foto.html?` + localStorage.getItem("loginQuery") + `" class="btn"> <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;" onclick="uploadImage()" id="fotoId"></a>
             </div>
         
-        </div>
         </div>
         `;
         break;
 
         //Dit is de navbalk voor Bedrijven
         case ("bedrijf"):
-            navbarHTML = `<div class="container text-center">
+            navbarHTML = `
+                <div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
-            <div class="col-sm-2">
-                <a href="bedrijf_landingspagina.html?`+localStorage.getItem("loginQuery")+`"><img src="../images/NEXTMATCHLOGO.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
-            </div>
-        
-            <div class="col-sm-3">
-            </div>
-            
-            <div class="col-sm-2">
-                <a href="bedrijf_overzicht_vacatures.html?`+localStorage.getItem("loginQuery")+`" class="btn">Mijn Vacatures</a>
-            </div>
-        
-            <div class="col-sm-2">
-                <a href="bedrijf_chats.html?`+localStorage.getItem("loginQuery")+`" class="btn">Chats</a>
-            </div>
-        
-            <div class="col-sm-1">
-            <button class="btn" onclick="logOut()">Log Uit</button>
-            </div>
+                    <div class="col-2">
+                        <a href="bedrijf_landingspagina.html?`+localStorage.getItem("loginQuery")+`" class="btn"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+                    </div>
+                
+                    <div class="col-3">
+                    </div>
+                    
+                    <div class="col-2">
+                        <a href="bedrijf_overzicht_vacatures.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Mijn Vacatures</a>
+                    </div>
+                
+                    <div class="col-2">
+                        <a href="bedrijf_chats.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Chats</a>
+                    </div>
+                
+                    <div class="col-1">
+                    <button class="btn menustyle" onclick="logOut()">Log Uit</button>
+                    </div>
 
-        
-            <div class="col-sm-1">
-                <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
-            </div>
-        
-        </div>
-        </div>
+                
+                    <div class="col-1">
+                        <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
+                    </div>
+                
+                </div>
         `;
         break;
  //Dit is de navbalk voor de talentmanagers
     case ("talentmanager"):
-        navbarHTML = `<div class="container text-center">
+        navbarHTML = `
+            <div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
-            <div class="col-sm-2">
-                <a href="../talentmanager/talentmanager_landingspagina.html?`+localStorage.getItem("loginQuery")+`"><img src="../images/NEXTMATCHLOGO.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
-            </div>
+                <div class="col-2">
+                    <a href="../talentmanager/talentmanager_landingspagina.html?`+localStorage.getItem("loginQuery")+`" class="btn">
+                        <img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail">
+                    </a>
+                </div>
 
-            <div class="col-sm-1">
-            </div>
-            
-            <div class="col-sm-1">
-                <a href="../talentmanager/talentmanager_overzicht_trainees.html?`+localStorage.getItem("loginQuery")+`" class="btn">Mijn Trainees</a>
-            </div>
-            
+                <div class="col-1">
+                </div>
+                
+                <div class="col-1">
+                    <a href="../talentmanager/talentmanager_overzicht_trainees.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Trainees</a>
+                </div>
+                
 
-            <div class="col-sm-1">
-                <a href="../talentmanager/talentmanager_overzicht_bedrijven.html?`+localStorage.getItem("loginQuery")+`" class="btn">Mijn Bedrijven</a>
-            </div>
+                <div class="col-1">
+                    <a href="../talentmanager/talentmanager_overzicht_bedrijven.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Bedrijven</a>
+                </div>
 
-            <div class="col-sm-1">
-                <a href="../talentmanager/talentmanager_chats.html?`+localStorage.getItem("loginQuery")+`" class="btn">Chats</a>
-            </div>
+                <div class="col-1">
+                    <a href="../talentmanager/talentmanager_chats.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Chats</a>
+                </div>
 
-            <div class="col-sm-1">
-            <a href="../talentmanager/talentmanager_python.html?`+localStorage.getItem("loginQuery")+`" class="btn">Python</a>
-            </div>
+                <div class="col-1">
+                <a href="../talentmanager/talentmanager_python.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Python</a>
+                </div>
 
-            <div class="col-sm-1">
-            <button class="btn" onclick="logOut()">Log Uit</button>
-            </div>
+                <div class="col-1">
+                <button class="btn menustyle" onclick="logOut()">Log Uit</button>
+                </div>
 
-            <div class="col-sm-1">
-                <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
+                <div class="col-1">
+                    <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
+                </div>
             </div>
-
-        </div>
-        </div>
     `;
     break;
 
         //Dit is de navbalk voor het beheer
         case ("beheer"):
-            navbarHTML = `<div class="container text-center">
+            navbarHTML = `
+            <div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
-            <div class="col-sm-2">
-                <a href="../index.html"><img src="../images/NEXTMATCHLOGO.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
-            </div>
-        
-            <div class="col-sm-3">
-            </div>
+                <div class="col-2">
+                    <a href="../index.html" class="btn"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+                </div>
             
-            <div class="col-sm-2">
-                <a href="bedrijf_beheer.html" class="btn">bedrijf</a>
-            </div>
+                <div class="col-3">
+                </div>
+                
+                <div class="col-2">
+                    <a href="bedrijf_beheer.html" class="btn menustyle">Bedrijf</a>
+                </div>
+                
             
+                <div class="col-2">
+                    <a href="trainee_beheer.html" class="btn menustyle">Trainee</a>
+                </div>
+            
+                <div class="col-2">
+                    <a href="talentmanager_beheer.html" class="btn menustyle">Talentmanager</a>
+                </div>
+            
+                <div class="col-1">
+                    <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
+                </div>
         
-            <div class="col-sm-2">
-                <a href="trainee_beheer.html" class="btn">Trainee</a>
             </div>
-        
-            <div class="col-sm-2">
-                <a href="talentmanager_beheer.html" class="btn">Talentmanager</a>
-            </div>
-        
-            <div class="col-sm-1">
-                <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
-            </div>
-        
-        </div>
-        </div>
         `;
         break;
 
         default:
-            navbarHTML = `<div class="container text-center">
+            navbarHTML = `
+            <div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
-            <div class="col-sm-2">
-                <a href="index.html"><img src="../images/NEXTMATCHLOGO.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
-            </div>
-        
-            <div class="col-sm-3">
-            </div>
+                <div class="col-2">
+                    <a href="index.html" class="btn"><img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail"></a>
+                </div>
             
-            <div class="col-sm-2">
-                <a href="Actueel.html" class="btn">Actueel</a>
+                <div class="col-3">
+                </div>
+                
+                <div class="col-2">
+                    <a href="Actueel.html" class="btn menustyle">Actueel</a>
+                </div>
+            
+                <div class="col-2">
+                    <a href="YoungNext.html" class="btn menustyle">About Next</a>
+                </div>
+            
+                <div class="col-2">
+                    <a href="../login.html" class="btn menustyle">Login</a>
+                </div>
+            
+                <div class="col-1">
+                    <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
+                </div>
+            
             </div>
-        
-            <div class="col-sm-2">
-                <a href="YoungNext.html" class="btn">About Next</a>
-            </div>
-        
-            <div class="col-sm-2">
-                <a href="../login.html" class="btn">Login</a>
-            </div>
-        
-            <div class="col-sm-1">
-                <img src="../images/NEXTMATCH_LOGO.svg" alt="=NEXT MATCH=" style="width: 85%; height: auto;">
-            </div>
-        
-        </div>
-        </div>
         `
-
     }
     menudiv.innerHTML= navbarHTML;
 }
@@ -320,28 +319,34 @@ function LoadFooter() {
     let footerHtml =
     `
         <footer class="footer">
-            <div class="container text-center justify-content-center">
-                <div class="row align-items-center p-2">
+            <div class="container-fluid text-center justify-content-center border-top border-bottom border-3 border-secondary-subtle">
+                <div class="row align-items-center">
                     <div class="col">
-                        <img
-                            src="../images/NEXTMATCHLOGO.svg"
-                            alt="Logo"
-                            class="footer-logo"
-                        >
+                        <img src="../images/NEXTMATCHLOGO.svg" alt="Logo" class="footer-logo">
                     </div>
-                    <div class="col">
-                        <ul class="list-unstyled footer-links">
-                            <li><a href="../Actueel.html" class="menustyle"><p>Actueel</h2></a></li>
-                            <li><a href="../YoungNext.html" class="menustyle"><p>Young Next</p></a></li>
-                            <li><a href="#faq" class="menustyle"><p>FAQ</p></a></li>
-                            <li><a href="#contact" class="menustyle"><p>Contact</p></a></li>
-                        </ul>
+
+                    <div class="col border-start border-secondary-subtle p-3">
+                        <div class="col by-2">
+                            <a href="../Actueel.html" class="btn menustyle">Actueel</a>
+                        </div>
+                        <div class="col my-3">
+                            <a href="../YoungNext.html" class="btn menustyle">Young Next</a>
+                        </div>
+                        <div class="col my-3">
+                            <a href="#faq" class="btn menustyle">FAQ</a>
+                        </div>
+                        <div class="col ty-2">
+                            <a href="#contact" class="btn menustyle">Contact</a>
+                        </div>
                     </div>
                 </div>
-                <div class="row align-items-center p-2">
-                    <div class="col">
-                        <a href="#privacy" class="menustyle-underlined"><p>Privacy Policy</a> |
-                        <a href="#terms" class="menustyle-underlined">Terms & Conditions</p></a>
+
+                <div class="row border-top border-secondary-subtle justify-content-center">
+                    <div class="col-3 align-self-center my-3">
+                        <a href="#privacy" class="btn menustyle-underlined mx-2">Privacy Policy</a>
+                    </div>
+                    <div class="col-3 align-self-center">
+                        <a href="#terms" class="btn menustyle-underlined">Terms & Conditions</a>
                     </div>
                 </div>
             </div>

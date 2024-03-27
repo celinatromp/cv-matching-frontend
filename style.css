@@ -1,12 +1,40 @@
+@font-face {
+  font-family: 'Stratos SemiBold';
+  src: url('/webfontkit-Stratos/stratos-semibold-trial-bf63c6049f9cf25-webfont.woff') format('woff'),
+       url('/webfontkit-Stratos/stratos-semibold-trial-bf63c6049f9cf25-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Stratos Regular';
+  src: url('/webfontkit-Stratos/stratos-regular-trial-bf63c604a073a47-webfont.woff') format('woff'),
+       url('/webfontkit-Stratos/stratos-regular-trial-bf63c604a073a47-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+/* Gebruik specifieke class, AI response word hierdoor heel raar
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  background-color: #343;
+  background-color: #fff;
 }
 
 li {
   float: inline-start;
+}
+*/
+
+.indexbackground {
+  background: url(images/indexBackground.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
 body {
@@ -14,33 +42,57 @@ body {
 }
 
 .headliner {
-  color: #dbfb60;
-  font-family: 'Courier New', Courier, monospace;
+  color: #11310e;
+  font-family: "Bebas Neue", sans-serif;
   size: 210px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #dbfb60;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+h1 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 210px;
+  color: #11310e;
+}
+
+h2 {
+  font-family: "Stratos SemiBold", sans-serif;
+  font-size: 72px;
+  font-weight: normal;
+  font-style: normal;
+  color: #11310e;
+}
+
+h3 {
+  font-family: "Stratos Regular";
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  color: #11310e;
 }
 
 p {
-  color: #dbfb60;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  color: #11310e;
 }
 
-.navibar {
-  display: block;
-  padding: 8px;
-  background-color: #dddddd;
+.img-thumbnail {
+  border: hidden;
+  background-color: transparent;
 }
 
+.navbar {
+  padding: 0;
+  background-color: #FBF3EB;
+}
+
+/* dubbele functie
 .resize {
   width: 400px;
   height: auto;
   margin-left: 30px;
   margin-right: auto;
 }
+*/
 
 .resize {
   width: 300px;
@@ -64,13 +116,35 @@ p {
   font-size: 18px;
 }
 
+/* old function
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 500px;
   margin-left: auto;
   margin-right: 30px;
   text-align: right;
   padding: 30px;
+}
+*/
+
+.airesp {
+  display: inline-block;
+  margin: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #fbf3eb;
+  color: #11310e;
+  border: hidden;
+}
+
+.card {
+  display: inline-block;
+  margin: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #fbf3eb;
+  color: #11310e;
+  border: hidden;
+  border-radius: 0;
 }
 
 .title {
@@ -79,7 +153,27 @@ p {
 }
 
 .button {
+  color: #fff;
+  background-color: #000;
+  border-radius: 0 !important;
+}
+
+.button:hover {
+  background-color: #6d9ef8;
+  color: #fff;
+}
+
+.btnroundpink {
+  background-color: #f1a1eb;
   color: #000;
+  border-radius: 50%;
+  height: 3vh;
+}
+
+.btnroundpink:hover {
+  background-color: #f1a1eb;
+  color: #000;
+  border-radius: 80%;
 }
 
 button {
@@ -98,45 +192,98 @@ button {
 a {
   text-decoration: none;
   font-size: 22px;
-  /*color: black;*/
+  color: #11310e;
 }
 
-button:hover,
 a:hover {
-  opacity: 0.7;
-  background-color: #ec613a;
-  color: #000;
-}
-
-.card1 {
-  background-color: #fbf3eb;
-  padding: 10px;
+  /* opacity: 0.7; */
+  background-color: #000;
+  color: #FFFFFF;
 }
 
 img {
-  background-color: #fbf3eb;
+  background-color: transparent;
   max-height: 500px;
-  max-width: 1024px;
+  max-width: 500px;
   overflow: hidden;
   padding: 10px;
 }
 
+
+/* Footer styling */
 .footer {
   background-color: #FBF3EB;
-  padding: 20px 0;
 }
 
 .footer-logo {
-  max-width: 300px;
+  max-width: 200px;
   /* Adjust based on your logo size */
 }
+/* Einde Footer styling */
 
+
+/* Navbar en Footer styling */
 .menustyle {
-  font-weight: bold;
+  font-family: "Stratos SemiBold", sans-serif;
+  font-size: 16px;
+  /* font-weight: normal; */
   color: black;
+  border-radius: 0 !important;
+  text-transform: uppercase;
+}
+
+.menustyle:hover {
+  background-color: #000;
+  color: #FFFFFF;
 }
 
 .menustyle-underlined {
+  font-family: "Stratos Regular", sans-serif;
+  font-size: 16px;
   color: black;
   text-decoration: underline;
+  border-radius: 0 !important;
+}
+
+.menustyle-underlined:hover {
+  background-color: #000;
+  color: #FFFFFF;
+}
+/* Einde Navbar en Footer styling */
+
+
+table {
+  font-family: "DM Sans", sans-serif;
+  color: #11310e;
+}
+
+.table-highest-value {
+  color: green;
+  font-weight: bold;
+}
+
+.table-lowest-value {
+  color: red;
+  font-weight: bold;
+}
+
+.mydropdown {
+  background-color: white;
+  color: #000;
+}
+
+.mydropdown:hover {
+  background-color: #000;
+  color: #ffff;
+}
+
+.scrollable-menu {
+  height: auto;
+  max-height: 300px;
+  overflow-x: hidden;
+}
+
+.dropdown-item:hover {
+  background-color: #6d9ef8;
+  color: #ffff;
 }
