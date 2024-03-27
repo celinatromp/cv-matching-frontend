@@ -26,15 +26,15 @@ function TekenNavBalk(modifier){
             </div>
         
             <div class="col-2">
-                <a href="trainee_overzicht_vacature.html?`+localStorage.getItem("loginQuery")+`" class="btn">Vacatures</a>
+                <a href="trainee_overzicht_vacature.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Vacatures</a>
             </div>
         
             <div class="col-2">
-                <a href="trainee_overzicht_bedrijven.html?`+localStorage.getItem("loginQuery")+`" class="btn">Bedrijven</a>
+                <a href="trainee_overzicht_bedrijven.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Bedrijven</a>
             </div>
 
             <div class="col-2">
-            <button class="btn" onclick="logOut()">Log Uit</button>
+            <button class="btn menustyle" onclick="logOut()">Log Uit</button>
             </div>
 
         
@@ -93,24 +93,24 @@ function TekenNavBalk(modifier){
                 </div>
                 
                 <div class="col-1">
-                    <a href="../talentmanager/talentmanager_overzicht_trainees.html?`+localStorage.getItem("loginQuery")+`" class="btn">Mijn Trainees</a>
+                    <a href="../talentmanager/talentmanager_overzicht_trainees.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Mijn Trainees</a>
                 </div>
                 
 
                 <div class="col-1">
-                    <a href="../talentmanager/talentmanager_overzicht_bedrijven.html?`+localStorage.getItem("loginQuery")+`" class="btn">Mijn Bedrijven</a>
+                    <a href="../talentmanager/talentmanager_overzicht_bedrijven.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Mijn Bedrijven</a>
                 </div>
 
                 <div class="col-1">
-                    <a href="../talentmanager/talentmanager_chats.html?`+localStorage.getItem("loginQuery")+`" class="btn">Chats</a>
+                    <a href="../talentmanager/talentmanager_chats.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Chats</a>
                 </div>
 
                 <div class="col-1">
-                <a href="../talentmanager/talentmanager_python.html?`+localStorage.getItem("loginQuery")+`" class="btn">Python</a>
+                <a href="../talentmanager/talentmanager_python.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">Python</a>
                 </div>
 
                 <div class="col-1">
-                <button class="btn" onclick="logOut()">Log Uit</button>
+                <button class="btn menustyle" onclick="logOut()">Log Uit</button>
                 </div>
 
                 <div class="col-1">
@@ -133,16 +133,16 @@ function TekenNavBalk(modifier){
                 </div>
                 
                 <div class="col-2">
-                    <a href="bedrijf_beheer.html" class="btn">bedrijf</a>
+                    <a href="bedrijf_beheer.html" class="btn menustyle">Bedrijf</a>
                 </div>
                 
             
                 <div class="col-2">
-                    <a href="trainee_beheer.html" class="btn">Trainee</a>
+                    <a href="trainee_beheer.html" class="btn menustyle">Trainee</a>
                 </div>
             
                 <div class="col-2">
-                    <a href="talentmanager_beheer.html" class="btn">Talentmanager</a>
+                    <a href="talentmanager_beheer.html" class="btn menustyle">Talentmanager</a>
                 </div>
             
                 <div class="col-1">
@@ -165,15 +165,15 @@ function TekenNavBalk(modifier){
                 </div>
                 
                 <div class="col-2">
-                    <a href="Actueel.html" class="btn">Actueel</a>
+                    <a href="Actueel.html" class="btn menustyle">Actueel</a>
                 </div>
             
                 <div class="col-2">
-                    <a href="YoungNext.html" class="btn">About Next</a>
+                    <a href="YoungNext.html" class="btn menustyle">About Next</a>
                 </div>
             
                 <div class="col-2">
-                    <a href="../login.html" class="btn">Login</a>
+                    <a href="../login.html" class="btn menustyle">Login</a>
                 </div>
             
                 <div class="col-1">
