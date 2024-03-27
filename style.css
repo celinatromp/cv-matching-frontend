@@ -187,6 +187,7 @@ img {
   font-size: 16px;
   /* font-weight: normal; */
   color: black;
+  border-radius: 0 !important;
 }
 
 .menustyle:hover {
@@ -199,6 +200,7 @@ img {
   font-size: 16px;
   color: black;
   text-decoration: underline;
+  border-radius: 0 !important;
 }
 
 .menustyle-underlined:hover {
