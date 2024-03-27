@@ -84,7 +84,7 @@ function TekenNavBalk(modifier){
             <div class="container-fluid text-center border-top border-bottom border-3 border-secondary-subtle">
 
                 <div class="col-2">
-                    <a href="../talentmanager/talentmanager_landingspagina.html?`+localStorage.getItem("loginQuery")+`" class="btn menustyle">
+                    <a href="../talentmanager/talentmanager_landingspagina.html?`+localStorage.getItem("loginQuery")+`" class="btn">
                         <img src="../images/NEXTMATCH.svg" alt="=NEXT MATCH=" style="width: 90%; height: auto;" class="img-thumbnail">
                     </a>
                 </div>
