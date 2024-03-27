@@ -184,9 +184,9 @@ img {
 
 /* Navbar en Footer styling */
 .menustyle {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Stratos SemiBold", sans-serif;
   font-size: 16px;
-  font-weight: bold;
+  /* font-weight: normal; */
   color: black;
 }
 
@@ -195,7 +195,7 @@ img {
 }
 
 .menustyle-underlined {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Stratos Regular", sans-serif;
   font-size: 16px;
   color: black;
   text-decoration: underline;
