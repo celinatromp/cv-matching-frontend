@@ -14,6 +14,7 @@
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
     />
+    <link rel="stylesheet" href="../stylecopy.css" />
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
@@ -23,7 +24,9 @@
     <script>
       window.onload = function () {
         TekenNavBalk();
+        loadProfileData();
         fetchVacatures();
+        LoadFooter();
       };
     </script>
   </head>
@@ -34,7 +37,7 @@
       <div class="row" id="vacatureContainer"></div>
     </div>
     <br />
-    <hr />
+    <footer class="footer" id="ourFooter"></footer>
     <script>
       function fetchVacatures() {
         fetch(ipbackend + "/vacature/all")
@@ -67,20 +70,25 @@
 
         card.appendChild(cardBodyDiv);
 
+        let titleAndBrancheContainer = document.createElement("div");
+        titleAndBrancheContainer.style.height = "110px";
+        cardBodyDiv.appendChild(titleAndBrancheContainer);
+
         let brancheDiv = document.createElement("div");
         brancheDiv.textContent = vacature.bedrijf
           ? vacature.bedrijf.branche || "N/A"
           : "N/A";
         brancheDiv.classList.add("branche-div");
-        brancheDiv.style.marginTop = "10px";
-
         brancheDiv.style.padding = "0.25rem 0.5rem";
         brancheDiv.style.display = "inline-block";
         brancheDiv.style.verticalAlign = "top";
         brancheDiv.style.backgroundColor = "#6D9EF8";
-        brancheDiv.style.marginBottom = "10px";
         brancheDiv.style.color = "white";
-        cardBodyDiv.appendChild(brancheDiv);
+        titleAndBrancheContainer.appendChild(brancheDiv);
+
+        let spacerDiv = document.createElement("div");
+        spacerDiv.style.height = "10px";
+        titleAndBrancheContainer.appendChild(spacerDiv);
 
         let cardTitle = document.createElement("h5");
         cardTitle.classList.add("card-title");
@@ -88,9 +96,7 @@
         cardTitle.style.fontFamily = "Stratos Semibold, sans-serif";
         cardTitle.style.color = "#11310E";
         cardTitle.style.fontWeight = "bold";
-        cardTitle.style.marginBottom = "3.5rem";
-        cardBodyDiv.appendChild(cardTitle);
-
+        titleAndBrancheContainer.appendChild(cardTitle);
         let cardBedrijf = document.createElement("h6");
         cardBedrijf.classList.add("card-text-bedrijf");
         let bedrijfIcon = document.createElement("i");
@@ -145,7 +151,7 @@
 
         let button = document.createElement("button");
         button.classList.add("btn", "btn-primary");
-        button.textContent = "REGULAR BUTTON";
+        button.textContent = "BEKIJK VACATURE";
         button.style.fontWeight = "bold";
         button.style.marginBottom = "20px";
         button.style.backgroundColor = "black";
