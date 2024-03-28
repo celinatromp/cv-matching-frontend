@@ -1,3 +1,20 @@
+@font-face {
+  font-family: 'Stratos SemiBold';
+  src: url('/webfontkit-Stratos/stratos-semibold-trial-bf63c6049f9cf25-webfont.woff') format('woff'),
+       url('/webfontkit-Stratos/stratos-semibold-trial-bf63c6049f9cf25-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Stratos Regular';
+  src: url('/webfontkit-Stratos/stratos-regular-trial-bf63c604a073a47-webfont.woff') format('woff'),
+       url('/webfontkit-Stratos/stratos-regular-trial-bf63c604a073a47-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+
+}
 body {
     background-color: #ffffff;  }
  
@@ -176,9 +193,60 @@ padding: 10px 0; /* Optional: Adds some padding above and below the button */
     flex: 1; /* Allows the card body to expand and push the button down */
   }
   
+/* Footer styling */
+.footer {
+  background-color: #FBF3EB;
+}
+
+.footer-logo {
+  max-width: 200px;
+  /* Adjust based on your logo size */
+}
+/* Einde Footer styling */
 
 
-  .footer {
+/* Navbar en Footer styling */
+.menustyle {
+  font-family: "Stratos SemiBold", sans-serif;
+  font-size: 16px;
+  /* font-weight: normal; */
+  color: black;
+  border-radius: 0 !important;
+  text-transform: uppercase;
+}
+
+.menustyle:hover {
+  background-color: #000;
+  color: #FFFFFF;
+}
+
+.btn.menustyle {
+  font-family: "Stratos Regular", sans-serif;
+  font-size: 16px;
+  color: black;
+  text-decoration: underline;
+  border-radius: 0 !important;
+}
+
+.btn.menustyle:hover {
+  background-color: #000;
+  color: #FFFFFF;
+}
+.btn.btn.menustyle-underlined {
+  font-family: "Stratos Regular", sans-serif;
+  font-size: 16px;
+  color: black;
+  text-decoration: underline;
+  border-radius: 0 !important;
+}
+
+.btn.menustyle-underlined:hover {
+  background-color: #000;
+  color: #FFFFFF;
+}
+/* Einde Navbar en Footer styling */
+
+  /* .footer {
     background-color: #FBF3EB;
     padding: 20px 0;
   }
@@ -186,7 +254,7 @@ padding: 10px 0; /* Optional: Adds some padding above and below the button */
   .footer-logo {
     max-width: 300px;
     /* Adjust based on your logo size */
-  }
+ /*  }
 
   .list-unstyled {
     font-family: 'bebas neue';
@@ -204,4 +272,5 @@ padding: 10px 0; /* Optional: Adds some padding above and below the button */
   .mt-auto a {
     color: #000000;
   }
-  
+   */
+ 
