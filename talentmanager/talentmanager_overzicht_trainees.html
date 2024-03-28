@@ -147,7 +147,7 @@ a[title]:hover::after {
 
             // For demonstration, using a static "/foto/1" endpoint.
             // You might need to adjust it to fetch specific images for each trainee.
-            fetch(ipbackend + "/foto/1")
+            fetch(ipbackend + "/trainee/" + trainee.id + "/foto")
               .then(r => r.blob())
               .then(blob => {
                 const imageUrl = URL.createObjectURL(blob);
