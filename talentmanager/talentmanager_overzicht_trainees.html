@@ -23,6 +23,7 @@
     window.onload = function () {
       // gebruik als argument de type navbalk die je wilt, "trainee","talentmanager" of "bedrijf"
       TekenNavBalk("talentmanager");
+      LoadFooter();
 
     };
   </script>
@@ -71,34 +72,7 @@
     background-position: bottom;
     /* Shift the background to show the black part */
   }
-  .footer {
-    background-color: #FBF3EB;
-    padding: 20px 0;
-  }
-
-  .footer-logo {
-    max-width: 300px;
-    /* Adjust based on your logo size */
-  }
-
-  .list-unstyled {
-    font-family: 'bebas neue';
-    font-size: 40px;
-    text-align: center;
-    margin-top: 20px;
-    
-   
-
-  }
-
-  .list-unstyled a {
-    color: #000000;
-    text-decoration: none;
-  }
-
-  .mt-auto a {
-    color: #000000;
-  }
+ 
   .actie{
     display: inline-block;
     background-color: rgb(173, 8, 8);
@@ -137,25 +111,8 @@ a[title]:hover::after {
       <!-- Trainees will be loaded here -->
     </div>
   </div>
-  <footer class="footer mt-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 d-flex align-items-end flex-column">
-          <img src="../images/NEXTMATCHLOGO.svg" alt="Logo" class="footer-logo">
-          <div class="mt-auto">
-            <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms & Conditions</a>
-          </div>
-        </div>
-        <div class="col-md-8">
-          <ul class="list-unstyled footer-links">
-            <li><a href="#link1">Actueel</a></li>
-            <li><a href="#link2">Young Next</a></li>
-            <li><a href="#link3">FAQ</a></li>
-            <li><a href="#link4">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+  <footer class="footer" id="ourFooter">
+    
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
