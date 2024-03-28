@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- laad alle relevante links: -->
+    <link rel="stylesheet" href="../style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="../algemeen.js"></script>
@@ -17,6 +18,7 @@
         // gebruik als argument de type navbalk die je wilt, "trainee","talentmanager" of "bedrijf"
         TekenNavBalk("talentmanager");
         loadProfileData();
+        LoadFooter();
       };
       
     </script>
@@ -26,17 +28,195 @@
 
   <body>
     <!-- dit is de navbalk zelf. -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbalk"></nav>
+    <nav class="navbar" id="navbalk"></nav>
 
-    <h1 id="welcomeMessage">Dit is de talentmanager landingspagina</h1>
-      <script>
-        let a = localStorage.getItem("ProfielString")
-        let profiellokaal = JSON.parse(a);
-        console.log(profiellokaal.voornaam)
 
-        let voornaam = profiellokaal.voornaam;
-        let welcomeMessage = document.getElementById("welcomeMessage");
+    <div class="container text-center">
+      <div class="row">
 
-        welcomeMessage.textContent = `Welcome ${profiellokaal.voornaam}!`;
+        <div class="col">
+          
+          <h1 id="welcomeMessage">Dit is de talentmanager landingspagina</h1>
+          <script>
+            let a = localStorage.getItem("ProfielString")
+            let profiellokaal = JSON.parse(a);
+            console.log(profiellokaal.voornaam)
+
+            let voornaam = profiellokaal.voornaam;
+            let welcomeMessage = document.getElementById("welcomeMessage");
+
+            welcomeMessage.textContent = `Welcome ${profiellokaal.voornaam}!`;
+          </script>
+        </div>
+
+      </div>
+    </div>
+
+    <script>
+      //Hier halen we de matches op op:
+      let fetchUrl="https://personal-pnvw4ymj.outsystemscloud.com/NEXTMatch2/rest/status/talentmanager/"+profiellokaal.id +"/max/3"
+      console.log("Fetching "+fetchUrl)
+      fetch(fetchUrl)
+      .then(response =>{
+        if (!response.ok) {
+            throw new Error('Failed to retrieve data');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log("Received data:", data);
+        responseData = data;
+        responseData.foreach(function(match) {
+          
+            var matchId = match.Matches.Match_id;
+            var traineeNaam = match.Trainees.Voornaam + " " + match.Trainees.Achternaam;
+            var vacatureTitel = match.Vacatures.Titel;
+            var vacatureLocatie = match.Vacatures.Locatie;
+            var sollicitatieDatum = match.SollicitatieStatus.Datum;
+            console.log(matchId);
+        })
+      })
+      
+
     </script>
+
+    
+    <h2>Chats</h2>
+
+    <div class="container text-center" id="chats">
+      <div class="row">
+        <div class="col">
+
+          <!-- Eerste Chat card -->
+          <div class="card" style="width: 18rem;" id="card1">
+            <div class="card-body">
+              <h5 class="card-title" id="titlecard1">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+          
+        </div>
+        <div class="col">
+          
+          <!-- Tweede Chat card -->
+          <div class="card" style="width: 18rem;" id="card2">
+            <div class="card-body">
+              <h5 class="card-title" id="titlecard2">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col">
+          <!-- derde Chat card -->
+          <div class="card" style="width: 18rem;" id="card3">
+            <div class="card-body">
+              <h5 class="card-title" id="titlecard3">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <h2>Trainees</h2>
+
+    <script>
+      //hier halen we de trainees op:
+      // fetch(backendid)
+
+    </script>
+
+    <div class="container text-center" id="chats">
+      <div class="row">
+        <div class="col">
+          <!-- Eerste trainee card -->
+          <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+          
+        </div>
+        <div class="col">
+          <!-- Tweede trainee card -->
+          <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col">
+          <!-- Derde trainee card -->
+          <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <h2>Bedrijven</h2>
+
+    <div class="container text-center" id="chats">
+      <div class="row">
+        <div class="col">
+
+          <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+          
+        </div>
+        <div class="col">
+          
+          <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+
+        </div>
+        <div class="col">
+          
+          <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <footer class="footer" id="ourFooter"></footer>
+
   </body>
