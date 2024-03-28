@@ -13,7 +13,7 @@
 
     <!-- runs de navbalk script op pagina load -->
     <script>
-      var x;
+      let x;
       window.onload = function () {
         // gebruik als argument de type navbalk die je wilt, "trainee","talentmanager" of "bedrijf"
         TekenNavBalk("talentmanager");
@@ -38,12 +38,61 @@
           <script>
             let a = localStorage.getItem("ProfielString")
             let profiellokaal = JSON.parse(a);
-            console.log(profiellokaal.voornaam)
+            // console.log(profiellokaal.voornaam)
 
             let voornaam = profiellokaal.voornaam;
             let welcomeMessage = document.getElementById("welcomeMessage");
 
             welcomeMessage.textContent = `Welcome ${profiellokaal.voornaam}!`;
+          </script>
+
+          <script>
+            
+            function displayChats(){
+              let container = document.getElementById("chats");
+              let vacatureTitles = new Set();
+              let cardHtml = "";
+
+              responseData.forEach(function(match, index) {
+
+                let cardId = "card" + (index + 1);
+
+                
+
+                let matchId = match.Matches.Match_id;
+                let VacatureId = match.Vacatures.Id;
+                console.log("VACATURE ID: " +VacatureId)
+
+                let hreflink = "https://personal-pnvw4ymj.outsystemscloud.com/NEXTMatch2/Dash_Bedrijf?id=1&vac2=" + VacatureId;
+
+                let traineeNaam = match.Trainees.Voornaam + " " + match.Trainees.Achternaam;
+                let vacatureTitel = match.Vacatures.Titel;
+                let vacatureLocatie = match.Vacatures.Locatie;
+                let sollicitatieDatum = match.SollicitatieStatus.Datum;
+                let uitstroomrichting = match.Vacatures.Uitstroomrichting;
+                let locatie = match.Vacatures.Locatie;
+
+                // console.log("Dit is match ID: " +matchId)
+
+                  cardHtml += '<div class="col">';
+                if(!vacatureTitles.has(vacatureTitel)){
+                  // console.log(...vacatureTitles)
+                  vacatureTitles.add(vacatureTitel);
+                  
+                  cardHtml += '<div class="card" style="width: 18rem;" id="' + cardId + '">';
+                  cardHtml += '<div class="card-body">';
+                  cardHtml += '<h5 class="card-title" id="title' + cardId + '">' + vacatureTitel + '</h5>';
+                  cardHtml += '<p class="card-text">Uitstroomrichting: ' + uitstroomrichting + '</p>';
+                  cardHtml += '<p class="card-text">Locatie: ' + locatie + '</p>';
+                  cardHtml += '<a href="' + hreflink +'" class="btn btn-primary">Naar Chats</a>';
+                  cardHtml += '</div></div></div>';
+                }
+               
+
+                // console.log(cardHtml)
+                    });
+                    container.innerHTML += cardHtml;
+          }
           </script>
         </div>
 
@@ -53,7 +102,7 @@
     <script>
       //Hier halen we de matches op op:
       let fetchUrl="https://personal-pnvw4ymj.outsystemscloud.com/NEXTMatch2/rest/status/talentmanager/"+profiellokaal.id +"/max/3"
-      console.log("Fetching "+fetchUrl)
+      // console.log("Fetching "+fetchUrl)
       fetch(fetchUrl)
       .then(response =>{
         if (!response.ok) {
@@ -62,158 +111,133 @@
         return response.json();
       })
       .then(data => {
-        console.log("Received data:", data);
+        // console.log("Received data:", data);
         responseData = data;
-        responseData.foreach(function(match) {
-          
-            var matchId = match.Matches.Match_id;
-            var traineeNaam = match.Trainees.Voornaam + " " + match.Trainees.Achternaam;
-            var vacatureTitel = match.Vacatures.Titel;
-            var vacatureLocatie = match.Vacatures.Locatie;
-            var sollicitatieDatum = match.SollicitatieStatus.Datum;
-            console.log(matchId);
-        })
+        displayChats()
       })
-      
+    </script>
+
+    <script>
+      //functie om trainees te displayen
+      function displayTrainees(){
+        let container2 = document.getElementById("trainees");
+
+        let Trainees = responseData2.trainee
+        // console.log(...Trainees)
+        let laatste3Trainees = Trainees.slice(-3);
+        let  traineeHtml ="";
+        // console.log(...laatste3Trainees)
+        
+        laatste3Trainees.forEach(function(trainee){
+          console.log(trainee)
+          let traineeId = trainee.id;
+          let voornaam = trainee.voornaam;
+          let achternaam = trainee.achternaam;
+          let traineeUitstroomrichting = trainee.specialisatie;
+          let traineeWoonplaats = trainee.woonplaats;
+          let traineeLeeftijd = trainee.leeftijd;
+
+          traineeHtml += '<div class="col">'
+          traineeHtml += '<div class="card" style="width: 18rem;">';
+          traineeHtml += '<div class="card-body">';
+          traineeHtml += '<h5 class="card-title" id="title">' + voornaam +" "+ achternaam + '</h5>';
+          traineeHtml += '<p class="card-text">Uitstroomrichting: ' + traineeUitstroomrichting + '</p>';
+          traineeHtml += '<p class="card-text">Leeftijd: ' + traineeLeeftijd + '</p>';
+          traineeHtml += '<p class="card-text">Locatie: ' + traineeWoonplaats + '</p>';
+          traineeHtml += '<a href="#" class="btn btn-primary">Naar Trainee</a>';
+          traineeHtml += '</div></div></div>';
+        })
+        container2.innerHTML += traineeHtml;
+
+        }
+    </script>
+
+
+    <script>
+      //Hier halen we de trainees op op:
+      let fetchUrl2 =ipbackend+"/talentmanager/" + profiellokaal.id;
+      // console.log("Fetching "+fetchUrl2)
+      fetch(fetchUrl2)
+      .then(response =>{
+        if (!response.ok) {
+            throw new Error('Failed to retrieve data');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // console.log("Received data:", data);
+        responseData2 = data;
+        displayTrainees()
+      })
+    </script>
+
+    <script>
+      function displayBedrijven(){
+        let container3 = document.getElementById("bedrijven");
+        let bedrijven = responseData3;
+        // console.log(...Trainees)
+        let laatste3bedrijven = bedrijven.slice(-3);
+        let  bedrijfHtml ="";
+        // console.log(...laatste3Trainees)
+        
+        laatste3bedrijven.forEach(function(bedrijf){
+          console.log(bedrijf)
+
+          let bedrijfId = bedrijf.id;
+          let bedrijfNaam = bedrijf.naamBedrijf;
+          let bedrijfLocatie = bedrijf.locatie;
+          let bedrijfBranche = bedrijf.branche;
+
+          bedrijfHtml += '<div class="col">'
+          bedrijfHtml += '<div class="card" style="width: 18rem;">';
+          bedrijfHtml += '<div class="card-body">';
+          bedrijfHtml += '<h5 class="card-title" id="title">' + bedrijfNaam+  '</h5>';
+          bedrijfHtml += '<p class="card-text">Branche: ' + bedrijfBranche + '</p>';
+          bedrijfHtml += '<p class="card-text">Locatie: ' + bedrijfLocatie + '</p>';
+          bedrijfHtml += '<a href="#" class="btn btn-primary">Naar Bedrijf</a>';
+          bedrijfHtml += '</div></div></div>';
+        })
+        container3.innerHTML += bedrijfHtml;
+
+      }
 
     </script>
+
+<script>
+  //Hier halen we de bedrijven op op:
+  let fetchUrl3 =ipbackend+"/bedrijf/all"
+  // console.log("Fetching "+fetchUrl2)
+  fetch(fetchUrl3)
+  .then(response =>{
+    if (!response.ok) {
+        throw new Error('Failed to retrieve data');
+    }
+    return response.json();
+  })
+  .then(data => {
+    // console.log("Received data:", data);
+    responseData3 = data;
+    displayBedrijven()
+  })
+</script>
 
     
     <h2>Chats</h2>
 
-    <div class="container text-center" id="chats">
-      <div class="row">
-        <div class="col">
-
-          <!-- Eerste Chat card -->
-          <div class="card" style="width: 18rem;" id="card1">
-            <div class="card-body">
-              <h5 class="card-title" id="titlecard1">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-          
-        </div>
-        <div class="col">
-          
-          <!-- Tweede Chat card -->
-          <div class="card" style="width: 18rem;" id="card2">
-            <div class="card-body">
-              <h5 class="card-title" id="titlecard2">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-
-        </div>
-        <div class="col">
-          <!-- derde Chat card -->
-          <div class="card" style="width: 18rem;" id="card3">
-            <div class="card-body">
-              <h5 class="card-title" id="titlecard3">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
+    <div class="container text-center"><div class="row" id="chats"></div></div>
 
     <h2>Trainees</h2>
 
-    <script>
-      //hier halen we de trainees op:
-      // fetch(backendid)
-
-    </script>
-
-    <div class="container text-center" id="chats">
-      <div class="row">
-        <div class="col">
-          <!-- Eerste trainee card -->
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-          
-        </div>
-        <div class="col">
-          <!-- Tweede trainee card -->
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-
-        </div>
-        <div class="col">
-          <!-- Derde trainee card -->
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-
-        </div>
+    <div class="container text-center">
+      <div class="row" id="trainees">
+        
       </div>
     </div>
 
     <h2>Bedrijven</h2>
 
-    <div class="container text-center" id="chats">
-      <div class="row">
-        <div class="col">
 
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-          
-        </div>
-        <div class="col">
-          
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-
-        </div>
-        <div class="col">
-          
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-
+    <div class="container text-center"><div class="row" id="bedrijven"></div></div>
 
     <footer class="footer" id="ourFooter"></footer>
 
