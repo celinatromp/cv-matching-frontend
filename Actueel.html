@@ -9,6 +9,7 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="../style.css" />
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
@@ -18,30 +19,11 @@
     <script>
       window.onload = function () {
         TekenNavBalk();
+        LoadFooter();
       };
     </script>
     <style>
-      @font-face {
-        font-family: "stratossemibold";
-        src: url("http://127.0.0.1:5500/css/fonts/stratos-semibold-trial-bf63c6049f9cf25-webfont.woff2")
-            format("woff2"),
-          url("http://127.0.0.1:5500/css/fonts/stratos-semibold-trial-bf63c6049f9cf25-webfont.woff")
-            format("woff");
-        font-weight: normal;
-        font-style: normal;
-      }
-
-      @font-face {
-        font-family: "stratosregular";
-        src: url("http://127.0.0.1:5500/css/fonts/stratos-regular-trial-bf63c604a073a47-webfont.woff2")
-            format("woff2"),
-          url("http://127.0.0.1:5500/css/fonts/stratos-regular-trial-bf63c604a073a47-webfont.woff")
-            format("woff");
-        font-weight: normal;
-        font-style: normal;
-      }
-
-      h1 {
+      /*h1 {
         font-family: "Bebas Neue", sans-serif;
         font-size: 80px;
       }
@@ -63,7 +45,7 @@
       p {
         font-family: "DM Sans", sans-serif;
         font-size: 16px;
-      }
+      }*/
 
       .card-body {
         background-color: #fbf3eb;
@@ -86,7 +68,7 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbalk"></nav>
     <br />
-    <h1>Actueel</h1>
+    <h2 style="margin-left: 50px">Actueel</h2>
     <br />
     <div class="container">
       <div class="row">
@@ -271,4 +253,5 @@
       </div>
     </div>
   </body>
+  <footer class="footer" id="ourFooter"></footer>
 </html>
