@@ -9,36 +9,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="algemeen.js"></script>
-    
+    <link rel="stylesheet" href="../style.css" />
     <!-- runs de navbalk script op pagina load -->
     <script>
        window.onload=function(bedrijf){
         // gebruik als argument de type navbalk die je wilt, "trainee","talentmanager" of "bedrijf"
         TekenNavBalk();
+        LoadFooter();
       };
     </script>
      <style>
-        @font-face {
-          font-family: "stratossemibold";
-          src: url("http://127.0.0.1:5500/css/fonts/stratos-semibold-trial-bf63c6049f9cf25-webfont.woff2")
-              format("woff2"),
-            url("http://127.0.0.1:5500/css/fonts/stratos-semibold-trial-bf63c6049f9cf25-webfont.woff")
-              format("woff");
-          font-weight: normal;
-          font-style: normal;
-        }
   
-        @font-face {
-          font-family: "stratosregular";
-          src: url("http://127.0.0.1:5500/css/fonts/stratos-regular-trial-bf63c604a073a47-webfont.woff2")
-              format("woff2"),
-            url("http://127.0.0.1:5500/css/fonts/stratos-regular-trial-bf63c604a073a47-webfont.woff")
-              format("woff");
-          font-weight: normal;
-          font-style: normal;
-        }
-  
-        h1 {
+        /*h1 {
           font-family: "Bebas Neue", sans-serif;
           font-size: 72px;
         }
@@ -61,7 +43,7 @@
         p {
           font-family: "DM Sans", sans-serif;
           font-size: 16px;
-        }
+        }*/
   
         .card-body {
           color: #fbf3eb;
@@ -88,13 +70,13 @@
   <body>
     <!-- dit is de navbalk zelf. -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbalk"></nav>
-
+<br />
         <div class="row">
 
            <div class="col-sm-8">
              <div class="col-sm-12">
-                 <h1>Bedrijfprofiel</h1>
-                 <p>De weergave van uw profiel hieronder is ook hoe andere gebruikers het zullen zien.</p>
+                 <h2 style="margin-left: 50px;">Bedrijfprofiel</h2>
+                 <p style="margin-left: 50px">De weergave van uw profiel hieronder is ook hoe andere gebruikers het zullen zien.</p>
                </div>
                <div class="col-sm-12">
                
@@ -102,22 +84,22 @@
            </div>
 
            <div class="col-sm-4">
-               <button type="button" class="bttn"><h3>Wijzigen</h3></button>
+               <button type="button" style="background-color: #000; color: #fff;" class="btn">Wijzigen</button>
            </div>
        </div>
 <br />
        <div class="row">
         <div class="about1 col-4">
-            <img class="about1" src="https://shop.raceya.fit/wp-content/uploads/2020/11/logo-placeholder.jpg">
+            <img class="about1" style="margin-left: 50px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Nintendo_gray_logo.svg/2560px-Nintendo_gray_logo.svg.png">
         </div>
 
         <div class="about1 col-8">
-            <h2>NAAM BEDRIJF</h2>
-            <p>Naam van het bedrijf</p>
-            <h2>LOCATIE</h2>
-            <p>Locatie van het bedrijf</p>
-            <h2>BRANCHE</h2>
-            <p>Branche van het bedrijf</p>
+            <h3>NAAM BEDRIJF</h3>
+            <p>Nintendo Benelux BV</p>
+            <h3>LOCATIE</h3>
+            <p>Nieuwegein</p>
+            <h3>BRANCHE</h3>
+            <p>Videogames en Electronica</p>
         </div>
         <br />
    
@@ -125,8 +107,8 @@
            <div class="col-sm-12">
                <div class="card">
                    <div class="card-body"></div>
-                       <h2 class="Header">KORTE OMSCHRIJVING</h2>
-                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                       <h3 class="Header">KORTE OMSCHRIJVING</h3>
+                       <p>Nintendo Benelux BV is de regionale tak van Nintendo, het wereldberoemde Japanse videogamebedrijf. Gevestigd in de Benelux, distribueert het een breed scala aan games, consoles en accessoires in Nederland, België en Luxemburg, met een focus op hoogwaardige entertainmentervaringen voor gamers van alle leeftijden.</p>
                    </div>
                </div>
            </div>
@@ -135,8 +117,16 @@
            <div class="col-sm-12">
                <div class="card">
                    <div class="card-body"></div>
-                       <h2 class="Header">LANGE OMSCHRIJVING</h2>
-                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                       <h3 class="Header">LANGE OMSCHRIJVING</h3>
+                       <p>Nintendo Benelux BV is de lokale dochteronderneming van het befaamde Japanse videogamebedrijf Nintendo. Sinds de oprichting heeft Nintendo een stempel gedrukt op de wereld van entertainment met zijn innovatieve benadering van gaming. De geschiedenis van Nintendo Benelux BV begon met de groeiende populariteit van Nintendo's iconische spelcomputers en games in de Benelux-regio, die al snel leidde tot de oprichting van een specifieke entiteit om de verkoop en distributie in Nederland, België en Luxemburg te beheren.<br/> <br/>
+
+                        In de beginjaren richtte Nintendo Benelux BV zich op de verkoop van klassieke consoles zoals de Nintendo Entertainment System (NES), de Super Nintendo Entertainment System (SNES) en de Nintendo 64, naast een uitgebreide bibliotheek van games die geliefd waren bij gamers van alle leeftijden. Door de jaren heen heeft het bedrijf zich aangepast aan de evoluerende gamingmarkt en heeft het een reeks baanbrekende systemen geïntroduceerd, waaronder de handheldsystemen zoals de Game Boy, de Nintendo DS en de Nintendo Switch. <br/> <br/>
+                        
+                        Tegenwoordig staat Nintendo Benelux BV bekend als een toonaangevende speler in de Benelux-gamingmarkt. Het bedrijf distribueert een breed scala aan hoogwaardige producten, waaronder de nieuwste Nintendo-consoles zoals de Nintendo Switch en de Nintendo Switch Lite, evenals een uitgebreide selectie van populaire games en accessoires. Met een voortdurende focus op het creëren van boeiende en meeslepende spelervaringen, werkt Nintendo Benelux BV nauw samen met ontwikkelaars over de hele wereld om vernieuwende titels te leveren die zowel nieuwe als doorgewinterde gamers aanspreken.
+                        
+                        <br/><br/>Bovendien zet Nintendo Benelux BV zich in voor het ondersteunen van de gaminggemeenschap in de regio door middel van evenementen, promoties en samenwerkingen. Het bedrijf organiseert regelmatig toernooien, demo's en lanceringsevenementen om fans de kans te geven om hun favoriete games te ervaren en deel uit te maken van de levendige Nintendo-gemeenschap in de Benelux.
+                        
+                        Kortom, Nintendo Benelux BV blijft een belangrijke speler in de gamingindustrie, met een lange geschiedenis van het leveren van innovatieve producten en het creëren van onvergetelijke spelervaringen voor gamers in Nederland, België en Luxemburg.</p>
                    </div>
                </div>
            </div>
@@ -144,6 +134,7 @@
    </div>
 
   </body>
+  <footer class="footer" id="ourFooter"></footer>
 <!--
 <!DOCTYPE html>
 <html lang="en">
