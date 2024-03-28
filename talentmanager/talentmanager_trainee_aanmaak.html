@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vacature Aanmaak</title>
+    <title>Trainee Aanmaak</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -18,12 +18,6 @@
     <link rel="stylesheet" href="../style.css" />
     <script src="../algemeen.js"></script>
     <style>
-      /* body {
-        background-color: white;
-      }
-      .navbar {
-        background-color: #f8f9fa;
-      } */
       .form-container {
         max-width: 500px;
         margin: 0 auto;
@@ -49,136 +43,105 @@
       label {
         margin-bottom: 5px;
       }
-      #uitStroomRichting:hover {
-        background-color: black;
-        color: white;
-      }
-      #uitStroomRichting option {
-        background-color: white;
-        color: black;
-      }
     </style>
   </head>
   <body>
     <nav class="navbar" id="navbalk"></nav>
     <div class="form-container mt-5">
-      <form id="createVacatureForm">
+      <form id="createTraineeForm">
         <div class="form-group">
-          <label for="titel">Titel:</label>
+          <label for="voornaam">Voornaam:</label>
           <input
             type="text"
             class="form-control"
-            id="titel"
-            name="titel"
+            id="voornaam"
+            name="voornaam"
             required
           />
         </div>
         <div class="form-group">
-          <label for="omschrijving">Omschrijving:</label>
+          <label for="achternaam">Achternaam:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="achternaam"
+            name="achternaam"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="specialisatie">Specialisatie:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="specialisatie"
+            name="specialisatie"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="woonplaats">Woonplaats:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="woonplaats"
+            name="woonplaats"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="bio">Bio:</label>
           <textarea
             class="form-control"
-            id="omschrijving"
-            name="omschrijving"
+            id="bio"
+            name="bio"
             rows="4"
             required
           ></textarea>
         </div>
         <div class="form-group">
-          <label for="contractLengte">Contract Lengte (in jaren):</label>
+          <label for="leeftijd">Leeftijd:</label>
           <input
             type="number"
             class="form-control"
-            id="contractLengte"
-            name="contractLengte"
+            id="leeftijd"
+            name="leeftijd"
             required
           />
         </div>
-        <div class="form-group">
-          <label for="locatie">Locatie:</label>
-          <input
-            type="text"
-            class="form-control"
-            id="locatie"
-            name="locatie"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="typeWerk">Type Werk:</label>
-          <input
-            type="text"
-            class="form-control"
-            id="typeWerk"
-            name="typeWerk"
-          />
-        </div>
-        <div class="form-group">
-          <label for="uitStroomRichting">Uitstroomrichting:</label>
-          <select
-            class="form-control"
-            id="uitStroomRichting"
-            name="uitStroomRichting"
-            required
-          >
-            <option value="DevOps">DevOps</option>
-            <option value="Java">Java</option>
-            <option value="BigData">BigData</option>
-            <option value="LowCode">LowCode</option>
-            <option value="InformatieAnalyst">InformatieAnalyst</option>
-            <option value="CSharp">CSharp</option>
-            <option value="SoftwareTester">SoftwareTester</option>
-            <option value="NietGekozen">NietGekozen</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="aantalUren">Aantal Uren:</label>
-          <input
-            type="number"
-            class="form-control"
-            id="aantalUren"
-            name="aantalUren"
-            required
-          />
-        </div>
-        <button type="submit" class="btn btn-primary">Create Vacature</button>
+        <button type="submit" class="btn btn-primary">Trainee Aanmaken</button>
       </form>
     </div>
     <footer class="footer" id="ourFooter"></footer>
     <script>
       window.onload = function () {
-        TekenNavBalk("bedrijf");
+        TekenNavBalk("trainee");
         loadProfileData();
         LoadFooter();
+        bindFormSubmission();
       };
+
       function bindFormSubmission() {
         document
-          .getElementById("createVacatureForm")
+          .getElementById("createTraineeForm")
           .addEventListener("submit", function (event) {
             event.preventDefault();
-            console.log("i dont get here? " + profiel.id);
-            if (!profiel || !profiel.id) {
-              console.error("Profiel ID is not available.");
-              return;
-            }
-            createVacatureForBedrijf(profiel.id);
+
+            createTrainee();
           });
       }
 
-      function createVacatureForBedrijf(bedrijfId) {
+      function createTrainee() {
         const formDataObject = {
-          titel: document.getElementById("titel").value,
-          omschrijving: document.getElementById("omschrijving").value,
-          contractLengte: parseInt(
-            document.getElementById("contractLengte").value,
-            10
-          ),
-          locatie: document.getElementById("locatie").value,
-          typeWerk: document.getElementById("typeWerk").value,
-          uitStroomRichting: document.getElementById("uitStroomRichting").value,
-          aantalUren: parseInt(document.getElementById("aantalUren").value, 10),
+          voornaam: document.getElementById("voornaam").value,
+          achternaam: document.getElementById("achternaam").value,
+          specialisatie: document.getElementById("specialisatie").value,
+          woonplaats: document.getElementById("woonplaats").value,
+          bio: document.getElementById("bio").value,
+          leeftijd: parseInt(document.getElementById("leeftijd").value, 10),
         };
 
-        fetch(ipbackend + "/bedrijf/" + bedrijfId + "/createVacature", {
+        fetch(ipbackend + "/talentmanager/" + profiel.id + "/trainee", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formDataObject),
@@ -190,20 +153,19 @@
           )
           .then(({ status, body }) => {
             if (status === 200) {
-              console.log("Vacature successfully created");
-              navigateToBedrijfVacatureOverzicht();
+              console.log("Trainee successfully created");
+
+              navigateToTraineeOverzicht();
             } else {
-              console.error("Failed to create vacature:", body);
+              console.error("Failed to create trainee:", body);
             }
           })
           .catch((error) => {
             console.error("Error:", error);
           });
       }
-      function navigateToBedrijfVacatureOverzicht() {
-        let destinationUrl =
-          "/bedrijf/bedrijf_overzicht_vacatures.html?bfid=" + profiel.id;
-
+      function navigateToTraineeOverzicht() {
+        let destinationUrl = "/trainee/trainee_overzicht.html";
         window.location.href = destinationUrl;
       }
     </script>

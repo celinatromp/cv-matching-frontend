@@ -30,6 +30,12 @@ li {
 }
 */
 
+.indexbackground {
+  background: url(images/indexBackground.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
 
 body {
   background-color: #FFFFFF;
@@ -50,6 +56,14 @@ h1 {
 h2 {
   font-family: "Stratos SemiBold", sans-serif;
   font-size: 72px;
+  font-weight: normal;
+  font-style: normal;
+  color: #11310e;
+}
+
+.aiheader h2 {
+  font-family: "Stratos SemiBold", sans-serif;
+  font-size: 36px;
   font-weight: normal;
   font-style: normal;
   color: #11310e;
@@ -157,6 +171,14 @@ p {
   color: #fff;
 }
 
+.btnroundpink {
+  background-color: transparent;
+}
+
+.btnroundpink:hover {
+  background-color: transparent;
+}
+
 button {
   border: none;
   outline: 0;
@@ -185,7 +207,7 @@ a:hover {
 img {
   background-color: transparent;
   max-height: 500px;
-  max-width: 1024px;
+  max-width: 500px;
   overflow: hidden;
   padding: 10px;
 }
