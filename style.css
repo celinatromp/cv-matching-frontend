@@ -61,6 +61,14 @@ h2 {
   color: #11310e;
 }
 
+.aiheader h2 {
+  font-family: "Stratos SemiBold", sans-serif;
+  font-size: 36px;
+  font-weight: normal;
+  font-style: normal;
+  color: #11310e;
+}
+
 h3 {
   font-family: "Stratos Regular";
   font-size: 16px;
