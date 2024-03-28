@@ -56,12 +56,8 @@
         <label for="invoer-specialisatie">Specialisatie:</label>
         <input type="text" id="invoer-specialisatie" name="specialisatie" required><br>
 
-        <label for="invoer-bio">Kort Omschrijving:</label>
+        <label for="invoer-bio">Omschrijving:</label>
         <textarea id="invoer-bio" name="bio" required></textarea><br>
-
-        <label for="invoer-bio_long">Uitgebreid Omschrijving:</label>
-        <textarea id="invoer-bio_long" name="bio_long" required></textarea><br>
-
 
 
         <label for="status">Status:</label>
@@ -221,15 +217,14 @@
             //stap 1 - Verzamelen van data uit de invoer velden
             let newTrainee = {
                 "voornaam": document.getElementById("invoer-voornaam").value,
-                "voornaam": document.getElementById("invoer-voornaam").value,
                 "achternaam": document.getElementById("invoer-achternaam").value,
                 "leeftijd": document.getElementById("invoer-leeftijd").value,
                 "woonplaats": document.getElementById("invoer-woonplaats").value,
                 "specialisatie": document.getElementById("invoer-specialisatie").value,
                 "bio": document.getElementById("invoer-bio").value,
-                "bio_long": document.getElementById("invoer-bio_long").value,
-                "status": document.getElementById("status").value
+                "status": document.getElementById("status").value 
             };
+            
             //stap 2 - Sturen van de nieuwe trainee
             fetch(ipbackend + "/trainee/create", {
                 method: "POST",
@@ -290,7 +285,6 @@
                         <td>${trainee.woonplaats}</td>
                         <td>${trainee.specialisatie}</td>
                         <td>${trainee.bio}</td>
-                        <td>${trainee.bio_long}</td>
                         <td>${trainee.status}</td>
                     </tr>
                 `;
@@ -317,8 +311,7 @@
                         <th>Leeftijd</th>
                         <th>Woonplaats</th>
                         <th>Specialisatie</th>
-                        <th>korte bio</th>
-                        <th>uitgebreide bio</th>
+                        <th>Omschrijving</th>
                         <th>Status</th>
                     </tr>
                 </thead>
