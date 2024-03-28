@@ -39,6 +39,9 @@ li {
 
 body {
   background-color: #FFFFFF;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .headliner {
@@ -216,6 +219,7 @@ img {
 /* Footer styling */
 .footer {
   background-color: #FBF3EB;
+  margin-top: auto;
 }
 
 .footer-logo {
